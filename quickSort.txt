@@ -1,0 +1,15 @@
+Quicksort(array, primo, ultimo)
+    k ← Pivot(array, primo, ultimo)
+    Quicksort(array, primo, k-1)
+    Quicksort(array, k+1, ultimo)
+
+Pivot(array, primo, ultimo)
+    x ← array[primo]
+    k ← primo
+    for i ← primo to ultimo do
+        if array[i] < x then
+            k ← k + 1
+            Scambia array[i] ↔ array[k]
+    array[primo] ← array[k]
+    array[k] ← x
+    return k
