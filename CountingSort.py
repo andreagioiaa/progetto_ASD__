@@ -19,9 +19,10 @@ def countingSort(arr):
             k += 1
             C[i] -= 1
 
-
+'''
 arr = [3,2,8,7,2,4]
 
 countingSort(arr)
 
 print(f"Array: {arr}")
+'''
