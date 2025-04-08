@@ -39,7 +39,7 @@ def test_QuickSort( A_length, n_volte ):
         msg = "ESEMPIO " + str(j+1) + "\n"
         msg += "VETTORE DI PARTENZA\n" + str(vettore) 
         msg += "\nVETTORE ORDINATO\n" + str(QuickSort( vettore, inizio, fine ))
-        print( msg )
+        #print( msg )
     return 0
 
-test_QuickSort( 10, 10)
+#test_QuickSort( 10, 10)
