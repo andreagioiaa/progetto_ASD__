@@ -29,4 +29,5 @@ end = cg.getTime()
 
 print("Tempo CountingSort: {:.5f}".format(end-start))
 
-
+# n ascissa
+# t ( n ) ==> ordinata

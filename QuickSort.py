@@ -1,14 +1,3 @@
-import random
-
-def generaNumero( minimo, massimo ):
-    return random.randint(minimo,massimo)
-
-def creaVettore( n ):
-    vettore = [0] * n
-    for j in range(n):
-        vettore[j] = generaNumero(0, 100)
-    return vettore
-
 def QuickSort( A, p, q ):
     if( p < q ):
         r = Partition( A, p, q)
