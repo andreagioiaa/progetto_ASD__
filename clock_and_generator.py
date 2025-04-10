@@ -20,19 +20,5 @@ def creaVettore( n ):   #  100 ≤ n ≤ 100000
         vettore[j] = generaNumero(MIN_M, MAX_M)
     return vettore
 
-
-'''def resolution ():
-    start = time.perf_counter()
-    while time.perf_counter() == start:
-        pass
-    stop = time.perf_counter()
-    return stop - start 
-'''
-
 def getTime():
     return time.perf_counter()
-
-# GRAFICI VARI
-# n ascissa
-# t ( n ) ==> ordinata
-

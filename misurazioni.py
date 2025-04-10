@@ -1,17 +1,22 @@
-#richiamo gli algoritmi e prendo i tempi
+#importazione  moduli ( per ora senza simulativo )
 import clock_and_generator
 import QuickSort
 import CountingSort
 import QuickSort3Way
 import csv
+import matplotlib.pyplot as plt
+import numpy as np
 
-
+# valore minimo ( MIN_N ) e valore massimo ( MAX_N ) numero valori all'interno di un array
 MIN_N = 100
 MAX_N = 100000  #100 k
 
+# valore minimo ( MIN_M ) e valore massimo ( MAX_M ) numero di un elemento di un array 
 MIN_M = 10
 MAX_M = 1000000 #milione
 
+
+# commentato ==> si può togliere?
 '''
 N = clock_and_generator.generaNumero (clock_and_generator.MIN_N, clock_and_generator.MAX_N) 
 arr = clock_and_generator.creaVettore (N)
@@ -39,9 +44,11 @@ end = clock_and_generator.getTime()
 print("Tempo CountingSort: {:.5f}".format(end-start))
 '''
 
-def misurazioni_QuickSort():
+# misurazioni algoritmo: QuickSort
+def misurazioni_QuickSort( n_range ):
+    print("Creo misurazioni QuickSort...\n")
     dati_misurazioni = []
-    for i in range(10):
+    for i in range( n_range ):
         array = clock_and_generator.creaVettore( clock_and_generator.generaNumero(MIN_N, MAX_N) )
         start = clock_and_generator.getTime()
         QuickSort.QuickSort( array, 0, (len(array)-1) )
@@ -50,9 +57,11 @@ def misurazioni_QuickSort():
         # clock_and_generator.creaFileCSV(dati_misurazioni, "QuickSort--da--misurazioni")
     return dati_misurazioni
 
-def misurazioni_CountingSort():
+# misurazioni algoritmo: CountingSort
+def misurazioni_CountingSort( n_range ):
+    print("Creo misurazioni CountingSort...\n")
     dati_misurazioni = []
-    for i in range(10):
+    for i in range( n_range ):
         array = clock_and_generator.creaVettore( clock_and_generator.generaNumero(MIN_N, MAX_N) )
         start = clock_and_generator.getTime()
         CountingSort.countingSort(array)
@@ -60,9 +69,11 @@ def misurazioni_CountingSort():
         dati_misurazioni.append((len(array), "{:.8f}".format(end - start)))
     return dati_misurazioni
 
-def misurazioni_QuickSort3Way():
+# misurazioni algoritmo: QuickSort3Way
+def misurazioni_QuickSort3Way( n_range ):
+    print("Creo misurazioni QuickSort3Way...\n")
     dati_misurazioni = []
-    for i in range(10):
+    for i in range( n_range ):
         array = clock_and_generator.creaVettore( clock_and_generator.generaNumero(MIN_N, MAX_N) )
         start = clock_and_generator.getTime()
         QuickSort3Way.QuickSort3Way(array, 0, len(array)-1)
@@ -74,7 +85,8 @@ def misurazioni_QuickSort3Way():
 # GRAFICI VARI
 # n ascissa
 # t ( n ) ==> ordinata
-def creaFileCSV_misurazioni():
+
+def creaFileCSV_misurazioni( n_range = 10 ):
     """
     Genera un file CSV con le misurazioni fornite.
     
@@ -94,21 +106,21 @@ def creaFileCSV_misurazioni():
         # QuickSort
         writer.writerow(["QuickSort"])
         writer.writerow(field)
-        writer.writerows(misurazioni_QuickSort())
+        writer.writerows(misurazioni_QuickSort( n_range))
 
         writer.writerow("\n\n\n")
 
         # CountingSort
         writer.writerow(["CountingSort"])
         writer.writerow(field)
-        writer.writerows(misurazioni_CountingSort())
+        writer.writerows(misurazioni_CountingSort( n_range ))
 
         writer.writerow("\n\n\n")
 
         # QuickSort3Way
         writer.writerow(["QuickSort3Way"])
         writer.writerow(field)
-        writer.writerows(misurazioni_QuickSort3Way())
+        writer.writerows(misurazioni_QuickSort3Way( n_range ))
 
     
     print(f"File '{filename}' generato con successo nella cartella corrente.")
@@ -144,6 +156,5 @@ def apri_resoconto(filename="Resoconto.csv"):
         print(f"Errore durante la lettura: {str(e)}")
         return None
 
-creaFileCSV_misurazioni()
-
+creaFileCSV_misurazioni( 50 )
 # py misurazioni.py
