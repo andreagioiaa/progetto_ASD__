@@ -1,0 +1,4 @@
+ToDO:
+==> scegliere numero di misurazioni di test da fare per ogni algoritmo
+==> scegliere quarto algoritmo di ordinamento da fare
+==> commentare algoritmi ( costi, cosa fanno, informazioni aggiuntive… )

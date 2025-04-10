@@ -20,6 +20,7 @@ def Scambia(A, i, j):
     A[i] = A[j]
     A[j] = temp
 
+'''
 def test_QuickSort( A_length, n_volte ):
     inizio = 0
     fine = A_length-1
@@ -32,3 +33,5 @@ def test_QuickSort( A_length, n_volte ):
     return 0
 
 #test_QuickSort( 10, 10)
+
+'''

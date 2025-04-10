@@ -15,7 +15,6 @@ MAX_N = 100000  #100 k
 MIN_M = 10
 MAX_M = 1000000 #milione
 
-
 # commentato ==> si può togliere?
 '''
 N = clock_and_generator.generaNumero (clock_and_generator.MIN_N, clock_and_generator.MAX_N) 
