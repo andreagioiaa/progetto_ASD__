@@ -9,7 +9,7 @@ def creaGrafico( df ):
     Args:
         df (pandas.DataFrame): DataFrame generato da creaDataFrame()
     """
-    plt.figure(figsize=(12, 7))
+    fig = plt.figure(figsize=(12, 7))
     
     # Prepara i dati in formato long
     df_long = df.melt(id_vars=['Dimensione'], 
@@ -61,6 +61,7 @@ def creaGrafico( df ):
     # Mostra il grafico
     plt.tight_layout()
     plt.show()
+    fig.savefig("Grafico.png")
     return 0
 
 # utility ==> DataFrame contenente i dati globali delle misurazioni
