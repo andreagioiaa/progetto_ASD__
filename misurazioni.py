@@ -6,7 +6,8 @@ import QuickSort3Way
 import csv
 import matplotlib.pyplot as plt
 import numpy as np
-import pandas as pd # type: ignore
+import pandas as pd 
+import os
 
 # valore minimo ( MIN_N ) e valore massimo ( MAX_N ) numero valori all'interno di un array
 MIN_N = 100
@@ -65,8 +66,8 @@ def creaDataFrame():
         
     Returns:
         pandas.DataFrame: DataFrame con colonne ['Dimensione', 'QuickSort', 'CountingSort', 'QuickSort3Way']
-    """
-    # Esegui le misurazioni per ciascun algoritmo
+    """ 
+    # Eseguo le misurazioni per ciascun algoritmo
     mis_quick = misurazioni_QuickSort()
     mis_counting = misurazioni_CountingSort()
     mis_quick3way = misurazioni_QuickSort3Way()
@@ -112,7 +113,7 @@ def creaDataFrame():
 # n ascissa
 # t ( n ) ==> ordinata
 
-def creaFileCSV_misurazioni():
+def creaFileCSV_misurazioni( df_mis ):
     """
     Genera un file CSV con le misurazioni fornite.
     
@@ -125,6 +126,9 @@ def creaFileCSV_misurazioni():
     filename = "Resoconto.csv"
     field = ["n", "t(n)"]
 
+    # Scomponilo nelle liste di misurazioni
+    mis_quick, mis_counting, mis_quick3way = scompattaDataFrame( df_mis )
+
     # Scrivo sul file
     with open(filename, mode='w', newline='') as file:
         writer = csv.writer(file, delimiter=';')
@@ -132,21 +136,21 @@ def creaFileCSV_misurazioni():
         # QuickSort
         writer.writerow(["QuickSort"])
         writer.writerow(field)
-        writer.writerows(misurazioni_QuickSort( ))
+        writer.writerows( mis_quick )
 
         writer.writerow("\n\n\n")
 
         # CountingSort
         writer.writerow(["CountingSort"])
         writer.writerow(field)
-        writer.writerows(misurazioni_CountingSort(  ))
+        writer.writerows( mis_counting )
 
         writer.writerow("\n\n\n")
 
         # QuickSort3Way
         writer.writerow(["QuickSort3Way"])
         writer.writerow(field)
-        writer.writerows(misurazioni_QuickSort3Way(  ))
+        writer.writerows( mis_quick3way )
 
     
     print(f"File '{filename}' generato con successo nella cartella corrente.")
@@ -182,5 +186,105 @@ def apri_resoconto(filename="Resoconto.csv"):
         print(f"Errore durante la lettura: {str(e)}")
         return None
 
-creaFileCSV_misurazioni()
+def scompattaDataFrame(df):
+    """
+    Scompone il DataFrame nelle liste di misurazioni originali
+    
+    Args:
+        df (pandas.DataFrame): DataFrame creato da creaDataFrame()
+        
+    Returns:
+        tuple: (mis_quick, mis_counting, mis_quick3way) dove ciascuna è una lista di tuple (n, t(n))
+    """
+    # Estrai le misurazioni per QuickSort
+    mis_quick = [
+        (row['Dimensione'], row['QuickSort']) 
+        for _, row in df.dropna(subset=['QuickSort']).iterrows()
+    ]
+    
+    # Estrai le misurazioni per CountingSort
+    mis_counting = [
+        (row['Dimensione'], row['CountingSort']) 
+        for _, row in df.dropna(subset=['CountingSort']).iterrows()
+    ]
+    
+    # Estrai le misurazioni per QuickSort3Way
+    mis_quick3way = [
+        (row['Dimensione'], row['QuickSort3Way']) 
+        for _, row in df.dropna(subset=['QuickSort3Way']).iterrows()
+    ]
+    
+    return mis_quick, mis_counting, mis_quick3way
+
+def esiste_resoconto():
+    """Restituisco True/False in base se esiste o meno il file Resoconto.csv"""
+    return os.path.isfile("Resoconto.csv")
+
+import pandas as pd
+import os
+
+import pandas as pd
+import os
+
+import pandas as pd
+import csv
+
+def leggiDF_CSV(filename="Resoconto.csv"):
+    """
+    Legge il file CSV e lo converte in un DataFrame strutturato come creaDataFrame()
+    
+    Args:
+        filename (str): Nome del file CSV (default: "Resoconto.csv")
+        
+    Returns:
+        pandas.DataFrame: DataFrame con colonne ['Dimensione', 'QuickSort', 'CountingSort', 'QuickSort3Way']
+    """
+    # Leggi il contenuto grezzo del file
+    contenuto = apri_resoconto(filename)
+    if contenuto is None:
+        return pd.DataFrame(columns=['Dimensione', 'QuickSort', 'CountingSort', 'QuickSort3Way'])
+    
+    # Processa il contenuto
+    data = {}
+    current_section = None
+    
+    for riga in contenuto:
+        if not riga or not riga[0]:  # Salta righe vuote
+            continue
+            
+        # Identifica le sezioni
+        if riga[0] == "QuickSort":
+            current_section = 'QuickSort'
+            continue
+        elif riga[0] == "CountingSort":
+            current_section = 'CountingSort'
+            continue
+        elif riga[0] == "QuickSort3Way":
+            current_section = 'QuickSort3Way'
+            continue
+        elif riga[0] == "n" and "t(n)" in riga:  # Salta gli header
+            continue
+            
+        # Processa i dati
+        if current_section and len(riga) >= 2:
+            try:
+                n = int(float(riga[0]))  # Converti prima a float poi a int per gestire '100.0'
+                t_n = float(riga[1])
+                
+                if n not in data:
+                    data[n] = {'Dimensione': n}
+                data[n][current_section] = t_n
+            except (ValueError, IndexError) as e:
+                print(f"Warning: Ignorata riga malformata: {riga} - Errore: {str(e)}")
+                continue
+    
+    # Converti in DataFrame
+    if not data:
+        return pd.DataFrame(columns=['Dimensione', 'QuickSort', 'CountingSort', 'QuickSort3Way'])
+    
+    df = pd.DataFrame(list(data.values()))
+    df = df.sort_values('Dimensione')
+    return df[['Dimensione', 'QuickSort', 'CountingSort', 'QuickSort3Way']]
+     
+# creaFileCSV_misurazioni()
 # py misurazioni.py

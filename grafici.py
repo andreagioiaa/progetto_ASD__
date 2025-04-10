@@ -2,7 +2,7 @@ import seaborn as sb
 import matplotlib.pyplot as plt
 import misurazioni
 
-def creaGrafico(df):
+def creaGrafico( df ):
     """
     Crea uno scatter plot comparativo con n in ascissa e t(n) in ordinata
     
@@ -17,6 +17,11 @@ def creaGrafico(df):
                       var_name='Algoritmo',
                       value_name='t(n)')
     
+    # Palette di colori personalizzata
+    palette = {'QuickSort': '#1f77b4', 
+               'CountingSort': '#ff7f0e', 
+               'QuickSort3Way': '#2ca02c'}
+
     # Scatter plot con Seaborn
     sb.scatterplot(data=df_long,
                    x='Dimensione',
@@ -26,10 +31,20 @@ def creaGrafico(df):
                    palette='dark',
                    s=80,
                    alpha=0.9)
+
+    # Aggiungi rette di regressione per ogni algoritmo
+    for algoritmo in df_long['Algoritmo'].unique():
+        sb.regplot(data=df_long[df_long['Algoritmo'] == algoritmo],
+                   x='Dimensione',
+                   y='t(n)',
+                   scatter=False,  # Non sovrascrivere gli scatter esistenti
+                   color=palette[algoritmo],
+                   #line_kws={'linestyle': '--', 'alpha': 0.5, 'label': f'Trend {algoritmo}'},
+                   )  # Disabilita intervalli di confidenza
     
     # Formattazione matematica degli assi
-    plt.xlabel('n (dimensione input)', fontsize=13, labelpad=10)
-    plt.ylabel('t(n) (tempo esecuzione)', fontsize=13, labelpad=10)
+    plt.xlabel('n', fontsize=13, labelpad=10)
+    plt.ylabel('t(n)', fontsize=13, labelpad=10)
     
     # Titolo e griglia
     plt.title('Complessità temporale degli algoritmi', pad=20, fontsize=15)
@@ -48,5 +63,14 @@ def creaGrafico(df):
     plt.show()
     return 0
 
-# Genera il grafico
-creaGrafico( misurazioni.creaDataFrame(  ) )
+# utility ==> DataFrame contenente i dati globali delle misurazioni
+if( misurazioni.esiste_resoconto() ):
+    df = misurazioni.leggiDF_CSV()
+else:
+    # creo il DataFrame
+    df = misurazioni.creaDataFrame()
+    # creo il file CSV contenente le misurazioni effettuate
+    misurazioni.creaFileCSV_misurazioni( df )
+
+# creo il grafico
+creaGrafico( df )
