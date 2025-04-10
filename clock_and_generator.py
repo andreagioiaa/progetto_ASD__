@@ -2,6 +2,7 @@
 import random
 import time
 
+
 MIN_N = 100
 MAX_N = 100000  #100 k
 
@@ -30,4 +31,8 @@ def creaVettore( n ):   #  100 ≤ n ≤ 100000
 
 def getTime():
     return time.perf_counter()
+
+# GRAFICI VARI
+# n ascissa
+# t ( n ) ==> ordinata
 
