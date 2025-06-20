@@ -12,5 +12,14 @@ y: t(n)s
 
 
 
-Cose da fare:
-- fare il punto della relazione
+Cose da fare - punto della relazione:
+- sistemare italiano e ampliare concetti
+- aggiungere grafici 1x algoritmo
+- motivare la scelta di RadixSort sugli altri algoritmi
+- fare la conclusione
+
+
+COSSIDENTE: descrizione teorica, analisi delle complessità ( caso medio peggiore migliore ), spiegato l'algoritmo e i passi fondamentali dell'algoritmo ( stabile, inplace, … ), scelte implementative, risultati, grafici, per ogni algoritmo un risultato, analisi comparativa globale con grafici (curve di tutti i grafici insieme) - vedere scala logaritmica - doppia scala logaritmica (grafico in scala logaritmo, non logaritmo sui dati), grafici al variare di N e di M.
+Grafici in scala log log indica la complessità dei logaritmi (dimostrazione complessità tramite grafico).
+
+QuickSort con M piccolo la complessità (dovrebbe quantomeno, si vede bene nella scala logaritmica) schizza.
