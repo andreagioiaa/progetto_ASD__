@@ -10,7 +10,7 @@ def creaGrafico( df ):
         df (pandas.DataFrame): DataFrame generato da creaDataFrame()
     """
     fig = plt.figure(figsize=(12, 7))
-    
+    #sb.set_style('darkgrid')
     # Prepara i dati in formato long
     df_long = df.melt(id_vars=['Dimensione'], 
                       value_vars=['QuickSort', 'CountingSort', 'QuickSort3Way', 'RadixSort'],
@@ -43,6 +43,8 @@ def creaGrafico( df ):
                    #line_kws={'linestyle': '--', 'alpha': 0.5, 'label': f'Trend {algoritmo}'},
                    )  # Disabilita intervalli di confidenza
     
+    sb.set_context('talk') #visualizza la legenda più grande
+
     # Formattazione matematica degli assi
     plt.xlabel('n', fontsize=13, labelpad=10)
     plt.ylabel('t(n)', fontsize=13, labelpad=10)

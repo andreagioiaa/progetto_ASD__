@@ -1,20 +1,20 @@
 def RadixSort(arr):
-    radix_array = [[], [], [], [], [], [], [], [], [], []]
-    max_val = max(arr)
-    exp = 1
+    radix_array = [[], [], [], [], [], [], [], [], [], []]  #array delle cifre (vuoto)
+    max_val = max(arr)  #assegno il valore massimo dell'array
+    exp = 1 
 
-    while (max_val // exp) > 0:
-        while len(arr) > 0:
-            val = arr.pop()
-            radix_index = (val // exp) % 10
-            radix_array[radix_index].append(val)
+    while (max_val // exp) > 0: #ciclo finchè la divisione intera tra il valore massimo e l'esponente è positiva 
+        while len(arr) > 0: #ciclo finchè ci sono elementi nell'array
+            val = arr.pop() #rimuovo l'ultimo elemento dall'array e lo assegno a val
+            radix_index = (val // exp) % 10 #calcolo il modulo 10 della diviaione intera tra val e l'esponente
+            radix_array[radix_index].append(val) #assegno al radix_array, in posizione radix index, il valore di val
 
-        for bucket in radix_array:
-            while len(bucket) > 0:
-                val = bucket.pop()
-                arr.append(val)
+        for bucket in radix_array: #ciclo tutti gli elementi di radix_array
+            while len(bucket) > 0: #ciclo finchè il bucket non è vuoto
+                val = bucket.pop() #rimuovo l'ultimo el. di bucket e lo assegno a val
+                arr.append(val) #aggiungo in fondo ad arr il valore di val
 
-        exp *= 10
+        exp *= 10 #exp = exp * 10
 
 '''
 arr = [1,3,2,8,11,15,4]
