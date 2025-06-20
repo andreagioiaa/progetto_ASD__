@@ -1,4 +1,4 @@
-def countingSort(arr):
+def countingSort(arr):  # INPUT: array di n elementi
     max = arr[0]
     min = arr[0]
 
@@ -18,11 +18,3 @@ def countingSort(arr):
             arr[k] = i + min
             k += 1
             C[i] -= 1
-
-'''
-arr = [3,2,8,7,2,4]
-
-countingSort(arr)
-
-print(f"Array: {arr}")
-'''

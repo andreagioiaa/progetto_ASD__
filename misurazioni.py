@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd 
 import os
+import radix
 
 # valore minimo ( MIN_N ) e valore massimo ( MAX_N ) numero valori all'interno di un array
 MIN_N = 100
@@ -18,43 +19,77 @@ MIN_M = 10
 MAX_M = 1000000 #milione
 
 # numero di misurazioni per ogni algoritmo di ordinamento
-N_MIS = 30
+N_MIS = 200
 
 # misurazioni algoritmo: QuickSort ==> return: array di tuple con valori di n e t(n)
 def misurazioni_QuickSort():
     print("Creo misurazioni QuickSort...\n")
     dati_misurazioni = []
+    numero_elementi = 0
+    durata_totale = 0
     for i in range( N_MIS ):
         array = clock_and_generator.creaVettore( clock_and_generator.generaNumero(MIN_N, MAX_N) )
         start = clock_and_generator.getTime()
         QuickSort.QuickSort( array, 0, (len(array)-1) )
         end = clock_and_generator.getTime()
         dati_misurazioni.append((len(array), "{:.8f}".format(end - start)))
+        durata_totale += end-start
+        numero_elementi += len(array)
         # clock_and_generator.creaFileCSV(dati_misurazioni, "QuickSort--da--misurazioni")
+    print("Tempo medio - QuickSort ==> " + str(durata_totale/numero_elementi) )
     return dati_misurazioni
 
 # misurazioni algoritmo: CountingSort ==> return: array di tuple con valori di n e t(n)
 def misurazioni_CountingSort():
     print("Creo misurazioni CountingSort...\n")
     dati_misurazioni = []
+    numero_elementi = 0
+    durata_totale = 0
     for i in range( N_MIS ):
         array = clock_and_generator.creaVettore( clock_and_generator.generaNumero(MIN_N, MAX_N) )
         start = clock_and_generator.getTime()
         CountingSort.countingSort(array)
         end = clock_and_generator.getTime()
         dati_misurazioni.append((len(array), "{:.8f}".format(end - start)))
+        durata_totale += end-start
+        numero_elementi += len(array)
+        # clock_and_generator.creaFileCSV(dati_misurazioni, "QuickSort--da--misurazioni")
+    print("Tempo medio - QuickSort ==> " + str(durata_totale/numero_elementi) )
     return dati_misurazioni
 
 # misurazioni algoritmo: QuickSort3Way ==> return: array di tuple con valori di n e t(n)
 def misurazioni_QuickSort3Way():
     print("Creo misurazioni QuickSort3Way...\n")
     dati_misurazioni = []
+    numero_elementi = 0
+    durata_totale = 0
     for i in range( N_MIS ):
         array = clock_and_generator.creaVettore( clock_and_generator.generaNumero(MIN_N, MAX_N) )
         start = clock_and_generator.getTime()
         QuickSort3Way.QuickSort3Way(array, 0, len(array)-1)
         end = clock_and_generator.getTime()
         dati_misurazioni.append((len(array), "{:.8f}".format(end - start)))
+        durata_totale += end-start
+        numero_elementi += len(array)
+        # clock_and_generator.creaFileCSV(dati_misurazioni, "QuickSort--da--misurazioni")
+    print("Tempo medio - QuickSort ==> " + str(durata_totale/numero_elementi) )
+    return dati_misurazioni
+
+def misurazioni_RadixSort():
+    print("Creo misurazioni Radix Sort...\n")
+    dati_misurazioni = []
+    numero_elementi = 0
+    durata_totale = 0
+    for i in range( N_MIS ):
+        array = clock_and_generator.creaVettore( clock_and_generator.generaNumero(MIN_N, MAX_N) )
+        start = clock_and_generator.getTime()
+        radix.RadixSort( array )
+        end = clock_and_generator.getTime()
+        dati_misurazioni.append((len(array), "{:.8f}".format(end - start)))
+        durata_totale += end-start
+        numero_elementi += len(array)
+        # clock_and_generator.creaFileCSV(dati_misurazioni, "QuickSort--da--misurazioni")
+    print("Tempo medio - QuickSort ==> " + str(durata_totale/numero_elementi) )
     return dati_misurazioni
 
 def creaDataFrame():
@@ -71,6 +106,7 @@ def creaDataFrame():
     mis_quick = misurazioni_QuickSort()
     mis_counting = misurazioni_CountingSort()
     mis_quick3way = misurazioni_QuickSort3Way()
+    mis_radix = misurazioni_RadixSort()
     
     # Crea dizionari temporanei per facilitare la creazione del DataFrame
     data = {}
@@ -90,6 +126,11 @@ def creaDataFrame():
         if dim not in data:
             data[dim] = {}
         data[dim]['QuickSort3Way'] = float(time)
+
+    for dim, time in mis_radix:
+        if dim not in data:
+            data[dim] = {}
+        data[dim]['RadixSort'] = float(time)
     
     # Converti il dizionario in una lista di tuple per la creazione del DataFrame
     rows = []
@@ -98,7 +139,8 @@ def creaDataFrame():
             'Dimensione': dim,
             'QuickSort': data[dim].get('QuickSort', None),
             'CountingSort': data[dim].get('CountingSort', None),
-            'QuickSort3Way': data[dim].get('QuickSort3Way', None)
+            'QuickSort3Way': data[dim].get('QuickSort3Way', None),
+            'RadixSort': data[dim].get('RadixSort', None)
         }
         rows.append(row)
     
@@ -106,7 +148,7 @@ def creaDataFrame():
     df = pd.DataFrame(rows)
     
     # Riordina le colonne
-    df = df[['Dimensione', 'QuickSort', 'CountingSort', 'QuickSort3Way']]
+    df = df[['Dimensione', 'QuickSort', 'CountingSort', 'QuickSort3Way','RadixSort']]
     
     return df
 # GRAFICI VARI
@@ -127,7 +169,7 @@ def creaFileCSV_misurazioni( df_mis ):
     field = ["n", "t(n)"]
 
     # Scomponilo nelle liste di misurazioni
-    mis_quick, mis_counting, mis_quick3way = scompattaDataFrame( df_mis )
+    mis_quick, mis_counting, mis_quick3way, mis_radix = scompattaDataFrame( df_mis )
 
     # Scrivo sul file
     with open(filename, mode='w', newline='') as file:
@@ -151,6 +193,11 @@ def creaFileCSV_misurazioni( df_mis ):
         writer.writerow(["QuickSort3Way"])
         writer.writerow(field)
         writer.writerows( mis_quick3way )
+
+        # RadixSort
+        writer.writerow(["RadixSort"])
+        writer.writerow(field)
+        writer.writerows( mis_radix )
 
     
     print(f"File '{filename}' generato con successo nella cartella corrente.")
@@ -214,7 +261,13 @@ def scompattaDataFrame(df):
         for _, row in df.dropna(subset=['QuickSort3Way']).iterrows()
     ]
     
-    return mis_quick, mis_counting, mis_quick3way
+    # Estrai le misurazioni per QuickSort3Way
+    mis_radix = [
+        (row['Dimensione'], row['RadixSort']) 
+        for _, row in df.dropna(subset=['RadixSort']).iterrows()
+    ]
+
+    return mis_quick, mis_counting, mis_quick3way, mis_radix
 
 def esiste_resoconto():
     """Restituisco True/False in base se esiste o meno il file Resoconto.csv"""
@@ -242,7 +295,7 @@ def leggiDF_CSV(filename="Resoconto.csv"):
     # Leggi il contenuto grezzo del file
     contenuto = apri_resoconto(filename)
     if contenuto is None:
-        return pd.DataFrame(columns=['Dimensione', 'QuickSort', 'CountingSort', 'QuickSort3Way'])
+        return pd.DataFrame(columns=['Dimensione', 'QuickSort', 'CountingSort', 'QuickSort3Way', 'RadixSort'])
     
     # Processa il contenuto
     data = {}
@@ -262,6 +315,9 @@ def leggiDF_CSV(filename="Resoconto.csv"):
         elif riga[0] == "QuickSort3Way":
             current_section = 'QuickSort3Way'
             continue
+        elif riga[0] == "RadixSort":
+            current_section = 'RadixSort'
+            continue
         elif riga[0] == "n" and "t(n)" in riga:  # Salta gli header
             continue
             
@@ -280,11 +336,8 @@ def leggiDF_CSV(filename="Resoconto.csv"):
     
     # Converti in DataFrame
     if not data:
-        return pd.DataFrame(columns=['Dimensione', 'QuickSort', 'CountingSort', 'QuickSort3Way'])
+        return pd.DataFrame(columns=['Dimensione', 'QuickSort', 'CountingSort', 'QuickSort3Way','RadixSort'])
     
     df = pd.DataFrame(list(data.values()))
     df = df.sort_values('Dimensione')
-    return df[['Dimensione', 'QuickSort', 'CountingSort', 'QuickSort3Way']]
-     
-# creaFileCSV_misurazioni()
-# py misurazioni.py
+    return df[['Dimensione', 'QuickSort', 'CountingSort', 'QuickSort3Way', 'RadixSort']]

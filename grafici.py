@@ -13,14 +13,15 @@ def creaGrafico( df ):
     
     # Prepara i dati in formato long
     df_long = df.melt(id_vars=['Dimensione'], 
-                      value_vars=['QuickSort', 'CountingSort', 'QuickSort3Way'],
+                      value_vars=['QuickSort', 'CountingSort', 'QuickSort3Way', 'RadixSort'],
                       var_name='Algoritmo',
                       value_name='t(n)')
     
     # Palette di colori personalizzata
     palette = {'QuickSort': '#1f77b4', 
                'CountingSort': '#ff7f0e', 
-               'QuickSort3Way': '#2ca02c'}
+               'QuickSort3Way': '#2ca02c',
+               'RadixSort':'#2ff0e1'}
 
     # Scatter plot con Seaborn
     sb.scatterplot(data=df_long,

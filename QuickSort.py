@@ -15,7 +15,8 @@ def Partition(A, p, q):
     Scambia(A, i + 1, q)  # posiziona il pivot al centro
     return i + 1
 
-def Scambia(A, i, j):
+
+def Scambia(A, i, j):   # Scambio i valori dell'array A in posizione A[i] e A[j]
     temp = A[i]
     A[i] = A[j]
     A[j] = temp

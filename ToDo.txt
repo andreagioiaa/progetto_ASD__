@@ -1,9 +1,16 @@
 ToDO:
-==> scegliere numero di misurazioni di test da fare per ogni algoritmo
-==> scegliere quarto algoritmo di ordinamento da fare
+==> scegliere numero di misurazioni di test da fare per ogni algoritmo ( FATTO. Rivedere sul codice. )
+==> scegliere quarto algoritmo di ordinamento da fare ( FATTO )
 ==> commentare algoritmi ( costi, cosa fanno, informazioni aggiuntive… )
 
 grafici:
 ==> utilizzare libreria seaborn ( grafico punti e righe // scatterplot )
 x: n
-y: t(n)
+y: t(n)s
+
+
+
+
+
+Cose da fare:
+- fare il punto della relazione
