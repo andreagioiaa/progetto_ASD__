@@ -11,6 +11,10 @@
 \usepackage[paper=a4paper]{geometry}
 \usepackage[shortlabels]{enumitem}
 \usepackage{hyperref}
+% Frontespizio config
+\usepackage[nowrite]{front-th}
+\usepackage{pdfpages}
+
 \usepackage{fancyhdr} % <-- aggiunto
 \pagestyle{fancy}     % <-- imposto lo stile fancy
 \fancyhf{}
@@ -58,12 +62,40 @@
 
 
 \renewcommand{\contentsname}{Indice}
-\title{Laboratorio di Algoritmi e Strutture Dati\\A.A. 2024/25}
-\author{Andrea Gioia - 169484@spes.uniud.it\\Luca Gamberini - 168712@spes.uniud.it}
+
+
+\fontoptionnormal
+
+\makeatletter
+\def\front@thecandidate{Candidato}
+\def\front@thecandidates{Candidati}
+\def\front@theadvisor{Relatore}
+\def\front@theadvisors{Relatori}
+\makeatother
+
+
+% Dati frontespizio
+\Universita{Udine}
+\Logo[3.5cm]{./Immagini/Logo_Università_di_Udine.png}
+\Dipartimento{Scienze Matematiche, Informatiche e Fisiche}  % Aggiunto in sostituzione di Facoltà
+\Corso[Laurea]{Internet Of Things, Big Data, Machine Learning}
+\Annoaccademico{2024--2025}
+\Titolo{Laboratorio di Algoritmi e Strutture Dati\bigbreak - \bigbreak Verifica della complessità asintotica degli algoritmi di ordinamento}
+\Candidato{Andrea Gioia - 169484}
+\Candidato{Luca Gamberini - 168712}
+\Relatore{Prof. Gabriele Puppis}
+\Relatore{Prof. Carla Piazza}
+% \Correlatore{Prof. Marco Sciandrone}  % Commentato come richiesto
+
+
 
 \begin{document}
 
-\maketitle
+\thispagestyle{empty} 
+\preparefrontpage
+
+\newpage
+
 \tableofcontents
 \newpage
 \section{Introduzione}
@@ -87,7 +119,7 @@ Gli algoritmi di ordinamento presi in esame presentano caratteristiche different
 
 \subsection{QuickSort}
 Algoritmo di ordinamento ricorsivo del tipo divide-et-impera, quindi basato sulla suddivisione in n sottoproblemi, risolti ricorsivamente, fino al raggiungimento del caso base.\\
-Non presenta la necessità di utilizzo di strutture dati aggiuntive, di conseguenza lo scambio di elementi avviene in-place.\\\\
+Non presenta la necessità di utilizzo di strutture dati aggiuntive, di conseguenza lo scambio di elementi avviene in-place.\bigbreak
 Le complessità asintotiche temporali di QuickSort sono:
 \begin{itemize}
     \item Caso ottimo: $\Omega(n\log_2n)$
@@ -125,7 +157,7 @@ def Scambia(A, i, j):
 Versione modificata rispetto al QuickSort classico.\\
 Prevede la suddivisione in 3 parti dell'array di elementi, sulla base di una variabile \textit{pivot}.\\
 Gli scambi vengono fatti sulla base di un confronto tra elemento dell'array e la variabile pivot ($>$, $<$, $=$). Le chiamate ricorsive vengono effettuate su porzioni con elementi $<$ pivot e $>$ pivot.\\
-A differenza del QuickSort classico, QuickSort3Way presenta notevole efficienza con array con molti elementi duplicati.\\\\
+A differenza del QuickSort classico, QuickSort3Way presenta notevole efficienza con array con molti elementi duplicati.\bigbreak
 Le complessità asintotiche temporali di QuickSort3Way sono:
 \begin{itemize}
     \item Caso ottimo: $\Omega(n\log n)$
@@ -162,7 +194,7 @@ Le complessità asintotiche temporali di QuickSort3Way sono:
 \end{lstlisting}
 
 \subsection{CountingSort}
-CountingSort è un algoritmo di ordinamento non in-place, in quanto si avvale di un array aggiuntivo che conta il numero di occorrenze di ciascun elemento.\\\\
+CountingSort è un algoritmo di ordinamento non in-place, in quanto si avvale di un array aggiuntivo che conta il numero di occorrenze di ciascun elemento.\bigbreak
 Le complessità asintotiche temporali di CountingSort sono:
 \begin{itemize}
     \item Caso ottimo: $\Omega(n + k)$
@@ -195,7 +227,7 @@ Le complessità asintotiche temporali di CountingSort sono:
 \end{lstlisting}
 
 \subsection{RadixSort}
-RadixSort è un algoritmo di ordinamento basato sull'ordinamento cifra per cifra, partendo da quella meno significativa. Risulta particolarmente efficiente in presenta di molti numero con la stessa quantità di cifre.\\\\
+RadixSort è un algoritmo di ordinamento basato sull'ordinamento cifra per cifra, partendo da quella meno significativa. Risulta particolarmente efficiente in presenta di molti numero con la stessa quantità di cifre.\bigbreak
 Le complessità asintotiche temporali di RadixSort sono:
 \begin{itemize}
     \item Caso ottimo: $\Omega(n\cdot d)$
@@ -203,6 +235,10 @@ Le complessità asintotiche temporali di RadixSort sono:
     \item Caso pessimo: $\mathcal{O}(n\cdot d)$
 \end{itemize}
 
+\subsubsection{Motivazioni della scelta}
+É stato scelto RadixSort come quarto algoritmo a scelta per il suo approccio innovativo e diverso rispetto agli altri algoritmi selezionati, offrendo una prospettiva di confronto interessante.
+
+\subsubsection{Codice}
 \begin{lstlisting}[style=mycodestyle, language=Python]
 def RadixSort(arr):
     radix_array = [[], [], [], [], [], [], [], [], [], []]  # array delle cifre

@@ -10,5 +10,7 @@
 \contentsline {subsection}{\numberline {2.3}CountingSort}{4}{subsection.2.3}%
 \contentsline {subsubsection}{\numberline {2.3.1}Codice}{4}{subsubsection.2.3.1}%
 \contentsline {subsection}{\numberline {2.4}RadixSort}{5}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.4.1}Motivazioni della scelta}{5}{subsubsection.2.4.1}%
+\contentsline {subsubsection}{\numberline {2.4.2}Codice}{5}{subsubsection.2.4.2}%
 \contentsline {section}{\numberline {3}Misurazioni}{6}{section.3}%
 \contentsline {section}{\numberline {4}Conclusione}{6}{section.4}%
