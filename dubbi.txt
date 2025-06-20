@@ -1,0 +1,3 @@
+- Lasciamo il codice nella relazione?
+- Motivazione radixSort -> va bene?
+- quanti grafici facciamo?

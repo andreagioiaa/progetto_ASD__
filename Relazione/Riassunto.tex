@@ -27,6 +27,9 @@
     urlcolor=black
 }
 
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
 % --- INIZIO SOSTITUZIONE MINTED CON LISTINGS ---
 \usepackage{listings}
 \usepackage{xcolor} % Necessario per definire i colori
@@ -63,6 +66,13 @@
 
 \renewcommand{\contentsname}{Indice}
 
+\newcommand{\myfrontpage}{%
+  \begin{titlepage}
+  \centering
+  \preparefrontpage
+  \end{titlepage}
+  \global\let\centering\relax % Disabilita centering globale
+}
 
 \fontoptionnormal
 
@@ -90,9 +100,10 @@
 
 
 \begin{document}
+\myfrontpage
 
 \thispagestyle{empty} 
-\preparefrontpage
+%\preparefrontpage
 
 \newpage
 
@@ -126,6 +137,29 @@ Le complessità asintotiche temporali di QuickSort sono:
     \item Caso medio: $\Theta(n\log_2n)$
     \item Caso pessimo: $\mathcal{O}(n^2)$
 \end{itemize}
+
+\subsubsection{Analisi delle complessità}
+Il QuickSort è un esempio di algoritmo che lavora in-place, quindi la complessità in spazio equivale a $\Theta(n)$, ovvero la dimensione dell'array di partenza.\bigbreak
+Le operazioni che influiscono sulla complessità di tempo sono:
+\begin{itemize}
+    \item Chiamata a partition, complessità $\Theta(n)$
+    \item Le due chiamate ricorsive, complessità rispettivamente di $T(q-1)$ e $T(n-q)$.
+\end{itemize}
+
+
+L'equazione di ricorrenza di QuickSort è:
+\begin{gather*}
+    T(n) = 
+    \begin{cases}
+    \Theta(1)\quad\quad \text{se}\;\; n\; \leq\; 1 \\
+    T(q - 1) + T(n - q) + \Theta(n)\quad\quad se\; n > 1
+    \end{cases}     
+\end{gather*}
+ 
+\paragraph{Caso pessimo}\mbox{}\\
+Nel caso pessimo, QuickSort ha complessità $\mathcal{O}(n^2)$.\\
+La circostanza in cui QuickSort si trova nel caso pessimo è legata a una scelta sconveniente del pivot, il quale genera uno sbilanciamento nella divisione in parti dell'array.
+\href{https://ifif.altervista.org/quicksort-come-funziona-esempio/?doing_wp_cron=1750427062.2481169700622558593750}{\color{blue}link alla fonte}.
 
 \subsubsection{Codice}
 \begin{lstlisting}[style=mycodestyle, language=Python]
@@ -164,6 +198,17 @@ Le complessità asintotiche temporali di QuickSort3Way sono:
     \item Caso medio: $\Theta(n\log n)$
     \item Caso pessimo: $\mathcal{O}(n^2)$
 \end{itemize}
+
+\subsubsection{Analisi delle complessità}
+Come nel caso di QuickSort, anche il QuickSort3Way lavora in-place, senza bisogno di stutture dati aggiuntive, quindi la complessità in spazio è $\Theta(n)$.\\\\
+Considerando che l'algoritmo itera gli elementi dell'array e siccome il ciclo for viene eseguito al massimo $n$ volte.\\
+L'algoritmo partiziona l'array in tre sezioni (elementi $<$ pivot, $=$ pivot e $>$ pivot) attraverso un singolo passaggio che opera in tempo lineare $\Theta(n)$. La complessità temporale dipende dall'equilibrio delle partizioni:
+\begin{itemize}
+    \item \textbf{Caso ottimo ($\Omega(n \log n)$)}: Il caso ottimo si verifica quando il pivot divide in partizioni bilanciate l'array, di conseguenza in partizioni ciascuna di dimensioni $n/3$.
+    \item \textbf{Caso medio ($\Theta(n \log n)$)}: La complessità resta invariata grazie alla gestione efficiente del confronto sugli elementi uguali, non andando a fare ulteriori confronti.
+    \item \item \textbf{Caso pessimo ($\mathcal{O}(n^2)$)}: Occorre in situazioni in cui il pivot viene sistematicamente posizionato alla prima o all'ultima posizione dell'array. Questo va a creare partizioni sbilanciate. 
+\end{itemize}
+
 
 \subsubsection{Codice}
 \begin{lstlisting}[style=mycodestyle, language=Python]
