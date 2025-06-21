@@ -247,6 +247,11 @@ Le complessità asintotiche temporali di CountingSort sono:
     \item Caso pessimo: $\mathcal{O}(n + k)$
 \end{itemize}
 
+\subsubsection{Analisi delle complessità}
+CountingSort è un algoritmo stabile e senza confronto, il quale richiede la dichiarazione di un array ausiliario di dimensione \textit{max - min + 1}. Tutto ciò fa sì che la complessità in spazio di CountingSort sia $\mathcal{O}(n + k)$, dove $n$ è il numero di elementi dell'array e $k$ è pari all'ampiezza dell'intervallo di valori.\bigbreak
+Essendo CountingSort un algoritmo di ordinamento senza confronto, il posizionamento degli elementi nell'array non influisce sulla sua efficienza, di conseguenza la complessità, sia nel caso ottimo, medio e pessimo, sarà sempre $\mathcal{O}(n + k)$; tuttavia, diventa inefficiente per intervalli di valori molto grandi ($k > n$). 
+
+
 \subsubsection{Codice}
 \begin{lstlisting}[style=mycodestyle, language=Python]
     def countingSort(arr):
@@ -282,6 +287,11 @@ Le complessità asintotiche temporali di RadixSort sono:
 
 \subsubsection{Motivazioni della scelta}
 É stato scelto RadixSort come quarto algoritmo a scelta per il suo approccio innovativo e diverso rispetto agli altri algoritmi selezionati, offrendo una prospettiva di confronto interessante.
+
+\subsubsection{Analisi delle complessità}
+L'algoritmo RadixSort richiede due array ausiliari, uno di dimensione pari alla base numerica scelta, e l'altro di dimensione n (numero di elementi). Di conseguenza, la complessità in spazio dell'algoritmo è pari a $\mathcal{O}(n + b)$.\bigbreak
+Nel caso ottimo, tutti gli elementi hanno lo stesso numero di cifre. Considerando $d$ come il numero delle cifre, la complessità totale sarà $\mathcal{O}(d(n + b))$.\bigbreak
+Nel caso pessimo, tutti gli elementi hanno lo stesso numero di cifre, ad eccezione di un elemento che avrà un numero di cifre molto più elevato. Se il numero di cifre dell'elemento più grande è pari a $d$, la complessità temporale diventa $\mathcal{O}(d (n + b))$. Mediamente, la complessità temporale nel caso medio di RadixSort è di $\mathcal{O}(d (n + b))$, dove $n$ è il numero di elementi e $b$ è la base di rappresentazione.
 
 \subsubsection{Codice}
 \begin{lstlisting}[style=mycodestyle, language=Python]
