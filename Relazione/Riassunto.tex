@@ -93,6 +93,7 @@
 \Titolo{Laboratorio di Algoritmi e Strutture Dati\bigbreak - \bigbreak Verifica della complessità asintotica degli algoritmi di ordinamento}
 \Candidato{Andrea Gioia - 169484}
 \Candidato{Luca Gamberini - 168712}
+\Candidato{Kent - 168711}
 \Relatore{Prof. Gabriele Puppis}
 \Relatore{Prof. Carla Piazza}
 % \Correlatore{Prof. Marco Sciandrone}  % Commentato come richiesto
@@ -123,7 +124,8 @@ Le specifiche tecniche delle misurazioni sono state:
     \item La lunghezza dell'array è compresa tra 100 e 100 mila valori
     \item Il valore di ciascun elemento dell'array varia casualmente tra 10 e un milione
 \end{itemize}
-Gli algoritmi sono stati implementati in linguaggio Python, mentre le misurazioni dei tempi sono state prese tramite la funzione \href{https://docs.python.org/3/library/time.html#time.perf_counter}{\textit{\texttt{perf\char`_counter}}} della libreria \textit{time}
+Gli algoritmi sono stati implementati in linguaggio Python. \\
+Le misurazioni dei tempi sono state acquisite tramite la funzione \href{https://docs.python.org/3/library/time.html#time.perf_counter}{\textit{\texttt{perf\char`_counter}}} della libreria \textit{time}.
 
 \section{Algoritmi}
 Gli algoritmi di ordinamento presi in esame presentano caratteristiche differenti e risultano più o meno efficienti in base alle carattestiche dell'array di elementi da ordinare.
@@ -131,7 +133,7 @@ Gli algoritmi di ordinamento presi in esame presentano caratteristiche different
 \subsection{QuickSort}
 Algoritmo di ordinamento ricorsivo del tipo divide-et-impera, quindi basato sulla suddivisione in n sottoproblemi, risolti ricorsivamente, fino al raggiungimento del caso base.\\
 Non presenta la necessità di utilizzo di strutture dati aggiuntive, di conseguenza lo scambio di elementi avviene in-place.\bigbreak
-Le complessità asintotiche temporali di QuickSort sono:
+\noindent Le complessità asintotiche temporali di QuickSort sono:
 \begin{itemize}
     \item Caso ottimo: $\Omega(n\log_2n)$
     \item Caso medio: $\Theta(n\log_2n)$
@@ -140,14 +142,14 @@ Le complessità asintotiche temporali di QuickSort sono:
 
 \subsubsection{Analisi delle complessità}
 Il QuickSort è un esempio di algoritmo che lavora in-place, quindi la complessità in spazio equivale a $\Theta(n)$, ovvero la dimensione dell'array di partenza.\bigbreak
-Le operazioni che influiscono sulla complessità di tempo sono:
+\noindent Le operazioni che influiscono sulla complessità di tempo sono:
 \begin{itemize}
     \item Chiamata a partition, complessità $\Theta(n)$
     \item Le due chiamate ricorsive, complessità rispettivamente di $T(q-1)$ e $T(n-q)$.
 \end{itemize}
 
 
-L'equazione di ricorrenza di QuickSort è:
+\noindent L'equazione di ricorrenza di QuickSort è:
 \begin{gather*}
     T(n) = 
     \begin{cases}
