@@ -11,6 +11,8 @@
 \usepackage[paper=a4paper]{geometry}
 \usepackage[shortlabels]{enumitem}
 \usepackage{hyperref}
+\usepackage{caption}
+\captionsetup[figure]{justification=centering}
 % Frontespizio config
 \usepackage[nowrite]{front-th}
 \usepackage{pdfpages}
@@ -308,21 +310,44 @@ Il seguente frammento implementa una versione modificata del Counting Sort che s
 \end{enumerate}
 
 \subsection{RadixSort}
+\subsubsection*{Introduzione algoritmo}
 RadixSort è un algoritmo di ordinamento basato sull'ordinamento cifra per cifra, partendo da quella meno significativa. Risulta particolarmente efficiente in presenta di molti numero con la stessa quantità di cifre.\bigbreak
-Le complessità asintotiche temporali di RadixSort sono:
-\begin{itemize}
-    \item Caso ottimo: $\Omega(n\cdot d)$
-    \item Caso medio: $\Theta(n\cdot d)$
-    \item Caso pessimo: $\mathcal{O}(n\cdot d)$
-\end{itemize}
+\noindent \underline{Idea}\\
+RadixSort prevede di prendere in esame le singole cifre dei numeri da ordinare, in base alla loro posizione, andando successivamente a posizionarle in ordine crescente o decrescente.\\
+Questo processo viene svolto ricorsivamente per ciascuna colonna di cifre, partendo dalla meno significativa.
 
+
+\begin{center}
+    \hfill
+    \includegraphics[scale=0.5]{./Immagini/RadixSort.png}
+    \hspace*{\fill}
+    
+    \par\vspace{0.3em} % spazio tra immagine e caption
+    \captionof*{figure}{Esempio di ordinamento (non riesco a centrare la caption)}
+\end{center}
+Radix Sort, per funzionare correttamente, richiede un algoritmo di ordinamento stabile per l'ordinamento delle singole cifre (o caratteri, a seconda del caso).\bigbreak
+\noindent Solitamente, come algoritmo sottostante viene utilizzato Counting Sort, il quale, però, nella sua versione tradizionale non è stabile. Infatti, in presenza di chiavi uguali, Counting Sort potrebbe modificare l'ordine relativo degli elementi rispetto all'array di input.\bigbreak
+\noindent Per garantire la stabilità, è sufficiente iterare l'array di input in ordine inverso durante la fase di costruzione dell'array di output. In questo modo, quando più elementi hanno la stessa chiave, essi verranno copiati nell'output nell'ordine in cui compaiono nell'input, preservando così la stabilità dell'ordinamento.
+
+
+
+\subsubsection*{Complessità}
+\textbf{Caso medio}\quad Considerando \textit{n} elementi da ordinare, ciascuno composto da \textit{d} cifre, e assumendo che ogni cifra possa assumere al più \textit{k} valori distinti, Radix Sort ha una complessità asintotica pari a $\Theta(d(n + k))$.\bigbreak
+\noindent Tuttavia, ciò è valido solo se l'algoritmo utilizzato per ordinare le singole cifre (come Counting Sort) ha complessità $\Theta(n + k)$, ovvero è lineare rispetto al numero di elementi e all'ampiezza del dominio delle cifre.\bigbreak
+\noindent \textbf{Caso ottimo}\quad Le condizioni del caso ottimo di RadixSort sono:
+\begin{itemize}
+    \item \textit{d} piccolo;
+    \item $k < n$.
+\end{itemize}
+La complessità rimane $\Theta(d(n + k))$, tuttavia, con valori di $d$ e $k$ costanti si ottiene un $\Theta(n)$.\bigbreak
+\noindent \textbf{Caso pessimo}\quad Il caso peggiore si verifica nelle condizioni di:
+\begin{itemize}
+    \item $d$ elevato (numeri molto grandi);
+    \item $k \geq n$ (rende CountingSort inefficiente).
+\end{itemize}
+La complessità resta $\mathcal{O}(d(n + k))$, ma può degenerare fino a diventare $\mathcal{O}(n\cdot log(n))$
 \subsubsection{Motivazioni della scelta}
 É stato scelto RadixSort come quarto algoritmo a scelta per il suo approccio innovativo e diverso rispetto agli altri algoritmi selezionati, offrendo una prospettiva di confronto interessante.
-
-\subsubsection{Analisi delle complessità}
-L'algoritmo RadixSort richiede due array ausiliari, uno di dimensione pari alla base numerica scelta, e l'altro di dimensione n (numero di elementi). Di conseguenza, la complessità in spazio dell'algoritmo è pari a $\mathcal{O}(n + b)$.\bigbreak
-Nel caso ottimo, tutti gli elementi hanno lo stesso numero di cifre. Considerando $d$ come il numero delle cifre, la complessità totale sarà $\mathcal{O}(d(n + b))$.\bigbreak
-Nel caso pessimo, tutti gli elementi hanno lo stesso numero di cifre, ad eccezione di un elemento che avrà un numero di cifre molto più elevato. Se il numero di cifre dell'elemento più grande è pari a $d$, la complessità temporale diventa $\mathcal{O}(d (n + b))$. Mediamente, la complessità temporale nel caso medio di RadixSort è di $\mathcal{O}(d (n + b))$, dove $n$ è il numero di elementi e $b$ è la base di rappresentazione.
 
 \subsubsection{Codice}
 \begin{lstlisting}[style=mycodestyle, language=Python]
