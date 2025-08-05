@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.4.3)  5 AUG 2025 17:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.4.3)  5 AUG 2025 21:52
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -602,7 +602,12 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 LaTeX Font Info:    Trying to load font information for U+msb on input line 106.
  (C:\Users\Luca\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
+)
+Overfull \hbox (1.11725pt too wide) in alignment at lines 106--106
+[] []
+ []
+
+[1
 
 {C:/Users/Luca/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./Immagini/Logo_Università_di_Udine.png>] (Riassunto.toc)
 \tf@toc=\write4
@@ -693,11 +698,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 <./Immagini/RadixSort.png, id=205, 430.60875pt x 197.538pt>
 File: ./Immagini/RadixSort.png Graphic file (type png)
 <use ./Immagini/RadixSort.png>
-Package pdftex.def Info: ./Immagini/RadixSort.png  used on input line 322.
+Package pdftex.def Info: ./Immagini/RadixSort.png  used on input line 321.
 (pdftex.def)             Requested size: 215.30383pt x 98.76875pt.
 File: Immagini/Logo_Università_di_Udine.png Graphic file (type png)
 <use Immagini/Logo_Università_di_Udine.png>
-Package pdftex.def Info: Immagini/Logo_Università_di_Udine.png  used on input line 328.
+Package pdftex.def Info: Immagini/Logo_Università_di_Udine.png  used on input line 325.
 (pdftex.def)             Requested size: 28.45274pt x 28.45157pt.
 
 
@@ -710,7 +715,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [7 <./Immagini/RadixSort.png>]
 File: Immagini/Logo_Università_di_Udine.png Graphic file (type png)
 <use Immagini/Logo_Università_di_Udine.png>
-Package pdftex.def Info: Immagini/Logo_Università_di_Udine.png  used on input line 356.
+Package pdftex.def Info: Immagini/Logo_Università_di_Udine.png  used on input line 353.
 (pdftex.def)             Requested size: 28.45274pt x 28.45157pt.
 
 
@@ -721,19 +726,19 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-20.5316pt}.
 
 [8]
-<Immagini/Grafico.png, id=221, 867.24pt x 505.89pt>
+<Immagini/Grafico.png, id=222, 867.24pt x 505.89pt>
 File: Immagini/Grafico.png Graphic file (type png)
 <use Immagini/Grafico.png>
-Package pdftex.def Info: Immagini/Grafico.png  used on input line 390.
+Package pdftex.def Info: Immagini/Grafico.png  used on input line 387.
 (pdftex.def)             Requested size: 433.61894pt x 252.94437pt.
 
-Overfull \hbox (15.36526pt too wide) in paragraph at lines 390--391
-[][] 
+Overfull \hbox (15.36526pt too wide) in paragraph at lines 387--388
+ [][] 
  []
 
 File: Immagini/Logo_Università_di_Udine.png Graphic file (type png)
 <use Immagini/Logo_Università_di_Udine.png>
-Package pdftex.def Info: Immagini/Logo_Università_di_Udine.png  used on input line 393.
+Package pdftex.def Info: Immagini/Logo_Università_di_Udine.png  used on input line 390.
 (pdftex.def)             Requested size: 28.45274pt x 28.45157pt.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -745,7 +750,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [9]
 File: Immagini/Logo_Università_di_Udine.png Graphic file (type png)
 <use Immagini/Logo_Università_di_Udine.png>
-Package pdftex.def Info: Immagini/Logo_Università_di_Udine.png  used on input line 397.
+Package pdftex.def Info: Immagini/Logo_Università_di_Udine.png  used on input line 394.
 (pdftex.def)             Requested size: 28.45274pt x 28.45157pt.
 
 
@@ -764,17 +769,17 @@ Package rerunfilecheck Info: File `Riassunto.out' has not changed.
 (rerunfilecheck)             Checksum: 0D95E9DAFD7450F14C1F3A10BFDE9029;2011.
  ) 
 Here is how much of TeX's memory you used:
- 17165 strings out of 474424
- 272914 string characters out of 5742212
+ 17163 strings out of 474424
+ 272870 string characters out of 5742212
  2093496 words of memory out of 5000000
- 39148 multiletter control sequences out of 15000+600000
+ 39145 multiletter control sequences out of 15000+600000
  567148 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,16n,117p,560b,2148s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Luca\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmitt10.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on Riassunto.pdf (11 pages, 423258 bytes).
+Output written on Riassunto.pdf (11 pages, 423757 bytes).
 PDF statistics:
- 333 PDF objects out of 1000 (max. 8388607)
- 126 named destinations out of 1000 (max. 500000)
+ 335 PDF objects out of 1000 (max. 8388607)
+ 127 named destinations out of 1000 (max. 500000)
  149 words of extra memory for PDF output out of 10000 (max. 10000000)
 

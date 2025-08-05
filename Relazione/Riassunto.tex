@@ -73,7 +73,7 @@
   \centering
   \preparefrontpage
   \end{titlepage}
-  \global\let\centering\relax % Disabilita centering globale
+  %\global\let\centering\relax % Disabilita centering globale
 }
 
 \fontoptionnormal
@@ -316,15 +316,12 @@ RadixSort è un algoritmo di ordinamento basato sull'ordinamento cifra per cifra
 RadixSort prevede di prendere in esame le singole cifre dei numeri da ordinare, in base alla loro posizione, andando successivamente a posizionarle in ordine crescente o decrescente.\\
 Questo processo viene svolto ricorsivamente per ciascuna colonna di cifre, partendo dalla meno significativa.
 
-
-\begin{center}
-    \hfill
+\begin{figure}[H]
+    \centering
     \includegraphics[scale=0.5]{./Immagini/RadixSort.png}
-    \hspace*{\fill}
-    
-    \par\vspace{0.3em} % spazio tra immagine e caption
-    \captionof*{figure}{Esempio di ordinamento (non riesco a centrare la caption)}
-\end{center}
+    \caption*{Esempio di ordinamento}
+\end{figure}
+
 Radix Sort, per funzionare correttamente, richiede un algoritmo di ordinamento stabile per l'ordinamento delle singole cifre (o caratteri, a seconda del caso).\bigbreak
 \noindent Solitamente, come algoritmo sottostante viene utilizzato Counting Sort, il quale, però, nella sua versione tradizionale non è stabile. Infatti, in presenza di chiavi uguali, Counting Sort potrebbe modificare l'ordine relativo degli elementi rispetto all'array di input.\bigbreak
 \noindent Per garantire la stabilità, è sufficiente iterare l'array di input in ordine inverso durante la fase di costruzione dell'array di output. In questo modo, quando più elementi hanno la stessa chiave, essi verranno copiati nell'output nell'ordine in cui compaiono nell'input, preservando così la stabilità dell'ordinamento.
