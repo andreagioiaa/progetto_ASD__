@@ -1,0 +1,15 @@
+\subsubsection*{Introduzione algoritmo}
+CountingSort è un algoritmo di ordinamento non in-place, in quanto si avvale di un array aggiuntivo che conta il numero di occorrenze di ciascun elemento.\bigbreak
+
+\subsubsection*{Complessità}
+CountingSort
+
+Le complessità asintotiche temporali di CountingSort sono:
+\begin{itemize}
+    \item Caso ottimo: $\Omega(n + k)$
+    \item Caso medio: $\Theta(n + k)$
+    \item Caso pessimo: $\mathcal{O}(n + k)$
+\end{itemize}
+
+CountingSort è un algoritmo stabile e senza confronto, il quale richiede la dichiarazione di un array ausiliario di dimensione \textit{max - min + 1}. Tutto ciò fa sì che la complessità in spazio di CountingSort sia $\mathcal{O}(n + k)$, dove $n$ è il numero di elementi dell'array e $k$ è pari all'ampiezza dell'intervallo di valori.\bigbreak
+Essendo CountingSort un algoritmo di ordinamento senza confronto, il posizionamento degli elementi nell'array non influisce sulla sua efficienza, di conseguenza la complessità, sia nel caso ottimo, medio e pessimo, sarà sempre $\mathcal{O}(n + k)$; tuttavia, diventa inefficiente per intervalli di valori molto grandi ($k > n$). 

@@ -241,20 +241,31 @@ L'algoritmo partiziona l'array in tre sezioni (elementi $<$ pivot, $=$ pivot e $
 \end{lstlisting}
 
 \subsection{CountingSort}
-CountingSort è un algoritmo di ordinamento non in-place, in quanto si avvale di un array aggiuntivo che conta il numero di occorrenze di ciascun elemento.\bigbreak
-Le complessità asintotiche temporali di CountingSort sono:
+
+\subsubsection*{Introduzione algoritmo}
+Il \emph{Counting Sort} è un algoritmo di ordinamento non basato su confronti, adatto quando i valori da ordinare sono interi non negativi con intervallo di valori relativamente contenuto rispetto al numero di elementi. \\
+
+\noindent  \underline{Idea} \\ Contare le occorrenze di ciascun valore in un array ausiliario, calcolare una somma cumulativa (prefix sum) e quindi posizionare ogni elemento in output nel posto corretto per ottenere un ordinamento stabile.
+
+\subsubsection*{Complessità}
+
+\noindent Counting Sort assume che ciascuno dei \(n\) elementi in input sia un intero nell’intervallo \([0, k]\). L'algoritmo non utilizza confronti tra elementi, ma lavora sfruttando il valore numerico degli stessi come indice in un array ausiliario. Questo approccio consente di superare il limite inferiore \(\Omega(n \log n)\) valido per gli algoritmi di ordinamento basati su confronti.
+
+\noindent La complessità dell’algoritmo è la seguente:
+
 \begin{itemize}
-    \item Caso ottimo: $\Omega(n + k)$
-    \item Caso medio: $\Theta(n + k)$
-    \item Caso pessimo: $\mathcal{O}(n + k)$
+  \item \textbf{Caso migliore:} Quando \(k = O(n)\), cioè quando l’intervallo dei valori è proporzionale al numero di elementi, l’intero algoritmo opera in tempo lineare: \(\Theta(n)\). In questo scenario, il Counting Sort è estremamente efficiente e utilizza \(\Theta(n)\) spazio aggiuntivo.
+  
+  \item \textbf{Caso medio:} In situazioni intermedie, in cui \(k\) non è trascurabile ma nemmeno molto più grande di \(n\), l'algoritmo ha una complessità di \(\Theta(n + k)\). Il comportamento resta comunque più efficiente rispetto a molti algoritmi basati su confronti (come quicksort o mergesort), specialmente quando l’intervallo \(k\) rimane relativamente contenuto.
+
+  \item \textbf{Caso peggiore:} Quando \(k \gg n\), cioè l’intervallo dei valori è molto più ampio del numero di elementi, la complessità diventa \(\Theta(n + k)\), ma con un impatto significativo in termini di memoria e tempo. L’array ausiliario \(C[0 \dots k]\) può occupare molto spazio anche se pochi valori sono effettivamente presenti, portando a inefficienze.
+
 \end{itemize}
 
-\subsubsection{Analisi delle complessità}
-CountingSort è un algoritmo stabile e senza confronto, il quale richiede la dichiarazione di un array ausiliario di dimensione \textit{max - min + 1}. Tutto ciò fa sì che la complessità in spazio di CountingSort sia $\mathcal{O}(n + k)$, dove $n$ è il numero di elementi dell'array e $k$ è pari all'ampiezza dell'intervallo di valori.\bigbreak
-Essendo CountingSort un algoritmo di ordinamento senza confronto, il posizionamento degli elementi nell'array non influisce sulla sua efficienza, di conseguenza la complessità, sia nel caso ottimo, medio e pessimo, sarà sempre $\mathcal{O}(n + k)$; tuttavia, diventa inefficiente per intervalli di valori molto grandi ($k > n$). 
+\noindent Counting Sort è anche stabile: mantiene l’ordine relativo degli elementi con valore uguale, caratteristica fondamentale quando si lavora con dati associati (satellite data) o quando viene usato come sottoprocedura in algoritmi come il Radix Sort. \\
+Questa stabilità è garantita dallo scorrimento dell’array originale in senso inverso durante la copia finale nell’array di output.
 
-
-\subsubsection{Codice}
+\subsubsection*{Codice}
 \begin{lstlisting}[style=mycodestyle, language=Python]
     def countingSort(arr):
     max = arr[0]
@@ -277,6 +288,24 @@ Essendo CountingSort un algoritmo di ordinamento senza confronto, il posizioname
             k += 1
             C[i] -= 1
 \end{lstlisting}
+
+\subsubsection*{Funzionamento del codice}
+
+Il seguente frammento implementa una versione modificata del Counting Sort che supporta anche numeri negativi. Di seguito si spiega il funzionamento passo dopo passo:
+
+\begin{enumerate}
+  \item \textbf{Individuazione del massimo e del minimo:}  
+  Si inizializzano due variabili \texttt{max} e \texttt{min} con il primo elemento dell'array. Successivamente, si scorre l'array per determinare il valore massimo e minimo effettivi. Questo passaggio è fondamentale per calcolare correttamente l’intervallo degli elementi e adattare l’algoritmo anche a numeri negativi.
+
+  \item \textbf{Inizializzazione dell’array dei conteggi:}  
+  Si crea un array ausiliario \texttt{C} di dimensione \texttt{(max - min + 1)}, inizializzato a zeri. Questo array verrà utilizzato per contare quante volte ogni valore appare nell’array originale. La sottrazione di \texttt{min} serve a traslare i valori negativi in indici validi (a partire da 0).
+
+  \item \textbf{Conteggio delle occorrenze:}  
+  Si scorre l’array originale \texttt{arr} e, per ogni valore \texttt{arr[i]}, si incrementa \texttt{C[arr[i] - min]}. In questo modo, ogni posizione dell’array \texttt{C} conterrà il numero di occorrenze del valore corrispondente.
+
+  \item \textbf{Ricostruzione dell’array ordinato:}  
+  Con un doppio ciclo (for + while), si scorrono tutti i valori dell’array \texttt{C}. Per ogni indice \texttt{i}, finché \texttt{C[i]} è maggiore di zero, si inserisce il valore corrispondente (\texttt{i + min}) nell’array originale \texttt{arr} alla posizione \texttt{k}, incrementando \texttt{k} e decrementando \texttt{C[i]}. Questo processo ricostruisce l’array ordinato in modo diretto, sovrascrivendo l’input.
+\end{enumerate}
 
 \subsection{RadixSort}
 RadixSort è un algoritmo di ordinamento basato sull'ordinamento cifra per cifra, partendo da quella meno significativa. Risulta particolarmente efficiente in presenta di molti numero con la stessa quantità di cifre.\bigbreak
