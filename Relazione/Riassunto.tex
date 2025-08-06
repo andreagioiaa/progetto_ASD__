@@ -135,11 +135,18 @@ Gli algoritmi di ordinamento presi in esame presentano caratteristiche different
 \subsection{QuickSort}
 Algoritmo di ordinamento ricorsivo del tipo divide-et-impera, quindi basato sulla suddivisione in n sottoproblemi, risolti ricorsivamente, fino al raggiungimento del caso base.\\
 Non presenta la necessità di utilizzo di strutture dati aggiuntive, di conseguenza lo scambio di elementi avviene in-place.\bigbreak
-\noindent Le complessità asintotiche temporali di QuickSort sono:
+\noindent  \underline{Idea} \\ Divide: partizionando l'array A[p:r] in due sottoarray A[p:q-1] (parte inferiore) e A[q+1:r] (parte superiore) in modo che ciascun elemento della parte 
+inferiore sia minore o uguale al pivot A[q], il quale è a sua volta minore o uguale a ciascun elemento della parte superiore. Calcolare l'indice q del pivot fa parte della procedura 
+di partition. Impera: richiamando ricorsivamente quicksort su ciascun sottoarray A[p:q-1] e A[q+1:r]. Infine per combinare non serve far 
+nulla dato che i due sottoarray sono già ordinati, per cui avrò che l'intero sottoarray A[p:r] è ordinato. 
+La procedura Partition invece mi permette di stabilire un perno, a quel punto avrò che gli elementi precedenti sono minori del perno mentre quelli a destra saranno maggiori,
+considerando però che successivamente vanno ordinati.\bigskip
+
+\noindent Le complessità asintotiche temporali di QuickSort sono: 
 \begin{itemize}
     \item Caso ottimo: $\Omega(n\log_2n)$
     \item Caso medio: $\Theta(n\log_2n)$
-    \item Caso pessimo: $\mathcal{O}(n^2)$
+    \item Caso peggiore: $\mathcal{O}(n^2)$
 \end{itemize}
 
 \subsubsection{Analisi delle complessità}
@@ -159,11 +166,31 @@ Il QuickSort è un esempio di algoritmo che lavora in-place, quindi la complessi
     T(q - 1) + T(n - q) + \Theta(n)\quad\quad se\; n > 1
     \end{cases}     
 \end{gather*}
+
+\noindent Spiegazione delle complessità:
  
-\paragraph{Caso pessimo}\mbox{}\\
-Nel caso pessimo, QuickSort ha complessità $\mathcal{O}(n^2)$.\\
-La circostanza in cui QuickSort si trova nel caso pessimo è legata a una scelta sconveniente del pivot, il quale genera uno sbilanciamento nella divisione in parti dell'array.
-\href{https://ifif.altervista.org/quicksort-come-funziona-esempio/?doing_wp_cron=1750427062.2481169700622558593750}{\color{blue}link alla fonte}.
+\begin{itemize}
+
+  \item \textbf{Caso migliore:} il pivot divide sempre l'array in due parti, ovvero partition produce due sottoproblemi di dimensione al massimo n/2,
+   dato che uno è di dimensione $\lfloor \frac{n-1}{2} \rfloor \leq \frac{n}{2}$ e 
+   l'altro di dimensione $\lceil \frac{n-1}{2} \rceil - 1 \leq \frac{n}{2}$. 
+   Un limite superiore al tempo di esecuzione è descritto da: $T(n) = 2T\left(\frac{n}{2}\right) + \Theta(n)$
+  
+  \item \textbf{Caso medio:} ogni possibile posizione del pivot nel caso medio ha probabilità $\frac{1}{n}$ di essere scelta. Per cui tutti i casi sono equiprobabili. 
+  Per un input casuale la complessità media è $T(n) = \frac{1}{n}\sum_{i=0}^{n-1}\left[T(i) + T(n-i-1)\right] + \Theta(n)$ che si risolve in
+   $\mathbb{E}[T(n)] = \Theta(n \log n)$.
+
+  \item \textbf{Caso peggiore:} quando la partizione produce un sottoproblema con n-1 elementi e uno con 0 elementi. Si può assumere che questa 
+  partizione sbilanciata avvenga ad ogni chiamata ricorsiva. La partizione costa $\Theta(n)$. Dato che la chiamata ricorsiva su un array di dimensione 
+  0 ritorna senza fare nulla, $T(0) = \Theta(1)$, 
+  e l'occorrenza del tempo di esecuzione è $T(n) = T(n-1) + T(0) + \Theta(n) = T(n-1) + \Theta(n)$ con soluzione finale $T(n) = \Theta(n^2)$. 
+  Dunque, se la partizione è massimamente sbilanciata in ogni livello ricorsivo dell'algoritmo, il tempo di esecuzione è $\Theta(n^2)$.
+
+\end{itemize}
+
+\noindent Quicksort non è stabile: funziona dividendo l’array in sottosequenze basate su un pivot, e poi riordinando ricorsivamente. 
+Durante questo processo: gli elementi uguali al pivot possono finire in posizioni diverse rispetto all’ordine originale; questo accade 
+perché lo scambio degli elementi non tiene conto della loro posizione iniziale, ma solo del confronto con il pivot.
 
 \subsubsection{Codice}
 \begin{lstlisting}[style=mycodestyle, language=Python]
@@ -189,7 +216,27 @@ def Scambia(A, i, j):
     A[i] = A[j]
     A[j] = temp
 \end{lstlisting}
----Commento del codice---
+
+\subsubsection*{Funzionamento del codice}
+
+\begin{enumerate}
+  \item \textbf{Funzione Scambia(A, i, j):} Lo scopo è scambiare due elementi in un array. A è l'array degli elementi,
+   i e j gli indici degli elementi da scambiare. Memorizza temporaneamente il valore di A[i] 
+   in temp; Assegna A[j] alla posizione i; Ripristina il valore originale di A[i] (ora in temp)
+   nella posizione j. Costo $\mathcal{O}(1)$.
+
+  \item \textbf{Funzione Partition(A, p, q):} Lo scopo è partizionare l'array in modo che tutti gli elementi 
+   minori uguali al pivot siano a sinistra e quelli maggiori del pivot a destra. A è l'array da partizionare,
+   p l'indice iniziale del sottovettore, q l'indice final (usato come pivot). Si sceglie il pivot x = A[q] (ultimo elemento);
+   l'indice i tiene traccia della fine della sezione degli elementi minori o uguali al pivot; il ciclo for scorre l'array da p a q-1, 
+   Se A[j] è minore uguale al pivot, incrementa i e scambia A[i] con A[j]; infine scambia A[i+1] (primo elemento maggiore del pivot) con A[q] (pivot). 
+   Ora, il pivot è nella sua posizione corretta.
+
+  \item \textbf{Funzione QuickSort(A, p, q):} Lo scopo è ordinare ricorsivamente l'array utilizzando il partizionamento. 
+  A è l'array da ordinare, p l'indice iniziale e q l'indice finale. La condizione di base è se $p \geq q$, il sottovettore ha 0 o 1 elemento → già ordinato.
+  $r = Partition(A, p, q)$ posiziona il pivot e restituisce la sua posizione finale. QuickSort(A, p, r-1) ordina la parte sinistra 
+  (elementi minori o uguali al pivot); QuickSort(A, r+1, q) ordina la parte destra (elementi maggiori del pivot).
+\end{enumerate}
 
 \subsection{QuickSort3Way}
 Versione modificata rispetto al QuickSort classico.\\
