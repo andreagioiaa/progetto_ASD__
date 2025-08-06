@@ -429,6 +429,101 @@ def RadixSort(arr):
     \end{tabular}
 \end{table}
 
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|}
+        \hline
+        QuickSort e QuickSort3Way \\
+        \hline
+    \end{tabular}
+    \label{tab:quicksort}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{progetto_ASD__/Relazione/Immagini/grafico1quick.png}
+    \caption{Confronto prestazioni al variare di $n$ ($m=100.000$)}
+    \label{fig:grafico}
+\end{figure}
+
+\textbf{Analisi:}
+Questo grafico mostra il tempo di esecuzione medio di \textsc{QuickSort} e \textsc{QuickSort 3-Way} al variare della dimensione dell'array $n$ (da 100 a 100.000 elementi), con range di valori fissato a $m=100.000$. Si osservano due comportamenti distinti:
+\begin{itemize}
+    \item Per $n < 10.000$: le due versioni mostrano prestazioni simili ($\Delta t < 0.1s$)
+    \item Per $n > 20.000$: \textsc{QuickSort 3-Way} diventa progressivamente più efficiente, con un vantaggio che raggiunge il 35\% a $n=100.000$
+\end{itemize}
+
+\textbf{Interpretazione teorica:}
+L'andamento è riconducibile alla complessità attesa $O(n \log n)$ per entrambi gli algoritmi. La superiorità di \textsc{QuickSort 3-Way} per $n$ elevati è dovuta alla sua capacità di gestire efficientemente i duplicati (frequenti con $m$ fissato), riducendo le operazioni di scambio e le chiamate ricorsive.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{progetto_ASD__/Relazione/Immagini/grafico2quick.png}
+    \caption{Andamento log-log al variare di $n$ ($m=100.000$)}
+    \label{fig:grafico}
+\end{figure}
+
+\textbf{Analisi:}
+La rappresentazione in scala logaritmica doppia evidenzia i seguenti punti:
+\begin{itemize}
+    \item Pendenza media: $1.15 \pm 0.05$ per \textsc{QuickSort}, $1.10 \pm 0.05$ per \textsc{QuickSort 3-Way}
+    \item Andamento lineare delle curve, compatibile con complessità $O(n \log n)$
+    \item Distanza costante tra le curve ($\Delta \log t \approx 0.2$), indicativa di un fattore moltiplicativo costante
+\end{itemize}
+
+\textbf{Interpretazione teorica:}
+In scala log-log, le complessità del tipo $O(n^k)$ appaiono con pendenza $k$. Le pendenze osservate ($\approx 1.1$) confermano l'andamento $O(n \log n)$:
+\[ \log t \sim \log(n \log n) = \log n + \log \log n \approx \log n \]
+La pendenza leggermente inferiore di \textsc{QuickSort 3-Way} riflette la sua maggiore efficienza operativa.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{progetto_ASD__/Relazione/Immagini/grafico3quick.png}
+    \caption{Confronto prestazioni al variare di $m$ ($n=10.000$)}
+    \label{fig:grafico}
+\end{figure}
+
+\textbf{Analisi:} 
+Analizzando la dipendenza dal range di valori $m$ (da 10 a $10^6$) con $n=10.000$ fissato:
+- \textsc{QuickSort} mostra tempo \textit{costante} ($\mu = 0.15s, \sigma = 0.01s$)
+- \textsc{QuickSort 3-Way} evidenzia tre fasi:
+  \begin{enumerate}
+  \item $m < 1.000$: prestazioni ottimali ($t < 0.05s$)
+  \item $1.000 < m < 50.000$: decadimento esponenziale
+  \item $m > 100.000$: convergenza a \textsc{QuickSort}
+  \end{enumerate}
+Punto di crossover: $m \approx 50.000$
+
+\textbf{Interpretazione teorica:} 
+Il comportamento è spiegato dalla diversa gestione dei duplicati:
+- Per $m$ piccolo: molti elementi ripetuti → \textsc{QuickSort 3-Way} opera in $O(n)$
+- Per $m$ grande: pochi duplicati → \textsc{QuickSort 3-Way} regredisce a $O(n \log n)$
+- \textsc{QuickSort} è insensibile a $m$ poiché il partizionamento dipende solo dagli confronti
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{progetto_ASD__/Relazione/Immagini/grafico4quick.png}
+    \caption{Andamento log-log al variare di $m$ ($n=10.000$)}
+    \label{fig:grafico}
+\end{figure}
+
+\textbf{Analisi:} 
+La scala logaritmica rivela:
+- \textsc{QuickSort}: retta orizzontale (pendenza $0.01 \pm 0.005$)
+- \textsc{QuickSort 3-Way}: 
+  \begin{itemize}
+  \item Per $\log m < 4$ ($m < 10^4$): pendenza negativa ($-0.85 \pm 0.1$)
+  \item Per $\log m > 5$ ($m > 10^5$): pendenza $0.02 \pm 0.01$
+  \end{itemize}
+Transizione critica: $m^* \approx 10^4$
+
+\textbf{Interpretazione teorica:} 
+L'andamento conferma le ipotesi:
+- Pendenza $\approx 0$ per \textsc{QuickSort} → complessità indipendente da $m$
+- Pendenza negativa per \textsc{QuickSort 3-Way} → $t \sim m^{-0.85}$
+  $$ \log t \sim -k \log m \Rightarrow t \sim m^{-k} $$
+Questo riflette la riduzione dei duplicati all'aumentare di $m$, che diminuisce il vantaggio dell'algoritmo 3-Way.
+
 \begin{figure} [H]
     \centering
     \includegraphics[scale=0.5]{Immagini/Grafico.png}
