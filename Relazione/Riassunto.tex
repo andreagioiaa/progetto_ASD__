@@ -239,10 +239,30 @@ def Scambia(A, i, j):
 \end{enumerate}
 
 \subsection{QuickSort3Way}
-Versione modificata rispetto al QuickSort classico.\\
-Prevede la suddivisione in 3 parti dell'array di elementi, sulla base di una variabile \textit{pivot}.\\
-Gli scambi vengono fatti sulla base di un confronto tra elemento dell'array e la variabile pivot ($>$, $<$, $=$). Le chiamate ricorsive vengono effettuate su porzioni con elementi $<$ pivot e $>$ pivot.\\
-A differenza del QuickSort classico, QuickSort3Way presenta notevole efficienza con array con molti elementi duplicati.\bigbreak
+QuickSort 3-Way è un'ottimizzazione del QuickSort classico progettata per gestire efficientemente array con molti elementi duplicati.  
+Mentre il QuickSort standard partiziona l'array in due sottoarray (elementi $\leq$ pivot ed elementi $> $ pivot), la versione 3-Way divide l'array in tre partizioni:
+\begin{itemize}
+  \item Elementi minori del pivot (a sinistra).
+  \item Elementi uguali al pivot (al centro).
+  \item Elementi maggiori del pivot (a destra).
+\end{itemize}
+A differenza del QuickSort classico, QuickSort 3-Way presenta una notevole efficienza con array contenenti molti elementi duplicati.  
+\bigbreak
+
+\noindent  \underline{Idea} \\ Scelta del pivot: Il primo elemento dell'array (arr[l]) è selezionato come pivot.\\
+Inizializzazione dei puntatori: \\
+- lt (less than): confine sinistro degli elementi minori del pivot.\\
+- gt (greater than): confine destro degli elementi maggiori del pivot.\\
+- i: puntatore corrente per scorrere l'array.\\
+Partizionamento 3-way:\\
+- Se $ \texttt{arr[i]} < \texttt{pivot} $: scambia arr[i] con arr[lt], incrementa lt e i\\
+- Se $ \texttt{arr[i]} > \texttt{pivot} $: scambia arr[i] con arr[gt], decrementa gt (senza incrementare i).\\
+- Se $ \texttt{arr[i]} == \texttt{pivot} $: incrementa solo i.\\
+Ricorsione:\\
+- Applica ricorsivamente l'algoritmo alle partizioni sinistra (l a lt-1) e destra (gt+1 a r).\\
+- La partizione centrale (lt a gt) contiene elementi già ordinati (tutti uguali al pivot).\\
+\bigskip
+
 Le complessità asintotiche temporali di QuickSort3Way sono:
 \begin{itemize}
     \item Caso ottimo: $\Omega(n\log n)$
@@ -255,9 +275,9 @@ Come nel caso di QuickSort, anche il QuickSort3Way lavora in-place, senza bisogn
 Considerando che l'algoritmo itera gli elementi dell'array e siccome il ciclo for viene eseguito al massimo $n$ volte.\\
 L'algoritmo partiziona l'array in tre sezioni (elementi $<$ pivot, $=$ pivot e $>$ pivot) attraverso un singolo passaggio che opera in tempo lineare $\Theta(n)$. La complessità temporale dipende dall'equilibrio delle partizioni:
 \begin{itemize}
-    \item \textbf{Caso ottimo ($\Omega(n \log n)$)}: Il caso ottimo si verifica quando il pivot divide in partizioni bilanciate l'array, di conseguenza in partizioni ciascuna di dimensioni $n/3$.
-    \item \textbf{Caso medio ($\Theta(n \log n)$)}: La complessità resta invariata grazie alla gestione efficiente del confronto sugli elementi uguali, non andando a fare ulteriori confronti.
-    \item \item \textbf{Caso pessimo ($\mathcal{O}(n^2)$)}: Occorre in situazioni in cui il pivot viene sistematicamente posizionato alla prima o all'ultima posizione dell'array. Questo va a creare partizioni sbilanciate. 
+    \item \textbf{Caso ottimo $\Omega(n)$}: Tutti gli elementi sono uguali o la partizione centrale contiene tutti gli elementi (nessun elemento $<$ o $>$ del pivot). Dopo un singolo passaggio di partizionamento: partizione sinistra: vuota; partizione centrale: tutti gli elementi; partizione destra: vuota. Nessuna chiamata ricorsiva successiva. Costo singola scansione $O(n)$.
+    \item \textbf{Caso medio $\Theta(n \log n)$}: Partizionamenti bilanciati con pivot scelto casualmente. Il pivot divide l'array in tre partizioni di dimensioni approssimativamente: $\frac{n}{3}$ elementi $<$ pivot; $\frac{n}{3}$ elementi $=$ pivot; $\frac{n}{3}$ elementi $>$ pivot; Altezza albero di ricorsione: $O(log n)$. L'equazione di ricorrenza é $T(n) = T\left(\frac{n}{3}\right) + T\left(\frac{n}{3}\right) + O(n) = 2T\left(\frac{n}{3}\right) + O(n)$. Soluzione: $T(n) = \Theta(n \log n)$
+    \item \textbf{Caso peggiore $\mathcal{O}(n^2)$}: Si verifica quando il pivot è sistematicamente l'elemento minimo o massimo dell'array (es. array già ordinato in senso crescente/decrescente). Ogni partizionamento produce: una partizione sinistra di dimensione 0, una partizione centrale di dimensione 1 (solo il pivot), una partizione destra di dimensione n-1. L'altezza dell'albero di ricorsione diventa $O(n)$. Costo per livello: livello 0: $O(n)$; livello 1: O(n-1)... livello k: $O(n-k)$. L'equazione di ricorrenza é $T(n) = T(0) + T(n-1) + O(n) = T(n-1) + O(n)$. Soluzione: $T(n) = O(n^2)$
 \end{itemize}
 
 
@@ -288,6 +308,18 @@ L'algoritmo partiziona l'array in tre sezioni (elementi $<$ pivot, $=$ pivot e $
 
     return lt, gt
 \end{lstlisting}
+
+\subsubsection*{Funzionamento del codice}
+
+\begin{enumerate}
+  \item \textbf{Caso Base (l >= r):} ferma la ricorsione se il sottoarray ha 0 o 1 elemento.
+
+  \item \textbf{Puntatori:} lt tiene traccia degli elementi minori del pivot; gt tiene traccia degli elementi maggiori del pivot; i scorre l'array da sinistra a destra.
+
+  \item \textbf{Scambi:} elemento minore: scambiato con arr[lt], incrementa lt e i; elemento maggiore: scambiato con arr[gt], decrementa gt; \\ elemento uguale: incrementa solo i.
+
+  \item \textbf{Ricorsione:} chiamata ricorsiva sulla partizione sinistra (l a lt-1); chiamata ricorsiva sulla partizione destra (gt+1 a r).
+\end{enumerate}
 
 \subsection{CountingSort}
 
