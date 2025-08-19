@@ -461,100 +461,109 @@ def RadixSort(arr):
     \end{tabular}
 \end{table}
 
-\begin{table}[H]
-    \centering
-    \begin{tabular}{|c|}
-        \hline
-        QuickSort e QuickSort3Way \\
-        \hline
-    \end{tabular}
-    \label{tab:quicksort}
-\end{table}
-
+\subsection{Analisi delle Prestazioni al Variare della Dimensione dell'Array (Scala Lineare)}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{progetto_ASD__/Relazione/Immagini/grafico1quick.png}
-    \caption{Confronto prestazioni al variare di $n$ ($m=100.000$)}
+    \includegraphics[width=\textwidth]{progetto_ASD__/Relazione/Immagini/tempo_vs_n_lineare.png}
     \label{fig:grafico}
 \end{figure}
 
-\textbf{Analisi:}
-Questo grafico mostra il tempo di esecuzione medio di \textsc{QuickSort} e \textsc{QuickSort 3-Way} al variare della dimensione dell'array $n$ (da 100 a 100.000 elementi), con range di valori fissato a $m=100.000$. Si osservano due comportamenti distinti:
-\begin{itemize}
-    \item Per $n < 10.000$: le due versioni mostrano prestazioni simili ($\Delta t < 0.1s$)
-    \item Per $n > 20.000$: \textsc{QuickSort 3-Way} diventa progressivamente più efficiente, con un vantaggio che raggiunge il 35\% a $n=100.000$
-\end{itemize}
+Il grafico mostra l'andamento del tempo di esecuzione in funzione della dimensione dell'array $n$, mantenendo fisso il range dei valori $m = 100.000$. In scala lineare, emergono chiaramente le differenze tra gli algoritmi analizzati.
 
-\textbf{Interpretazione teorica:}
-L'andamento è riconducibile alla complessità attesa $O(n \log n)$ per entrambi gli algoritmi. La superiorità di \textsc{QuickSort 3-Way} per $n$ elevati è dovuta alla sua capacità di gestire efficientemente i duplicati (frequenti con $m$ fissato), riducendo le operazioni di scambio e le chiamate ricorsive.
+\textbf{QuickSort classico} presenta un andamento approssimativamente quadratico $O(n \log n)$ con variazioni dovute alla natura probabilistica dell'algoritmo. Il tempo di esecuzione cresce in modo più che proporzionale rispetto alla dimensione dell'input.
 
+\textbf{QuickSort 3-Way} mostra prestazioni simili al QuickSort classico ma con una leggera ottimizzazione per array con molti elementi duplicati, caratteristica comune quando il range $m$ è limitato rispetto alla dimensione $n$.
+
+\textbf{Counting Sort} mantiene un andamento lineare $O(n + m)$ particolarmente evidente in questa rappresentazione. Con $m$ fisso a $100.000$, il termine dominante diventa $O(n)$, risultando nell'andamento lineare osservato.
+
+\textbf{Radix Sort} presenta anch'esso un comportamento sostanzialmente lineare $O(d \cdot (n + k))$, dove $d$ è il numero di cifre e $k$ la base (10 nel caso decimale). Per valori fino a $100.000$, $d$ rimane costante pari a 6, rendendo l'algoritmo effettivamente $O(n)$.
+
+La superiorità degli algoritmi non comparativi (Counting Sort e Radix Sort) è evidente per dimensioni maggiori dell'array, dove il gap prestazionale si amplia significativamente.
+
+\subsection{Analisi delle Prestazioni al Variare della Dimensione dell'Array (Scala Log-Log)}
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{progetto_ASD__/Relazione/Immagini/grafico2quick.png}
-    \caption{Andamento log-log al variare di $n$ ($m=100.000$)}
-    \label{fig:grafico}
+\centering
+\includegraphics[width=0.9\textwidth]{progetto_ASD__/Relazione/Immagini/tempo_vs_n_loglog.png}
+\label{fig:variazione_m}
 \end{figure}
 
-\textbf{Analisi:}
-La rappresentazione in scala logaritmica doppia evidenzia i seguenti punti:
-\begin{itemize}
-    \item Pendenza media: $1.15 \pm 0.05$ per \textsc{QuickSort}, $1.10 \pm 0.05$ per \textsc{QuickSort 3-Way}
-    \item Andamento lineare delle curve, compatibile con complessità $O(n \log n)$
-    \item Distanza costante tra le curve ($\Delta \log t \approx 0.2$), indicativa di un fattore moltiplicativo costante
-\end{itemize}
+La rappresentazione in scala log-log rivela le caratteristiche asintotiche degli algoritmi attraverso l'analisi dei coefficienti angolari delle rette di regressione.
 
-\textbf{Interpretazione teorica:}
-In scala log-log, le complessità del tipo $O(n^k)$ appaiono con pendenza $k$. Le pendenze osservate ($\approx 1.1$) confermano l'andamento $O(n \log n)$:
-\[ \log t \sim \log(n \log n) = \log n + \log \log n \approx \log n \]
-La pendenza leggermente inferiore di \textsc{QuickSort 3-Way} riflette la sua maggiore efficienza operativa.
+\textbf{Algoritmi comparativi} (QuickSort e QuickSort 3-Way): In scala log-log, la complessità $O(n \log n)$ si manifesta come una retta con pendenza leggermente superiore a 1. Il coefficiente angolare osservato è circa $1.1 - 1.2$, coerente con il termine logaritmico aggiuntivo.
 
+\textbf{Algoritmi non comparativi} (Counting Sort e Radix Sort): Mostrano pendenze molto vicine a 1, confermando la complessità lineare teorica. Il Counting Sort presenta una pendenza di circa $0.98 - 1.02$, mentre il Radix Sort mostra valori simili nell'intervallo $0.95 - 1.05$.
+
+La rappresentazione logaritmica evidenzia inoltre la costante moltiplicativa inferiore degli algoritmi non comparativi: a parità di dimensione $n$, Counting Sort e Radix Sort partono da intercette significativamente inferiori rispetto agli algoritmi comparativi.
+
+Questa analisi conferma che per $n$ sufficientemente grande e $m$ limitato, gli algoritmi non comparativi mantengono un vantaggio prestazionale crescente.
+
+\subsection{Impatto del Range dei Valori sulle Prestazioni (Scala Lineare)}
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{progetto_ASD__/Relazione/Immagini/grafico3quick.png}
-    \caption{Confronto prestazioni al variare di $m$ ($n=10.000$)}
-    \label{fig:grafico}
+\centering
+\includegraphics[width=0.9\textwidth]{progetto_ASD__/Relazione/Immagini/tempo_vs_m_lineare.png}
+\label{fig:variazione_m}
 \end{figure}
 
-\textbf{Analisi:} 
-Analizzando la dipendenza dal range di valori $m$ (da 10 a $10^6$) con $n=10.000$ fissato:
-- \textsc{QuickSort} mostra tempo \textit{costante} ($\mu = 0.15s, \sigma = 0.01s$)
-- \textsc{QuickSort 3-Way} evidenzia tre fasi:
-  \begin{enumerate}
-  \item $m < 1.000$: prestazioni ottimali ($t < 0.05s$)
-  \item $1.000 < m < 50.000$: decadimento esponenziale
-  \item $m > 100.000$: convergenza a \textsc{QuickSort}
-  \end{enumerate}
-Punto di crossover: $m \approx 50.000$
+Il grafico analizza come il range dei valori $m$ influenzi le prestazioni degli algoritmi, mantenendo fissa la dimensione dell'array a $n = 10.000$.
 
-\textbf{Interpretazione teorica:} 
-Il comportamento è spiegato dalla diversa gestione dei duplicati:
-- Per $m$ piccolo: molti elementi ripetuti → \textsc{QuickSort 3-Way} opera in $O(n)$
-- Per $m$ grande: pochi duplicati → \textsc{QuickSort 3-Way} regredisce a $O(n \log n)$
-- \textsc{QuickSort} è insensibile a $m$ poiché il partizionamento dipende solo dagli confronti
+\textbf{QuickSort e QuickSort 3-Way} mostrano sostanziale indipendenza dal valore di $m$. Questo comportamento è teoricamente previsto, poiché questi algoritmi basano le loro decisioni esclusivamente sui confronti tra elementi, non sui valori assoluti. Le piccole variazioni osservate sono attribuibili al rumore statistico e alle caratteristiche del generatore di numeri casuali.
 
+\textbf{Counting Sort} presenta una crescita lineare marcata in funzione di $m$, confermando la complessità $O(n + m)$. Con $n$ fisso, il termine dominante diventa $O(m)$, spiegando l'andamento lineare osservato. Per $m > 50.000$, l'algoritmo diventa inefficiente rispetto alle alternative comparative.
+
+\textbf{Radix Sort} mostra una crescita a gradini, riflettendo la dipendenza dal numero di cifre $d = \lfloor \log_{10}(m) \rfloor + 1$. Ogni "scalino" corrisponde a un incremento del numero di cifre: i salti sono visibili approssimativamente a $m = 100, 1.000, 10.000, 100.000$, dove $d$ aumenta di un'unità.
+
+Questo grafico evidenzia l'importanza della scelta algoritmica in base alle caratteristiche dei dati: per range limitati, gli algoritmi non comparativi mantengono vantaggi significativi.
+
+\subsection{Analisi dell'Impatto del Range dei Valori (Scala Log-Log)}
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{progetto_ASD__/Relazione/Immagini/grafico4quick.png}
-    \caption{Andamento log-log al variare di $m$ ($n=10.000$)}
-    \label{fig:grafico}
+\centering
+\includegraphics[width=0.9\textwidth]{progetto_ASD__/Relazione/Immagini/tempo_vs_m_loglog.png}
+\label{fig:variazione_m}
 \end{figure}
 
-\textbf{Analisi:} 
-La scala logaritmica rivela:
-- \textsc{QuickSort}: retta orizzontale (pendenza $0.01 \pm 0.005$)
-- \textsc{QuickSort 3-Way}: 
-  \begin{itemize}
-  \item Per $\log m < 4$ ($m < 10^4$): pendenza negativa ($-0.85 \pm 0.1$)
-  \item Per $\log m > 5$ ($m > 10^5$): pendenza $0.02 \pm 0.01$
-  \end{itemize}
-Transizione critica: $m^* \approx 10^4$
+La rappresentazione logaritmica dell'impatto di $m$ sulle prestazioni rivela più chiaramente le dipendenze asintotiche nascoste nella scala lineare.
 
-\textbf{Interpretazione teorica:} 
-L'andamento conferma le ipotesi:
-- Pendenza $\approx 0$ per \textsc{QuickSort} → complessità indipendente da $m$
-- Pendenza negativa per \textsc{QuickSort 3-Way} → $t \sim m^{-0.85}$
-  $$ \log t \sim -k \log m \Rightarrow t \sim m^{-k} $$
-Questo riflette la riduzione dei duplicati all'aumentare di $m$, che diminuisce il vantaggio dell'algoritmo 3-Way.
+\textbf{Algoritmi comparativi}: Le linee sostanzialmente orizzontali (pendenza $\approx 0$) confermano l'indipendenza teorica dal range $m$. Il QuickSort 3-Way presenta una variabilità leggermente inferiore rispetto al QuickSort classico, suggerendo una maggiore stabilità nell'utilizzo della cache e nella gestione degli elementi duplicati.
+
+\textbf{Counting Sort}: La pendenza unitaria ($\approx 1.0$) in scala log-log conferma rigorosamente la dipendenza lineare da $m$ prevista teoricamente. L'intercetta elevata riflette il costo fisso di allocazione dell'array di conteggio.
+
+\textbf{Radix Sort}: La struttura a gradini è più evidente in questa scala, con pendenze locali vicine allo zero all'interno di ogni "plateau" e salti discreti in corrispondenza dei cambi di $d$. La pendenza media risulta circa $0.2 - 0.3$, riflettendo la crescita logaritmica del numero di cifre.
+
+La scala log-log evidenzia inoltre i punti di crossover: Counting Sort diventa meno efficiente di QuickSort per $m > 10^4 - 10^5$, mentre Radix Sort mantiene competitività fino a range significativamente maggiori.
+
+\subsection{Analisi dei Casi Peggiori per gli Algoritmi QuickSort}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{progetto_ASD__/Relazione/Immagini/confronto_casi_peggiori.png}
+\label{fig:variazione_m}
+\end{figure}
+
+Il grafico presenta un'analisi critica dei casi peggiori per gli algoritmi QuickSort utilizzando array completamente ordinati, che rappresentano la configurazione di input più sfavorevole.
+
+\textbf{QuickSort classico (caso peggiore)}: In scala semi-logaritmica, l'algoritmo mostra chiaramente il comportamento quadratico $O(n^2)$ caratteristico del caso pessimo. La selezione dell'ultimo elemento come pivot in un array ordinato genera partizioni completamente sbilanciate, dove una partizione contiene un solo elemento e l'altra $n-1$ elementi. Questo comportamento è evidenziato dalla pendenza elevata (circa 2.0) nella rappresentazione log-lineare.
+
+\textbf{QuickSort 3-Way (caso peggiore)}: Presenta prestazioni significativamente migliori rispetto alla versione classica anche nel caso peggiore. La strategia di partizionamento a tre vie (elementi minori, uguali e maggiori del pivot) riduce l'impatto delle partizioni sbilanciate. Tuttavia, su array con elementi tutti diversi, il vantaggio è limitato e l'algoritmo mantiene complessità quadratica, seppur con costante moltiplicativa inferiore.
+
+La scala logaritmica sull'asse $y$ amplifica le differenze prestazionali: per $n = 10.000$, QuickSort 3-Way risulta circa 2-3 volte più veloce della versione classica. Questo gap tende ad aumentare con la dimensione dell'input.
+
+L'analisi conferma l'importanza della scelta del pivot e delle strategie di partizionamento nella progettazione di algoritmi efficienti, specialmente in scenari con dati non favorevoli.
+
+\subsection{Analisi Comparativa dell'Impatto del Range su Algoritmi Non Comparativi}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{progetto_ASD__/Relazione/Immagini/impatto_m_counting_radix.png}
+\label{fig:variazione_m}
+\end{figure}
+
+Il grafico fornisce un confronto dettagliato tra Counting Sort e Radix Sort al variare del range $m$, isolando gli algoritmi non comparativi per evidenziare le loro caratteristiche specifiche.
+
+\textbf{Counting Sort}: Presenta una crescita lineare perfetta con pendenza unitaria in scala semi-logaritmica (logaritmica su $x$, lineare su $y$). Questo comportamento riflette direttamente la complessità $O(n + m)$ con $n$ costante. L'algoritmo alloca un array di dimensione $m$ per il conteggio, determinando un utilizzo di memoria proporzionale al range. Per $m > 10^5$, i costi di allocazione e inizializzazione diventano proibitivi.
+
+\textbf{Radix Sort}: Mostra la caratteristica crescita a gradini, con transizioni nette in corrispondenza delle potenze di 10. Ogni gradino corrisponde a un incremento del numero di cifre $d$. All'interno di ogni plateau, le prestazioni rimangono sostanzialmente costanti, confermando che il fattore dominante è il numero di passate ($d$) piuttosto che il valore assoluto di $m$.
+
+\textbf{Confronto prestazionale}: Per range limitati ($m < 10^3$), Counting Sort risulta più efficiente grazie al minor overhead. Il crossover si verifica approssimativamente a $m \approx 10^4$, dove Radix Sort inizia a mostrare vantaggi crescenti. Per $m > 10^5$, Radix Sort mantiene prestazioni stabili mentre Counting Sort diventa impraticabile.
+
+La scala semi-logaritmica evidenzia che Radix Sort presenta una complessità effettiva $O(d \cdot n)$ dove $d = O(\log m)$, risultando asintoticamente superiore per range ampi ma con overhead maggiore per range limitati.
 
 \begin{figure} [H]
     \centering
