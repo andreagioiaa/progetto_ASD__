@@ -515,7 +515,7 @@ Questo grafico valuta l'impatto del range dei valori \(m\) (es. dominio dei nume
 \begin{itemize}
   \item \textbf{Counting Sort:} il tempo cresce sensibilmente con \(m\) a causa dell'allocazione e inizializzazione dell'array dei contatori di dimensione \(m\). Anche se il numero di elementi \(n\) è piccolo, un \(m\) grande comporta costi non trascurabili.
   \item \textbf{Radix Sort:} dipende invece dal numero di cifre \(d\) e dalla base \(b\): per chiavi con rappresentazione a lunghezza fissa e \(d\) costante, Radix può rimanere efficace anche per \(m\) grandi.
-  \item Altri algoritmi comparativi (QuickSort, QuickSort3Way) risultano relativamente insensibili al valore di \(m\) perché la loro complessità dipende principalmente da \(n\).
+  \item Altri algoritmi comparativi (QuickSort, QuickSort 3-way) risultano relativamente insensibili al valore di \(m\) perché la loro complessità dipende principalmente da \(n\).
 \end{itemize}
 
 \subsection{Analisi dell'Impatto del Range dei Valori (Scala Log-Log)}
@@ -567,7 +567,7 @@ Grafico comparativo per mettere a confronto direttamente Counting Sort e Radix S
 \begin{itemize}
   \item \textbf{Regime a piccoli \(m\):} Counting Sort è spesso più veloce (costanti favorevoli e semplicità). Radix può avere overhead maggiore a causa delle iterazioni per cifra.
   \item \textbf{Regime a grandi \(m\):} Counting Sort penalizza fortemente per la memoria e i costi di inizializzazione; Radix tende a scalare meglio quando \(d\) (numero di cifre) rimane moderato.
-  \item \textbf{Soglia pratica:} nel grafico è visibile (ad es. attorno a \(m\approx 10^5\)) il punto in cui Counting diventa meno pratico; questo valore dipende dall'implementazione e dalla memoria disponibile.
+  \item \textbf{Soglia pratica:} nel grafico è visibile (ad es. attorno a \(m\approx 10^5\)) il punto in cui Counting Sort diventa meno pratico; questo valore dipende dall'implementazione e dalla memoria disponibile.
 \end{itemize}
 
 \begin{figure} [H]
@@ -580,12 +580,12 @@ Grafico comparativo per mettere a confronto direttamente Counting Sort e Radix S
 
 \paragraph{Sintesi dei risultati.}
 Gli esperimenti condotti confermano le attese teoriche sulle famiglie di algoritmi considerate. 
-Tra gli algoritmi \emph{comparativi}, \texttt{QuickSort} e \texttt{MergeSort} presentano tempi che, al crescere della dimensione dell'input \(n\), sono compatibili con una complessità \(O(n\log n)\), mentre un algoritmo quadratico di riferimento (se considerato) degrada rapidamente. 
+Tra gli algoritmi \emph{comparativi}, \texttt{QuickSort} e \texttt{QuickSort 3-way} presentano tempi che, al crescere della dimensione dell'input \(n\), sono compatibili con una complessità \(O(n\log n)\), mentre un algoritmo quadratico di riferimento (se considerato) degrada rapidamente. 
 Tra gli algoritmi \emph{non comparativi}, \texttt{Counting Sort} e \texttt{Radix Sort} evidenziano i loro punti di forza: il primo è lineare in \(n\) quando il range dei valori \(m\) è moderato (complessità \(O(n+m)\) e spazio \(O(m)\)), il secondo è efficace quando le chiavi hanno lunghezza fissa (complessità \(\Theta(d(n+k))\) con \(d\) numero di cifre e \(k\) la base/bucket), risultando poco sensibile a \(m\) se \(d\) rimane contenuto.
 
 \paragraph{Validazione empirica.}
 I grafici in scala log--log (tempo vs \(n\) e tempo vs \(m\)) hanno fornito una verifica quantitativa: 
-le pendenze stimate per \texttt{QuickSort}/\texttt{MergeSort} sono prossime a \(1\) (coerenti con \(n\log n\) su intervalli finiti), 
+le pendenze stimate per \texttt{QuickSort}/\texttt{QuickSort 3-way} sono prossime a \(1\) (coerenti con \(n\log n\) su intervalli finiti), 
 quelle di \texttt{Counting Sort} rispetto a \(m\) sono vicine a \(1\) (costo di inizializzazione dell'array dei contatori), 
 e il \emph{caso peggiore} di \texttt{QuickSort} su input ordinato mostra un comportamento compatibile con \(O(n^2)\) (pendenza prossima a \(2\)). 
 Le barre d'errore ridotte indicano stabilità delle misure; eventuali variazioni localizzate sono attribuibili al rumore di sistema e alla generazione degli input.
@@ -593,7 +593,7 @@ Le barre d'errore ridotte indicano stabilità delle misure; eventuali variazioni
 \paragraph{Trade-off pratici.}
 Oltre all'ordine asintotico, emergono differenze concrete dovute a costanti e gestione della memoria. 
 \texttt{QuickSort} è tipicamente il più rapido in media e in-place (stack atteso \(O(\log n)\)), ma non è stabile e può degradare se la scelta del pivot è sfavorevole; tecniche come pivot randomizzato, median-of-three e partizionamento 3-way riducono drasticamente tale rischio. 
-\texttt{MergeSort} offre prestazioni prevedibili, è stabile e adatto a flussi/esterni, ma richiede spazio addizionale \(O(n)\). 
+\texttt{QucikSort3Way} offre prestazioni prevedibili, è stabile e adatto a flussi/esterni, ma richiede spazio addizionale \(O(n)\). 
 \texttt{Counting Sort} è stabilmente lineare quando \(m=O(n)\), ma lo spazio \(O(m)\) ne limita l'uso per range molto ampi. 
 \texttt{Radix Sort}, usando una routine stabile (ad es. \texttt{Counting Sort}) come subprocedura, scala bene su chiavi a lunghezza fissa, con costi che dipendono da \(d\) più che da \(m\).
 
