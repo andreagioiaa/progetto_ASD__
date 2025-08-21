@@ -515,7 +515,7 @@ Questo grafico valuta l'impatto del range dei valori \(m\) (es. dominio dei nume
 \begin{itemize}
   \item \textbf{Counting Sort:} il tempo cresce sensibilmente con \(m\) a causa dell'allocazione e inizializzazione dell'array dei contatori di dimensione \(m\). Anche se il numero di elementi \(n\) è piccolo, un \(m\) grande comporta costi non trascurabili.
   \item \textbf{Radix Sort:} dipende invece dal numero di cifre \(d\) e dalla base \(b\): per chiavi con rappresentazione a lunghezza fissa e \(d\) costante, Radix può rimanere efficace anche per \(m\) grandi.
-  \item Altri algoritmi comparativi (QuickSort, MergeSort) risultano relativamente insensibili al valore di \(m\) perché la loro complessità dipende principalmente da \(n\).
+  \item Altri algoritmi comparativi (QuickSort, QuickSort3Way) risultano relativamente insensibili al valore di \(m\) perché la loro complessità dipende principalmente da \(n\).
 \end{itemize}
 
 \subsection{Analisi dell'Impatto del Range dei Valori (Scala Log-Log)}
