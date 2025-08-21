@@ -312,7 +312,7 @@ L'algoritmo partiziona l'array in tre sezioni (elementi $<$ pivot, $=$ pivot e $
 \subsubsection*{Funzionamento del codice}
 
 \begin{enumerate}
-  \item \textbf{Caso Base (l >= r):} ferma la ricorsione se il sottoarray ha 0 o 1 elemento.
+  \item \textbf{Caso Base (l $>=$ r):} ferma la ricorsione se il sottoarray ha 0 o 1 elemento.
 
   \item \textbf{Puntatori:} lt tiene traccia degli elementi minori del pivot; gt tiene traccia degli elementi maggiori del pivot; i scorre l'array da sinistra a destra.
 
@@ -489,7 +489,7 @@ La superiorità degli algoritmi non comparativi (Counting Sort e Radix Sort) è 
 
 La rappresentazione in scala log-log rivela le caratteristiche asintotiche degli algoritmi attraverso l'analisi dei coefficienti angolari delle rette di regressione.
 
-\textbf{Algoritmi comparativi} (QuickSort e QuickSort 3-Way): In scala log-log, la complessità $O(n \log n)$ si manifesta come una retta con pendenza leggermente superiore a 1. Il coefficiente angolare osservato è circa $1.1 - 1.2$, coerente con il termine logaritmico aggiuntivo.
+\textbf{Algoritmi comparativi} (QuickSort e QuickSort 3-Way): In scala log-log, la complessità $O(n \log n)$ si manifesta come una retta con slope vicino a 1 (leggermente $>1$ per range finiti), coerente con complessità nlogn, non con un vero esponente $>1$ costante. Il coefficiente angolare osservato è circa $1.1 - 1.2$.
 
 \textbf{Algoritmi non comparativi} (Counting Sort e Radix Sort): Mostrano pendenze molto vicine a 1, confermando la complessità lineare teorica. Il Counting Sort presenta una pendenza di circa $0.98 - 1.02$, mentre il Radix Sort mostra valori simili nell'intervallo $0.95 - 1.05$.
 
