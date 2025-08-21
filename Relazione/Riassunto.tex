@@ -328,7 +328,7 @@ Il \emph{Counting Sort} è un algoritmo di ordinamento non basato su confronti, 
 
 \noindent  \underline{Idea} \\ Contare le occorrenze di ciascun valore in un array ausiliario, calcolare una somma cumulativa (prefix sum) e quindi posizionare ogni elemento in output nel posto corretto per ottenere un ordinamento stabile.
 
-\subsubsection*{Complessità}
+\subsubsection{Analisi delle complessità}
 
 \noindent Counting Sort assume che ciascuno dei \(n\) elementi in input sia un intero nell’intervallo \([0, k]\). L'algoritmo non utilizza confronti tra elementi, ma lavora sfruttando il valore numerico degli stessi come indice in un array ausiliario. Questo approccio consente di superare il limite inferiore \(\Omega(n \log n)\) valido per gli algoritmi di ordinamento basati su confronti.
 
@@ -407,7 +407,7 @@ Radix Sort, per funzionare correttamente, richiede un algoritmo di ordinamento s
 
 
 
-\subsubsection*{Complessità}
+\subsubsection{Analisi delle complessità}
 \textbf{Caso medio}\quad Considerando \textit{n} elementi da ordinare, ciascuno composto da \textit{d} cifre, e assumendo che ogni cifra possa assumere al più \textit{k} valori distinti, Radix Sort ha una complessità asintotica pari a $\Theta(d(n + k))$.\bigbreak
 \noindent Tuttavia, ciò è valido solo se l'algoritmo utilizzato per ordinare le singole cifre (come Counting Sort) ha complessità $\Theta(n + k)$, ovvero è lineare rispetto al numero di elementi e all'ampiezza del dominio delle cifre.\bigbreak
 \noindent \textbf{Caso ottimo}\quad Le condizioni del caso ottimo di RadixSort sono:
