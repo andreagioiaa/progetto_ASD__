@@ -593,7 +593,7 @@ Le barre d'errore ridotte indicano stabilità delle misure; eventuali variazioni
 \paragraph{Trade-off pratici.}
 Oltre all'ordine asintotico, emergono differenze concrete dovute a costanti e gestione della memoria. 
 \texttt{QuickSort} è tipicamente il più rapido in media e in-place (stack atteso \(O(\log n)\)), ma non è stabile e può degradare se la scelta del pivot è sfavorevole; tecniche come pivot randomizzato, median-of-three e partizionamento 3-way riducono drasticamente tale rischio. 
-\texttt{QucikSort3Way} offre prestazioni prevedibili, è stabile e adatto a flussi/esterni, ma richiede spazio addizionale \(O(n)\). 
+\texttt{QuickSort 3-way} funziona su qualsiasi tipo di dati ordinabili però meno efficiente su dati interi limitati. 
 \texttt{Counting Sort} è stabilmente lineare quando \(m=O(n)\), ma lo spazio \(O(m)\) ne limita l'uso per range molto ampi. 
 \texttt{Radix Sort}, usando una routine stabile (ad es. \texttt{Counting Sort}) come subprocedura, scala bene su chiavi a lunghezza fissa, con costi che dipendono da \(d\) più che da \(m\).
 
