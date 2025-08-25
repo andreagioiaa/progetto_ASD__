@@ -1,18 +1,44 @@
 \babel@toc {italian}{}\relax 
 \babel@toc {italian}{}\relax 
-\contentsline {section}{\numberline {1}Introduzione}{2}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Specifiche tecniche}{2}{subsection.1.1}%
-\contentsline {section}{\numberline {2}Algoritmi}{2}{section.2}%
-\contentsline {subsection}{\numberline {2.1}QuickSort}{2}{subsection.2.1}%
-\contentsline {subsubsection}{\numberline {2.1.1}Analisi delle complessità}{3}{subsubsection.2.1.1}%
-\contentsline {paragraph}{\numberline {2.1.1.1}Caso pessimo}{3}{paragraph.2.1.1.1}%
-\contentsline {subsubsection}{\numberline {2.1.2}Codice}{3}{subsubsection.2.1.2}%
-\contentsline {subsection}{\numberline {2.2}QuickSort3Way}{4}{subsection.2.2}%
-\contentsline {subsubsection}{\numberline {2.2.1}Analisi delle complessità}{4}{subsubsection.2.2.1}%
-\contentsline {subsubsection}{\numberline {2.2.2}Codice}{4}{subsubsection.2.2.2}%
-\contentsline {subsection}{\numberline {2.3}CountingSort}{5}{subsection.2.3}%
-\contentsline {subsection}{\numberline {2.4}RadixSort}{7}{subsection.2.4}%
-\contentsline {subsubsection}{\numberline {2.4.1}Motivazioni della scelta}{8}{subsubsection.2.4.1}%
-\contentsline {subsubsection}{\numberline {2.4.2}Codice}{9}{subsubsection.2.4.2}%
-\contentsline {section}{\numberline {3}Misurazioni}{9}{section.3}%
-\contentsline {section}{\numberline {4}Conclusione}{10}{section.4}%
+\contentsline {section}{\numberline {1}Introduzione}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Specifiche tecniche}{3}{subsection.1.1}%
+\contentsline {section}{\numberline {2}Algoritmi}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}QuickSort}{3}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}Analisi delle complessità}{4}{subsubsection.2.1.1}%
+\contentsline {subsubsection}{\numberline {2.1.2}Codice}{5}{subsubsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.2}QuickSort3Way}{6}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Analisi delle complessità}{7}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Codice}{7}{subsubsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.3}CountingSort}{8}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}Analisi delle complessità}{8}{subsubsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.4}RadixSort}{10}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.4.1}Analisi delle complessità}{11}{subsubsection.2.4.1}%
+\contentsline {subsubsection}{\numberline {2.4.2}Motivazioni della scelta}{12}{subsubsection.2.4.2}%
+\contentsline {subsubsection}{\numberline {2.4.3}Codice}{12}{subsubsection.2.4.3}%
+\contentsline {section}{\numberline {3}Misurazioni}{13}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Analisi delle Prestazioni al Variare della Dimensione dell'Array (Scala Lineare)}{13}{subsection.3.1}%
+\contentsline {paragraph}{\numberline {3.1.0.1}Descrizione e obiettivo}{14}{paragraph.3.1.0.1}%
+\contentsline {paragraph}{\numberline {3.1.0.2}Osservazioni chiave}{14}{paragraph.3.1.0.2}%
+\contentsline {paragraph}{\numberline {3.1.0.3}Caveat interpretativi}{14}{paragraph.3.1.0.3}%
+\contentsline {subsection}{\numberline {3.2}Analisi delle Prestazioni al Variare della Dimensione dell'Array (Scala Log-Log)}{15}{subsection.3.2}%
+\contentsline {paragraph}{\numberline {3.2.0.1}Descrizione e obiettivo}{15}{paragraph.3.2.0.1}%
+\contentsline {paragraph}{\numberline {3.2.0.2}Interpretazione della pendenza}{15}{paragraph.3.2.0.2}%
+\contentsline {subsection}{\numberline {3.3}Impatto del Range dei Valori sulle Prestazioni (Scala Lineare)}{16}{subsection.3.3}%
+\contentsline {paragraph}{\numberline {3.3.0.1}Descrizione e obiettivo}{16}{paragraph.3.3.0.1}%
+\contentsline {paragraph}{\numberline {3.3.0.2}Osservazioni chiave}{16}{paragraph.3.3.0.2}%
+\contentsline {subsection}{\numberline {3.4}Analisi dell'Impatto del Range dei Valori (Scala Log-Log)}{17}{subsection.3.4}%
+\contentsline {paragraph}{\numberline {3.4.0.1}Descrizione e obiettivo}{17}{paragraph.3.4.0.1}%
+\contentsline {paragraph}{\numberline {3.4.0.2}Interpretazione}{17}{paragraph.3.4.0.2}%
+\contentsline {subsection}{\numberline {3.5}Analisi dei Casi Peggiori per gli Algoritmi QuickSort}{18}{subsection.3.5}%
+\contentsline {paragraph}{\numberline {3.5.0.1}Descrizione e obiettivo}{18}{paragraph.3.5.0.1}%
+\contentsline {paragraph}{\numberline {3.5.0.2}Osservazioni e interpretazioni}{18}{paragraph.3.5.0.2}%
+\contentsline {subsection}{\numberline {3.6}Analisi Comparativa dell'Impatto del Range su Algoritmi Non Comparativi}{19}{subsection.3.6}%
+\contentsline {paragraph}{\numberline {3.6.0.1}Descrizione e obiettivo}{19}{paragraph.3.6.0.1}%
+\contentsline {paragraph}{\numberline {3.6.0.2}Regimi osservati}{19}{paragraph.3.6.0.2}%
+\contentsline {section}{\numberline {4}Conclusioni}{20}{section.4}%
+\contentsline {paragraph}{\numberline {4.0.0.1}Sintesi dei risultati.}{20}{paragraph.4.0.0.1}%
+\contentsline {paragraph}{\numberline {4.0.0.2}Validazione empirica.}{20}{paragraph.4.0.0.2}%
+\contentsline {paragraph}{\numberline {4.0.0.3}Trade-off pratici.}{21}{paragraph.4.0.0.3}%
+\contentsline {paragraph}{\numberline {4.0.0.4}Linee guida operative.}{21}{paragraph.4.0.0.4}%
+\contentsline {paragraph}{\numberline {4.0.0.5}Limiti e minacce alla validità.}{21}{paragraph.4.0.0.5}%
+\contentsline {paragraph}{\numberline {4.0.0.6}Conclusione finale.}{21}{paragraph.4.0.0.6}%

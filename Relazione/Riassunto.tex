@@ -423,7 +423,9 @@ La complessità rimane $\Theta(d(n + k))$, tuttavia, con valori di $d$ e $k$ cos
 \end{itemize}
 La complessità resta $\mathcal{O}(d(n + k))$, ma può degenerare fino a diventare $\mathcal{O}(n\cdot log(n))$
 \subsubsection{Motivazioni della scelta}
-É stato scelto RadixSort come quarto algoritmo a scelta per il suo approccio innovativo e diverso rispetto agli altri algoritmi selezionati, offrendo una prospettiva di confronto interessante.
+É stato scelto RadixSort come quarto algoritmo a scelta per il suo approccio innovativo e diverso rispetto agli altri algoritmi selezionati, offrendo una prospettiva di confronto interessante.\\
+Oltre a ciò, si tratta di un algoritmo utile e applicato in vari contesti reali.\bigbreak
+\noindent RadixSort, inoltre, varia la efficienza in base all'algoritmo di ordinamento sottostante, il quale, nel nostro caso countingSort, deve essere stabile per preservare l'ordinamento parziale ottenuto nelle iterazioni precedenti. La stabilità di CountingSort garantisce che elementi con la stessa cifra nella posizione corrente mantengano l'ordine relativo stabilito nelle cifre precedenti, condizione essenziale per la correttezza dell'algoritmo. L'uso di CountingSort come subroutine conferisce a RadixSort una complessità lineare $\mathcal{O}(d \cdot n)$ poiché $k = 10$ (base fissa) è costante, rendendolo particolarmente efficiente per chiavi numeriche con un numero limitato di cifre $d$.
 
 \subsubsection{Codice}
 \begin{lstlisting}[style=mycodestyle, language=Python]
@@ -446,12 +448,24 @@ def RadixSort(arr):
         exp *= 10
 \end{lstlisting}
 
+\subsubsection*{Funzionamento del codice}
+\begin{enumerate}
+
+\item \textbf{Funzione GetMax(A):} Lo scopo è trovare il valore massimo nell'array. A è l'array di elementi. Inizializza \texttt{max} con il primo elemento; scorre tutti gli elementi dall'indice 1 alla fine; se \texttt{A[i] > max}, aggiorna \texttt{max} con \texttt{A[i]}. Restituisce il valore massimo. Costo $\mathcal{O}(n)$.
+
+\item \textbf{Funzione CountingSortForRadix(A, exp):} Lo scopo è ordinare l'array in base a una specifica cifra. A è l'array da ordinare, \texttt{exp} è l'esponente che definisce la cifra (1, 10, 100...). Inizializza un array di output \texttt{B} di dimensione \texttt{n}; un array di conteggio \texttt{C} di dimensione 10 (base) inizializzato a zero; conta le occorrenze di ogni cifra in \texttt{(A[i] / exp) \% 10} in \texttt{C}; modifica \texttt{C} in somme cumulative; costruisce \texttt{B} partendo dalla fine di \texttt{A} per stabilità; copia \texttt{B} in \texttt{A}. Costo $\mathcal{O}(n + k)$ con $k=10$.
+
+\item \textbf{Funzione RadixSort(A):} Lo scopo è ordinare l'array elaborando le cifre dalla meno alla più significativa. A è l'array da ordinare. Trova \texttt{m = GetMax(A)}; per ogni \texttt{exp} (da 1, a 10, a 100... finché \texttt{m/exp > 0}), applica \texttt{CountingSortForRadix(A, exp)}. All'ultima iterazione, l'array è ordinato. Costo $\mathcal{O}(d \cdot (n + k))$ dove $d$ è il numero di cifre.
+
+\end{enumerate}
+
+
 \section{Misurazioni}
 
 \subsection{Analisi delle Prestazioni al Variare della Dimensione dell'Array (Scala Lineare)}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{progetto_ASD__/Relazione/Immagini/tempo_vs_n_lineare_improved.png}
+    \includegraphics[width=\textwidth]{./Immagini/tempo_vs_n_lineare_improved.png}
     \caption {\textbf{Tempo vs \(n\) (scala lineare).} Tempo medio di esecuzione al variare di \(n\) (con \(m=100\,000\)). Punti: medie su \(k\) run; barre: deviazione standard. Linee tratteggiate: curve teoriche di riferimento normalizzate su \(n_0\) per confronto pratico.}
     \label{fig:grafico}
 \end{figure}
@@ -472,9 +486,9 @@ Non trarre conclusioni sull'ordine di crescita esclusivamente osservando la curv
 \subsection{Analisi delle Prestazioni al Variare della Dimensione dell'Array (Scala Log-Log)}
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.9\textwidth]{progetto_ASD__/Relazione/Immagini/tempo_vs_n_loglog_improved.png}
+\includegraphics[width=0.9\textwidth]{./Immagini/tempo_vs_n_loglog_improved.png}
 \caption{\textbf{Tempo vs \(n\) (scala log-log).} Regressione lineare su \(\log\)-\(\log\) per stimare la pendenza empirica \(a\) tale che \(\text{time}\approx C n^{a}\). Valori di pendenza stimati riportati in legenda. Nota: per complessità \(O(n\log n)\) la pendenza reale tende a 1.}
-\label{fig:variazione_m}
+\label{fig:variazione_n}
 \end{figure}
 
 \paragraph{Descrizione e obiettivo}
@@ -490,9 +504,9 @@ La scala log-log è utilizzata per stimare la relazione di tipo potenza tra temp
 \subsection{Impatto del Range dei Valori sulle Prestazioni (Scala Lineare)}
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.9\textwidth]{progetto_ASD__/Relazione/Immagini/tempo_vs_m_lineare_improved.png}
+\includegraphics[width=0.9\textwidth]{./Immagini/tempo_vs_m_lineare_improved.png}
 \caption{\textbf{Tempo vs \(m\) (scala lineare).} Effetto del range dei valori \(m\) su algoritmi comparativi e non comparativi (con \(n\) fissato). Barre: deviazione standard. Nota: Counting Sort richiede memoria proporzionale a \(m\).}
-\label{fig:variazione_m}
+\label{fig:variazione_m_lin}
 \end{figure}
 
 \paragraph{Descrizione e obiettivo}
@@ -508,9 +522,9 @@ Questo grafico valuta l'impatto del range dei valori \(m\) (es. dominio dei nume
 \subsection{Analisi dell'Impatto del Range dei Valori (Scala Log-Log)}
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.9\textwidth]{progetto_ASD__/Relazione/Immagini/tempo_vs_m_loglog_improved.png}
+\includegraphics[width=0.9\textwidth]{./Immagini/tempo_vs_m_loglog_improved.png}
 \caption{\textbf{Tempo vs \(m\) (scala log-log).} Regressione log-log per stimare la dipendenza dal range \(m\). Pendenze stimate riportate nella legenda. Counting Sort mostra tipicamente pendenza circa 1 dovuta all'azzeramento dell'array dei contatori.}
-\label{fig:variazione_m}
+\label{fig:variazione_m_log}
 \end{figure}
 
 \paragraph{Descrizione e obiettivo}
@@ -525,9 +539,9 @@ Versione log-log del Grafico~3: utile a stimare il comportamento asintotico risp
 \subsection{Analisi dei Casi Peggiori per gli Algoritmi QuickSort}
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.9\textwidth]{progetto_ASD__/Relazione/Immagini/confronto_casi_peggiori_loglog.png}
+\includegraphics[width=0.9\textwidth]{./Immagini/confronto_casi_peggiori_loglog.png}
 \caption{\textbf{Confronto casi peggiori (log-log).} Prestazioni su input ordinato; regressioni log-log usate per stimare l'esponente empirico. QuickSort classico mostra il peggior comportamento se non protetto da scelte pivot robuste.}
-\label{fig:variazione_m}
+\label{fig:confront_loglog}
 \end{figure}
 
 \paragraph{Descrizione e obiettivo}
@@ -542,9 +556,9 @@ Questo grafico confronta le prestazioni degli algoritmi sul caso avverso (ad ese
 \subsection{Analisi Comparativa dell'Impatto del Range su Algoritmi Non Comparativi}
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.9\textwidth]{progetto_ASD__/Relazione/Immagini/impatto_m_counting_radix_improved.png}
+\includegraphics[width=0.9\textwidth]{./Immagini/impatto_m_counting_radix_improved.png}
 \caption{\textbf{Impatto di \(m\) su CountingSort e RadixSort (asse \(m\) logaritmico).} Confronto diretto che mostra il passaggio di regime: Counting Sort è competitivo per \(m\) piccoli, ma diventa inefficiente per \(m\) grandi per motivi di memoria e overhead di inizializzazione. Radix mostra migliore scalabilità nel caso di chiavi con numero di cifre limitato.}
-\label{fig:variazione_m}
+\label{fig:impatto_m_count_radix}
 \end{figure}
 
 \paragraph{Descrizione e obiettivo}
@@ -559,7 +573,7 @@ Grafico comparativo per mettere a confronto direttamente Counting Sort e Radix S
 
 \begin{figure} [H]
     \centering
-    \includegraphics[scale=0.5]{Immagini/Grafico.png}
+    \includegraphics[scale=0.5]{./Immagini/Grafico.png}
     \caption*{Parte reale sulle x, parte immaginaria sulle y}
 \end{figure}
 

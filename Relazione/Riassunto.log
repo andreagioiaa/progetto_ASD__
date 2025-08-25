@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.4.3)  5 AUG 2025 21:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.4.3)  25 AUG 2025 16:27
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -590,7 +590,7 @@ Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 ))
 \c@lstlisting=\count334
-<./Immagini/Logo_Università_di_Udine.png, id=67, 250.68657pt x 250.68657pt>
+<./Immagini/Logo_Università_di_Udine.png, id=171, 250.68657pt x 250.68657pt>
 File: ./Immagini/Logo_Università_di_Udine.png Graphic file (type png)
 <use ./Immagini/Logo_Università_di_Udine.png>
 Package pdftex.def Info: ./Immagini/Logo_Università_di_Udine.png  used on input line 106.
@@ -602,27 +602,21 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 LaTeX Font Info:    Trying to load font information for U+msb on input line 106.
  (C:\Users\Luca\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-Overfull \hbox (1.11725pt too wide) in alignment at lines 106--106
-[] []
- []
+) [1
 
-[1
-
-{C:/Users/Luca/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./Immagini/Logo_Università_di_Udine.png>] (Riassunto.toc)
-\tf@toc=\write4
-\openout4 = `Riassunto.toc'.
-
-
+{C:/Users/Luca/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./Immagini/Logo_Università_di_Udine.png>] (Riassunto.toc
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.114 \newpage
-               [1]
-<Immagini/Logo_Università_di_Udine.png, id=100, 250.68657pt x 250.68657pt>
+l.41 ...Trade-off pratici.}{21}{paragraph.4.0.0.3}
+                                                  % [1])
+\tf@toc=\write4
+\openout4 = `Riassunto.toc'.
+
+<Immagini/Logo_Università_di_Udine.png, id=231, 250.68657pt x 250.68657pt>
 File: Immagini/Logo_Università_di_Udine.png Graphic file (type png)
 <use Immagini/Logo_Università_di_Udine.png>
-Package pdftex.def Info: Immagini/Logo_Università_di_Udine.png  used on input line 150.
+Package pdftex.def Info: Immagini/Logo_Università_di_Udine.png  used on input line 114.
 (pdftex.def)             Requested size: 28.45274pt x 28.45157pt.
 
 
@@ -632,16 +626,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-20.5316pt}.
 
-[2 <./Immagini/Logo_Università_di_Udine.png>] (C:\Users\Luca\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
-File: lstlang1.sty 2024/03/11 1.10a listings language file
-)
-LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 170.
+[2 <./Immagini/Logo_Università_di_Udine.png>]
+Overfull \hbox (1.40564pt too wide) in paragraph at lines 138--144
+\OT1/cmr/m/n/10.95 Divide: par-ti-zio-nan-do l'ar-ray A[p:r] in due sot-toar-ray A[p:q-1] (par-te in-fe-rio-re) e A[q+1:r]
+ []
+
 File: Immagini/Logo_Università_di_Udine.png Graphic file (type png)
 <use Immagini/Logo_Università_di_Udine.png>
-Package pdftex.def Info: Immagini/Logo_Università_di_Udine.png  used on input line 198.
+Package pdftex.def Info: Immagini/Logo_Università_di_Udine.png  used on input line 147.
 (pdftex.def)             Requested size: 28.45274pt x 28.45157pt.
-
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 32.5316pt, for example:
@@ -650,14 +643,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-20.5316pt}.
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 207--211
-
- []
-
 File: Immagini/Logo_Università_di_Udine.png Graphic file (type png)
 <use Immagini/Logo_Università_di_Udine.png>
-Package pdftex.def Info: Immagini/Logo_Università_di_Udine.png  used on input line 225.
+Package pdftex.def Info: Immagini/Logo_Università_di_Udine.png  used on input line 195.
 (pdftex.def)             Requested size: 28.45274pt x 28.45157pt.
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 32.5316pt, for example:
@@ -665,15 +655,16 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-20.5316pt}.
 
-[4]
-Underfull \hbox (badness 10000) in paragraph at lines 248--249
-
- []
-
+[4] (C:\Users\Luca\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
+File: lstlang1.sty 2024/03/11 1.10a listings language file
+)
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 197.
 File: Immagini/Logo_Università_di_Udine.png Graphic file (type png)
 <use Immagini/Logo_Università_di_Udine.png>
-Package pdftex.def Info: Immagini/Logo_Università_di_Udine.png  used on input line 261.
+Package pdftex.def Info: Immagini/Logo_Università_di_Udine.png  used on input line 239.
 (pdftex.def)             Requested size: 28.45274pt x 28.45157pt.
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 32.5316pt, for example:
@@ -682,6 +673,22 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-20.5316pt}.
 
 [5]
+Underfull \hbox (badness 10000) in paragraph at lines 274--278
+
+ []
+
+File: Immagini/Logo_Università_di_Udine.png Graphic file (type png)
+<use Immagini/Logo_Università_di_Udine.png>
+Package pdftex.def Info: Immagini/Logo_Università_di_Udine.png  used on input line 278.
+(pdftex.def)             Requested size: 28.45274pt x 28.45157pt.
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 32.5316pt, for example:
+(fancyhdr)                \setlength{\headheight}{32.5316pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-20.5316pt}.
+
+[6]
 File: Immagini/Logo_Università_di_Udine.png Graphic file (type png)
 <use Immagini/Logo_Università_di_Udine.png>
 Package pdftex.def Info: Immagini/Logo_Università_di_Udine.png  used on input line 301.
@@ -694,30 +701,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-20.5316pt}.
 
-[6]
-<./Immagini/RadixSort.png, id=205, 430.60875pt x 197.538pt>
-File: ./Immagini/RadixSort.png Graphic file (type png)
-<use ./Immagini/RadixSort.png>
-Package pdftex.def Info: ./Immagini/RadixSort.png  used on input line 321.
-(pdftex.def)             Requested size: 215.30383pt x 98.76875pt.
+[7]
+Underfull \hbox (badness 10000) in paragraph at lines 327--328
+
+ []
+
 File: Immagini/Logo_Università_di_Udine.png Graphic file (type png)
 <use Immagini/Logo_Università_di_Udine.png>
-Package pdftex.def Info: Immagini/Logo_Università_di_Udine.png  used on input line 325.
+Package pdftex.def Info: Immagini/Logo_Università_di_Udine.png  used on input line 339.
 (pdftex.def)             Requested size: 28.45274pt x 28.45157pt.
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 32.5316pt, for example:
-(fancyhdr)                \setlength{\headheight}{32.5316pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-20.5316pt}.
-
-[7 <./Immagini/RadixSort.png>]
-File: Immagini/Logo_Università_di_Udine.png Graphic file (type png)
-<use Immagini/Logo_Università_di_Udine.png>
-Package pdftex.def Info: Immagini/Logo_Università_di_Udine.png  used on input line 353.
-(pdftex.def)             Requested size: 28.45274pt x 28.45157pt.
-
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 32.5316pt, for example:
@@ -726,20 +718,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-20.5316pt}.
 
 [8]
-<Immagini/Grafico.png, id=222, 867.24pt x 505.89pt>
-File: Immagini/Grafico.png Graphic file (type png)
-<use Immagini/Grafico.png>
-Package pdftex.def Info: Immagini/Grafico.png  used on input line 387.
-(pdftex.def)             Requested size: 433.61894pt x 252.94437pt.
-
-Overfull \hbox (15.36526pt too wide) in paragraph at lines 387--388
- [][] 
- []
-
 File: Immagini/Logo_Università_di_Udine.png Graphic file (type png)
 <use Immagini/Logo_Università_di_Udine.png>
-Package pdftex.def Info: Immagini/Logo_Università_di_Udine.png  used on input line 390.
+Package pdftex.def Info: Immagini/Logo_Università_di_Udine.png  used on input line 378.
 (pdftex.def)             Requested size: 28.45274pt x 28.45157pt.
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 32.5316pt, for example:
@@ -748,9 +731,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-20.5316pt}.
 
 [9]
+<./Immagini/RadixSort.png, id=358, 430.60875pt x 197.538pt>
+File: ./Immagini/RadixSort.png Graphic file (type png)
+<use ./Immagini/RadixSort.png>
+Package pdftex.def Info: ./Immagini/RadixSort.png  used on input line 400.
+(pdftex.def)             Requested size: 215.30383pt x 98.76875pt.
 File: Immagini/Logo_Università_di_Udine.png Graphic file (type png)
 <use Immagini/Logo_Università_di_Udine.png>
-Package pdftex.def Info: Immagini/Logo_Università_di_Udine.png  used on input line 394.
+Package pdftex.def Info: Immagini/Logo_Università_di_Udine.png  used on input line 403.
 (pdftex.def)             Requested size: 28.45274pt x 28.45157pt.
 
 
@@ -760,26 +748,235 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-20.5316pt}.
 
-[10 <./Immagini/Grafico.png>] (Riassunto.aux)
+[10]
+File: Immagini/Logo_Università_di_Udine.png Graphic file (type png)
+<use Immagini/Logo_Università_di_Udine.png>
+Package pdftex.def Info: Immagini/Logo_Università_di_Udine.png  used on input line 427.
+(pdftex.def)             Requested size: 28.45274pt x 28.45157pt.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 32.5316pt, for example:
+(fancyhdr)                \setlength{\headheight}{32.5316pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-20.5316pt}.
+
+[11 <./Immagini/RadixSort.png>]
+File: Immagini/Logo_Università_di_Udine.png Graphic file (type png)
+<use Immagini/Logo_Università_di_Udine.png>
+Package pdftex.def Info: Immagini/Logo_Università_di_Udine.png  used on input line 457.
+(pdftex.def)             Requested size: 28.45274pt x 28.45157pt.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 32.5316pt, for example:
+(fancyhdr)                \setlength{\headheight}{32.5316pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-20.5316pt}.
+
+[12]
+<./Immagini/tempo_vs_n_lineare_improved.png, id=401, 867.24pt x 578.16pt>
+File: ./Immagini/tempo_vs_n_lineare_improved.png Graphic file (type png)
+<use ./Immagini/tempo_vs_n_lineare_improved.png>
+Package pdftex.def Info: ./Immagini/tempo_vs_n_lineare_improved.png  used on input line 468.
+(pdftex.def)             Requested size: 418.25368pt x 278.83694pt.
+
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 474.
+
+File: Immagini/Logo_Università_di_Udine.png Graphic file (type png)
+<use Immagini/Logo_Università_di_Udine.png>
+Package pdftex.def Info: Immagini/Logo_Università_di_Udine.png  used on input line 476.
+(pdftex.def)             Requested size: 28.45274pt x 28.45157pt.
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 32.5316pt, for example:
+(fancyhdr)                \setlength{\headheight}{32.5316pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-20.5316pt}.
+
+[13 <./Immagini/tempo_vs_n_lineare_improved.png>]
+<./Immagini/tempo_vs_n_loglog_improved.png, id=409, 867.24pt x 578.16pt>
+File: ./Immagini/tempo_vs_n_loglog_improved.png Graphic file (type png)
+<use ./Immagini/tempo_vs_n_loglog_improved.png>
+Package pdftex.def Info: ./Immagini/tempo_vs_n_loglog_improved.png  used on input line 489.
+(pdftex.def)             Requested size: 376.42575pt x 250.9506pt.
+File: Immagini/Logo_Università_di_Udine.png Graphic file (type png)
+<use Immagini/Logo_Università_di_Udine.png>
+Package pdftex.def Info: Immagini/Logo_Università_di_Udine.png  used on input line 493.
+(pdftex.def)             Requested size: 28.45274pt x 28.45157pt.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 32.5316pt, for example:
+(fancyhdr)                \setlength{\headheight}{32.5316pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-20.5316pt}.
+
+[14]
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 495.
+
+<./Immagini/tempo_vs_m_lineare_improved.png, id=414, 867.24pt x 578.16pt>
+File: ./Immagini/tempo_vs_m_lineare_improved.png Graphic file (type png)
+<use ./Immagini/tempo_vs_m_lineare_improved.png>
+Package pdftex.def Info: ./Immagini/tempo_vs_m_lineare_improved.png  used on input line 507.
+(pdftex.def)             Requested size: 376.42575pt x 250.9506pt.
+File: Immagini/Logo_Università_di_Udine.png Graphic file (type png)
+<use Immagini/Logo_Università_di_Udine.png>
+Package pdftex.def Info: Immagini/Logo_Università_di_Udine.png  used on input line 511.
+(pdftex.def)             Requested size: 28.45274pt x 28.45157pt.
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 32.5316pt, for example:
+(fancyhdr)                \setlength{\headheight}{32.5316pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-20.5316pt}.
+
+[15 <./Immagini/tempo_vs_n_loglog_improved.png>]
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 513.
+
+<./Immagini/tempo_vs_m_loglog_improved.png, id=421, 867.24pt x 578.16pt>
+File: ./Immagini/tempo_vs_m_loglog_improved.png Graphic file (type png)
+<use ./Immagini/tempo_vs_m_loglog_improved.png>
+Package pdftex.def Info: ./Immagini/tempo_vs_m_loglog_improved.png  used on input line 525.
+(pdftex.def)             Requested size: 376.42575pt x 250.9506pt.
+File: Immagini/Logo_Università_di_Udine.png Graphic file (type png)
+<use Immagini/Logo_Università_di_Udine.png>
+Package pdftex.def Info: Immagini/Logo_Università_di_Udine.png  used on input line 529.
+(pdftex.def)             Requested size: 28.45274pt x 28.45157pt.
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 32.5316pt, for example:
+(fancyhdr)                \setlength{\headheight}{32.5316pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-20.5316pt}.
+
+[16 <./Immagini/tempo_vs_m_lineare_improved.png>]
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 531.
+
+<./Immagini/confronto_casi_peggiori_loglog.png, id=428, 867.24pt x 578.16pt>
+File: ./Immagini/confronto_casi_peggiori_loglog.png Graphic file (type png)
+<use ./Immagini/confronto_casi_peggiori_loglog.png>
+Package pdftex.def Info: ./Immagini/confronto_casi_peggiori_loglog.png  used on input line 542.
+(pdftex.def)             Requested size: 376.42575pt x 250.9506pt.
+File: Immagini/Logo_Università_di_Udine.png Graphic file (type png)
+<use Immagini/Logo_Università_di_Udine.png>
+Package pdftex.def Info: Immagini/Logo_Università_di_Udine.png  used on input line 546.
+(pdftex.def)             Requested size: 28.45274pt x 28.45157pt.
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 32.5316pt, for example:
+(fancyhdr)                \setlength{\headheight}{32.5316pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-20.5316pt}.
+
+[17 <./Immagini/tempo_vs_m_loglog_improved.png>]
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 548.
+
+<./Immagini/impatto_m_counting_radix_improved.png, id=435, 867.24pt x 578.16pt>
+File: ./Immagini/impatto_m_counting_radix_improved.png Graphic file (type png)
+<use ./Immagini/impatto_m_counting_radix_improved.png>
+Package pdftex.def Info: ./Immagini/impatto_m_counting_radix_improved.png  used on input line 559.
+(pdftex.def)             Requested size: 376.42575pt x 250.9506pt.
+File: Immagini/Logo_Università_di_Udine.png Graphic file (type png)
+<use Immagini/Logo_Università_di_Udine.png>
+Package pdftex.def Info: Immagini/Logo_Università_di_Udine.png  used on input line 563.
+(pdftex.def)             Requested size: 28.45274pt x 28.45157pt.
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 32.5316pt, for example:
+(fancyhdr)                \setlength{\headheight}{32.5316pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-20.5316pt}.
+
+[18 <./Immagini/confronto_casi_peggiori_loglog.png>]
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 565.
+
+<./Immagini/Grafico.png, id=443, 867.24pt x 505.89pt>
+File: ./Immagini/Grafico.png Graphic file (type png)
+<use ./Immagini/Grafico.png>
+Package pdftex.def Info: ./Immagini/Grafico.png  used on input line 576.
+(pdftex.def)             Requested size: 433.61894pt x 252.94437pt.
+
+Overfull \hbox (15.36526pt too wide) in paragraph at lines 576--577
+ [][] 
+ []
+
+File: Immagini/Logo_Università_di_Udine.png Graphic file (type png)
+<use Immagini/Logo_Università_di_Udine.png>
+Package pdftex.def Info: Immagini/Logo_Università_di_Udine.png  used on input line 579.
+(pdftex.def)             Requested size: 28.45274pt x 28.45157pt.
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 32.5316pt, for example:
+(fancyhdr)                \setlength{\headheight}{32.5316pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-20.5316pt}.
+
+[19 <./Immagini/impatto_m_counting_radix_improved.png>]
+
+Package hyperref Warning: Difference (3) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 583.
+
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 588.
+
+File: Immagini/Logo_Università_di_Udine.png Graphic file (type png)
+<use Immagini/Logo_Università_di_Udine.png>
+Package pdftex.def Info: Immagini/Logo_Università_di_Udine.png  used on input line 600.
+(pdftex.def)             Requested size: 28.45274pt x 28.45157pt.
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 32.5316pt, for example:
+(fancyhdr)                \setlength{\headheight}{32.5316pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-20.5316pt}.
+
+[20 <./Immagini/Grafico.png>]
+File: Immagini/Logo_Università_di_Udine.png Graphic file (type png)
+<use Immagini/Logo_Università_di_Udine.png>
+Package pdftex.def Info: Immagini/Logo_Università_di_Udine.png  used on input line 622.
+(pdftex.def)             Requested size: 28.45274pt x 28.45157pt.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 32.5316pt, for example:
+(fancyhdr)                \setlength{\headheight}{32.5316pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-20.5316pt}.
+
+[21] (Riassunto.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-03-14>
  ***********
 Package rerunfilecheck Info: File `Riassunto.out' has not changed.
-(rerunfilecheck)             Checksum: 0D95E9DAFD7450F14C1F3A10BFDE9029;2011.
+(rerunfilecheck)             Checksum: 5F1EBA1B6B8A60D9217A01C0C9AAEC4B;8298.
  ) 
 Here is how much of TeX's memory you used:
- 17163 strings out of 474424
- 272870 string characters out of 5742212
+ 17297 strings out of 474424
+ 276317 string characters out of 5742212
  2093496 words of memory out of 5000000
- 39145 multiletter control sequences out of 15000+600000
- 567148 words of font info for 71 fonts, out of 8000000 for 9000
+ 39225 multiletter control sequences out of 15000+600000
+ 567484 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,16n,117p,560b,2148s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\Luca\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmitt10.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on Riassunto.pdf (11 pages, 423757 bytes).
+ 75i,16n,117p,829b,2148s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\Luca\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmitt10.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on Riassunto.pdf (22 pages, 3682683 bytes).
 PDF statistics:
- 335 PDF objects out of 1000 (max. 8388607)
- 127 named destinations out of 1000 (max. 500000)
- 149 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 565 PDF objects out of 1000 (max. 8388607)
+ 180 named destinations out of 1000 (max. 500000)
+ 387 words of extra memory for PDF output out of 10000 (max. 10000000)
 
