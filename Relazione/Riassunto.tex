@@ -16,6 +16,8 @@
 % Frontespizio config
 \usepackage[nowrite]{front-th}
 \usepackage{pdfpages}
+\usepackage{caption}
+\captionsetup[figure]{justification=justified}
 
 \usepackage{fancyhdr} % <-- aggiunto
 \pagestyle{fancy}     % <-- imposto lo stile fancy
@@ -118,6 +120,7 @@ Il progetto include le misurazioni e la conseguente graficazione di 4 algoritmi 
     \item QuickSort
     \item QuickSort 3 Way
     \item CountingSort
+    \item RadixSort
 \end{itemize}
 \subsection{Specifiche tecniche}
 Le specifiche tecniche delle misurazioni sono state:
@@ -126,18 +129,19 @@ Le specifiche tecniche delle misurazioni sono state:
     \item La lunghezza dell'array è compresa tra 100 e 100 mila valori
     \item Il valore di ciascun elemento dell'array varia casualmente tra 10 e un milione
 \end{itemize}
-Gli algoritmi sono stati implementati in linguaggio Python. \\
+Gli algoritmi sono stati implementati in linguaggio \textbf{Python}. \\
 Le misurazioni dei tempi sono state acquisite tramite la funzione \href{https://docs.python.org/3/library/time.html#time.perf_counter}{\textit{\texttt{perf\char`_counter}}} della libreria \textit{time}.
 
 \section{Algoritmi}
 Gli algoritmi di ordinamento presi in esame presentano caratteristiche differenti e risultano più o meno efficienti in base alle carattestiche dell'array di elementi da ordinare.
 
 \subsection{QuickSort}
-Algoritmo di ordinamento ricorsivo del tipo divide-et-impera, quindi basato sulla suddivisione in n sottoproblemi, risolti ricorsivamente, fino al raggiungimento del caso base.\\
+Algoritmo di ordinamento ricorsivo del tipo divide-et-impera, quindi basato sulla suddivisione in \textit{n} sottoproblemi, risolti ricorsivamente, fino al raggiungimento del caso base.\\
 Non presenta la necessità di utilizzo di strutture dati aggiuntive, di conseguenza lo scambio di elementi avviene in-place.\bigbreak
-\noindent  \underline{Idea} \\ Divide: partizionando l'array A[p:r] in due sottoarray A[p:q-1] (parte inferiore) e A[q+1:r] (parte superiore) in modo che ciascun elemento della parte 
+\noindent  \underline{Idea} \\ \textit{Divide}: partizionando l'array A[p:r] in due sottoarray A[p:q-1] (parte inferiore) e A[q+1:r] (parte superiore) in modo che ciascun elemento della parte 
 inferiore sia minore o uguale al pivot A[q], il quale è a sua volta minore o uguale a ciascun elemento della parte superiore. Calcolare l'indice q del pivot fa parte della procedura 
-di partition. Impera: richiamando ricorsivamente quicksort su ciascun sottoarray A[p:q-1] e A[q+1:r]. Infine per combinare non serve far 
+di partition.\bigbreak
+\noindent \textit{Impera}: richiamando ricorsivamente quicksort su ciascun sottoarray A[p:q-1] e A[q+1:r]. Infine per combinare non serve far 
 nulla dato che i due sottoarray sono già ordinati, per cui avrò che l'intero sottoarray A[p:r] è ordinato. 
 La procedura Partition invece mi permette di stabilire un perno, a quel punto avrò che gli elementi precedenti sono minori del perno mentre quelli a destra saranno maggiori,
 considerando però che successivamente vanno ordinati.\bigskip
@@ -171,7 +175,7 @@ Il QuickSort è un esempio di algoritmo che lavora in-place, quindi la complessi
  
 \begin{itemize}
 
-  \item \textbf{Caso migliore:} il pivot divide sempre l'array in due parti, ovvero partition produce due sottoproblemi di dimensione al massimo n/2,
+  \item \textbf{Caso migliore:} il pivot divide sempre l'array in due parti, ovvero partition produce due sottoproblemi di dimensione al massimo $\frac{n}{2}$,
    dato che uno è di dimensione $\lfloor \frac{n-1}{2} \rfloor \leq \frac{n}{2}$ e 
    l'altro di dimensione $\lceil \frac{n-1}{2} \rceil - 1 \leq \frac{n}{2}$. 
    Un limite superiore al tempo di esecuzione è descritto da: $T(n) = 2T\left(\frac{n}{2}\right) + \Theta(n)$
@@ -180,16 +184,16 @@ Il QuickSort è un esempio di algoritmo che lavora in-place, quindi la complessi
   Per un input casuale la complessità media è $T(n) = \frac{1}{n}\sum_{i=0}^{n-1}\left[T(i) + T(n-i-1)\right] + \Theta(n)$ che si risolve in
    $\mathbb{E}[T(n)] = \Theta(n \log n)$.
 
-  \item \textbf{Caso peggiore:} quando la partizione produce un sottoproblema con n-1 elementi e uno con 0 elementi. Si può assumere che questa 
+  \item \textbf{Caso peggiore:} quando la partizione produce un sottoproblema con $n-1$ elementi e uno con 0 elementi. Si può assumere che questa 
   partizione sbilanciata avvenga ad ogni chiamata ricorsiva. La partizione costa $\Theta(n)$. Dato che la chiamata ricorsiva su un array di dimensione 
   0 ritorna senza fare nulla, $T(0) = \Theta(1)$, 
-  e l'occorrenza del tempo di esecuzione è $T(n) = T(n-1) + T(0) + \Theta(n) = T(n-1) + \Theta(n)$ con soluzione finale $T(n) = \Theta(n^2)$. 
+  e l'occorrenza del tempo di esecuzione è $T(n) = T(n-1) + T(0) + \Theta(n) = T(n-1) + \Theta(n)$ con soluzione finale $T(n) = \Theta(n^2)$.\\ 
   Dunque, se la partizione è massimamente sbilanciata in ogni livello ricorsivo dell'algoritmo, il tempo di esecuzione è $\Theta(n^2)$.
 
 \end{itemize}
 
-\noindent Quicksort non è stabile: funziona dividendo l’array in sottosequenze basate su un pivot, e poi riordinando ricorsivamente. 
-Durante questo processo: gli elementi uguali al pivot possono finire in posizioni diverse rispetto all’ordine originale; questo accade 
+\noindent Quicksort \underline{non è stabile}: funziona dividendo l’array in sottosequenze basate su un pivot, e poi riordinando ricorsivamente. 
+Durante questo processo gli elementi uguali al pivot possono finire in posizioni diverse rispetto all’ordine originale; questo accade 
 perché lo scambio degli elementi non tiene conto della loro posizione iniziale, ma solo del confronto con il pivot.
 
 \subsubsection{Codice}
@@ -250,17 +254,26 @@ A differenza del QuickSort classico, QuickSort 3-Way presenta una notevole effic
 \bigbreak
 
 \noindent  \underline{Idea} \\ Scelta del pivot: Il primo elemento dell'array (arr[l]) è selezionato come pivot.\\
-Inizializzazione dei puntatori: \\
-- lt (less than): confine sinistro degli elementi minori del pivot.\\
-- gt (greater than): confine destro degli elementi maggiori del pivot.\\
-- i: puntatore corrente per scorrere l'array.\\
-Partizionamento 3-way:\\
-- Se $ \texttt{arr[i]} < \texttt{pivot} $: scambia arr[i] con arr[lt], incrementa lt e i\\
-- Se $ \texttt{arr[i]} > \texttt{pivot} $: scambia arr[i] con arr[gt], decrementa gt (senza incrementare i).\\
-- Se $ \texttt{arr[i]} == \texttt{pivot} $: incrementa solo i.\\
-Ricorsione:\\
-- Applica ricorsivamente l'algoritmo alle partizioni sinistra (l a lt-1) e destra (gt+1 a r).\\
-- La partizione centrale (lt a gt) contiene elementi già ordinati (tutti uguali al pivot).\\
+Inizializzazione dei puntatori:
+\begin{itemize}[-]
+    \item lt (less than): confine sinistro degli elementi minori del pivot.
+    \item gt (greater than): confine destro degli elementi maggiori del pivot.
+    \item i: puntatore corrente per scorrere l'array.
+\end{itemize}
+
+\noindent Partizionamento 3-way:
+\begin{itemize}[-]
+    \item Se $ \texttt{arr[i]} < \texttt{pivot} $: scambia arr[i] con arr[lt], incrementa lt e i
+    \item Se $ \texttt{arr[i]} > \texttt{pivot} $: scambia arr[i] con arr[gt], decrementa gt (senza incrementare i).
+    \item Se $ \texttt{arr[i]} == \texttt{pivot} $: incrementa solo i.
+\end{itemize}
+
+\noindent Ricorsione:
+\begin{itemize}[-]
+    \item Applica ricorsivamente l'algoritmo alle partizioni sinistra (l a lt-1) e destra (gt+1 a r).
+    \item La partizione centrale (lt a gt) contiene elementi già ordinati (tutti uguali al pivot).
+\end{itemize}
+
 \bigskip
 
 Le complessità asintotiche temporali di QuickSort3Way sono:
@@ -275,9 +288,9 @@ Come nel caso di QuickSort, anche il QuickSort3Way lavora in-place, senza bisogn
 Considerando che l'algoritmo itera gli elementi dell'array e siccome il ciclo for viene eseguito al massimo $n$ volte.\\
 L'algoritmo partiziona l'array in tre sezioni (elementi $<$ pivot, $=$ pivot e $>$ pivot) attraverso un singolo passaggio che opera in tempo lineare $\Theta(n)$. La complessità temporale dipende dall'equilibrio delle partizioni:
 \begin{itemize}
-    \item \textbf{Caso ottimo $\Omega(n)$}: Tutti gli elementi sono uguali o la partizione centrale contiene tutti gli elementi (nessun elemento $<$ o $>$ del pivot). Dopo un singolo passaggio di partizionamento: partizione sinistra: vuota; partizione centrale: tutti gli elementi; partizione destra: vuota. Nessuna chiamata ricorsiva successiva. Costo singola scansione $O(n)$.
-    \item \textbf{Caso medio $\Theta(n \log n)$}: Partizionamenti bilanciati con pivot scelto casualmente. Il pivot divide l'array in tre partizioni di dimensioni approssimativamente: $\frac{n}{3}$ elementi $<$ pivot; $\frac{n}{3}$ elementi $=$ pivot; $\frac{n}{3}$ elementi $>$ pivot; Altezza albero di ricorsione: $O(log n)$. L'equazione di ricorrenza é $T(n) = T\left(\frac{n}{3}\right) + T\left(\frac{n}{3}\right) + O(n) = 2T\left(\frac{n}{3}\right) + O(n)$. Soluzione: $T(n) = \Theta(n \log n)$
-    \item \textbf{Caso peggiore $\mathcal{O}(n^2)$}: Si verifica quando il pivot è sistematicamente l'elemento minimo o massimo dell'array (es. array già ordinato in senso crescente/decrescente). Ogni partizionamento produce: una partizione sinistra di dimensione 0, una partizione centrale di dimensione 1 (solo il pivot), una partizione destra di dimensione n-1. L'altezza dell'albero di ricorsione diventa $O(n)$. Costo per livello: livello 0: $O(n)$; livello 1: O(n-1)... livello k: $O(n-k)$. L'equazione di ricorrenza é $T(n) = T(0) + T(n-1) + O(n) = T(n-1) + O(n)$. Soluzione: $T(n) = O(n^2)$
+    \item \textbf{Caso ottimo $\Omega(n)$}: Tutti gli elementi sono uguali o la partizione centrale contiene tutti gli elementi (nessun elemento $<$ o $>$ del pivot). Dopo un singolo passaggio di partizionamento: partizione sinistra $\rightarrow$ vuota; partizione centrale $\rightarrow$ tutti gli elementi; partizione destra $\rightarrow$ vuota. Nessuna chiamata ricorsiva successiva. Costo singola scansione: $O(n)$.
+    \item \textbf{Caso medio $\Theta(n \log n)$}: Partizionamenti bilanciati con pivot scelto casualmente. Il pivot divide l'array in tre partizioni di dimensioni approssimativamente: $\frac{n}{3}$ elementi $<$ pivot; $\frac{n}{3}$ elementi $=$ pivot; $\frac{n}{3}$ elementi $>$ pivot; Altezza albero di ricorsione: $O(log\;n)$. L'equazione di ricorrenza é $T(n) = T\left(\frac{n}{3}\right) + T\left(\frac{n}{3}\right) + O(n) = 2T\left(\frac{n}{3}\right) + O(n)$. Soluzione: $T(n) = \Theta(n \log n)$
+    \item \textbf{Caso peggiore $\mathcal{O}(n^2)$}: Si verifica quando il pivot è sistematicamente l'elemento minimo o massimo dell'array (es. array già ordinato in senso crescente/decrescente). Ogni partizionamento produce: una partizione sinistra di dimensione 0, una partizione centrale di dimensione 1 (solo il pivot), una partizione destra di dimensione $n-1$. L'altezza dell'albero di ricorsione diventa $O(n)$. Costo per livello: livello 0 $\rightarrow$ $O(n)$; livello 1 $\rightarrow$ $O(n-1)$... livello k $\rightarrow$ $O(n-k)$. L'equazione di ricorrenza é $T(n) = T(0) + T(n-1) + O(n) = T(n-1) + O(n)$. Soluzione: $T(n) = O(n^2)$.
 \end{itemize}
 
 
@@ -312,7 +325,7 @@ L'algoritmo partiziona l'array in tre sezioni (elementi $<$ pivot, $=$ pivot e $
 \subsubsection*{Funzionamento del codice}
 
 \begin{enumerate}
-  \item \textbf{Caso Base (l $>=$ r):} ferma la ricorsione se il sottoarray ha 0 o 1 elemento.
+  \item \textbf{Caso Base (l $\geq$ r):} ferma la ricorsione se il sottoarray ha 0 o 1 elemento.
 
   \item \textbf{Puntatori:} lt tiene traccia degli elementi minori del pivot; gt tiene traccia degli elementi maggiori del pivot; i scorre l'array da sinistra a destra.
 
@@ -401,27 +414,30 @@ Questo processo viene svolto ricorsivamente per ciascuna colonna di cifre, parte
     \caption*{Esempio di ordinamento}
 \end{figure}
 
-Radix Sort, per funzionare correttamente, richiede un algoritmo di ordinamento stabile per l'ordinamento delle singole cifre (o caratteri, a seconda del caso).\bigbreak
+\noindent Radix Sort, per funzionare correttamente, richiede un algoritmo di ordinamento stabile per l'ordinamento delle singole cifre (o caratteri, a seconda del caso).\bigbreak
 \noindent Solitamente, come algoritmo sottostante viene utilizzato Counting Sort, il quale, però, nella sua versione tradizionale non è stabile. Infatti, in presenza di chiavi uguali, Counting Sort potrebbe modificare l'ordine relativo degli elementi rispetto all'array di input.\bigbreak
-\noindent Per garantire la stabilità, è sufficiente iterare l'array di input in ordine inverso durante la fase di costruzione dell'array di output. In questo modo, quando più elementi hanno la stessa chiave, essi verranno copiati nell'output nell'ordine in cui compaiono nell'input, preservando così la stabilità dell'ordinamento.
+\noindent Per garantire la stabilità, è sufficiente iterare l'array di input in ordine inverso durante la fase di costruzione dell'array di output. In questo modo, quando più elementi hanno la stessa chiave, essi verranno copiati nell'output nello stesso ordine in cui compaiono nell'input, preservando così la stabilità dell'ordinamento.
 
 
 
 \subsubsection{Analisi delle complessità}
-\textbf{Caso medio}\quad Considerando \textit{n} elementi da ordinare, ciascuno composto da \textit{d} cifre, e assumendo che ogni cifra possa assumere al più \textit{k} valori distinti, Radix Sort ha una complessità asintotica pari a $\Theta(d(n + k))$.\bigbreak
-\noindent Tuttavia, ciò è valido solo se l'algoritmo utilizzato per ordinare le singole cifre (come Counting Sort) ha complessità $\Theta(n + k)$, ovvero è lineare rispetto al numero di elementi e all'ampiezza del dominio delle cifre.\bigbreak
-\noindent \textbf{Caso ottimo}\quad Le condizioni del caso ottimo di RadixSort sono:
 \begin{itemize}
-    \item \textit{d} piccolo;
-    \item $k < n$.
+    \item \textbf{Caso ottimo: }Le condizioni del caso ottimo di RadixSort sono:
+    \begin{itemize}
+        \item \textit{d} piccolo;
+        \item $k < n$.
+    \end{itemize}
+    La complessità rimane $\Theta(d(n + k))$, tuttavia, con valori di $d$ e $k$ costanti si ottiene un $\Theta(n)$.
+    \item \textbf{Caso pessimo: }Il caso peggiore si verifica nelle condizioni di:
+    \begin{itemize}
+        \item $d$ elevato (numeri molto grandi);
+        \item $k \geq n$ (rende CountingSort inefficiente).
+    \end{itemize}
+    La complessità resta $\mathcal{O}(d(n + k))$, ma può degenerare fino a diventare $\mathcal{O}(n\cdot log(n))$
+    \item \textbf{Caso medio: }Considerando \textit{n} elementi da ordinare, ciascuno composto da \textit{d} cifre, e assumendo che ogni cifra possa assumere al più \textit{k} valori distinti, Radix Sort ha una complessità asintotica pari a $\Theta(d(n + k))$.\\
+    Tuttavia, ciò è valido solo se l'algoritmo utilizzato per ordinare le singole cifre (come Counting Sort) ha complessità $\Theta(n + k)$, ovvero è lineare rispetto al numero di elementi e all'ampiezza del dominio delle cifre.
 \end{itemize}
-La complessità rimane $\Theta(d(n + k))$, tuttavia, con valori di $d$ e $k$ costanti si ottiene un $\Theta(n)$.\bigbreak
-\noindent \textbf{Caso pessimo}\quad Il caso peggiore si verifica nelle condizioni di:
-\begin{itemize}
-    \item $d$ elevato (numeri molto grandi);
-    \item $k \geq n$ (rende CountingSort inefficiente).
-\end{itemize}
-La complessità resta $\mathcal{O}(d(n + k))$, ma può degenerare fino a diventare $\mathcal{O}(n\cdot log(n))$
+
 \subsubsection{Motivazioni della scelta}
 É stato scelto RadixSort come quarto algoritmo a scelta per il suo approccio innovativo e diverso rispetto agli altri algoritmi selezionati, offrendo una prospettiva di confronto interessante.\\
 Oltre a ciò, si tratta di un algoritmo utile e applicato in vari contesti reali.\bigbreak
@@ -466,7 +482,7 @@ def RadixSort(arr):
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{./Immagini/tempo_vs_n_lineare_improved.png}
-    \caption {\textbf{Tempo vs \(n\) (scala lineare).} Tempo medio di esecuzione al variare di \(n\) (con \(m=100\,000\)). Punti: medie su \(k\) run; barre: deviazione standard. Linee tratteggiate: curve teoriche di riferimento normalizzate su \(n_0\) per confronto pratico.}
+    \caption*{\textbf{Tempo vs \(n\) (scala lineare).} Tempo medio di esecuzione al variare di \(n\) (con \(m=100\,000\)). Punti: medie su \(k\) run; barre: deviazione standard. Linee tratteggiate: curve teoriche di riferimento normalizzate su \(n_0\) per confronto pratico.}
     \label{fig:grafico}
 \end{figure}
 
@@ -487,7 +503,7 @@ Non trarre conclusioni sull'ordine di crescita esclusivamente osservando la curv
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.9\textwidth]{./Immagini/tempo_vs_n_loglog_improved.png}
-\caption{\textbf{Tempo vs \(n\) (scala log-log).} Regressione lineare su \(\log\)-\(\log\) per stimare la pendenza empirica \(a\) tale che \(\text{time}\approx C n^{a}\). Valori di pendenza stimati riportati in legenda. Nota: per complessità \(O(n\log n)\) la pendenza reale tende a 1.}
+\caption*{\textbf{Tempo vs \(n\) (scala log-log).} Regressione lineare su \(\log\)-\(\log\) per stimare la pendenza empirica \(a\) tale che \(\text{time}\approx C n^{a}\). Valori di pendenza stimati riportati in legenda. Nota: per complessità \(O(n\log n)\) la pendenza reale tende a 1.}
 \label{fig:variazione_n}
 \end{figure}
 
@@ -505,7 +521,7 @@ La scala log-log è utilizzata per stimare la relazione di tipo potenza tra temp
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.9\textwidth]{./Immagini/tempo_vs_m_lineare_improved.png}
-\caption{\textbf{Tempo vs \(m\) (scala lineare).} Effetto del range dei valori \(m\) su algoritmi comparativi e non comparativi (con \(n\) fissato). Barre: deviazione standard. Nota: Counting Sort richiede memoria proporzionale a \(m\).}
+\caption*{\textbf{Tempo vs \(m\) (scala lineare).} Effetto del range dei valori \(m\) su algoritmi comparativi e non comparativi (con \(n\) fissato). Barre: deviazione standard. Nota: Counting Sort richiede memoria proporzionale a \(m\).}
 \label{fig:variazione_m_lin}
 \end{figure}
 
@@ -523,7 +539,7 @@ Questo grafico valuta l'impatto del range dei valori \(m\) (es. dominio dei nume
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.9\textwidth]{./Immagini/tempo_vs_m_loglog_improved.png}
-\caption{\textbf{Tempo vs \(m\) (scala log-log).} Regressione log-log per stimare la dipendenza dal range \(m\). Pendenze stimate riportate nella legenda. Counting Sort mostra tipicamente pendenza circa 1 dovuta all'azzeramento dell'array dei contatori.}
+\caption*{\textbf{Tempo vs \(m\) (scala log-log).} Regressione log-log per stimare la dipendenza dal range \(m\). Pendenze stimate riportate nella legenda. Counting Sort mostra tipicamente pendenza circa 1 dovuta all'azzeramento dell'array dei contatori.}
 \label{fig:variazione_m_log}
 \end{figure}
 
@@ -540,7 +556,7 @@ Versione log-log del Grafico~3: utile a stimare il comportamento asintotico risp
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.9\textwidth]{./Immagini/confronto_casi_peggiori_loglog.png}
-\caption{\textbf{Confronto casi peggiori (log-log).} Prestazioni su input ordinato; regressioni log-log usate per stimare l'esponente empirico. QuickSort classico mostra il peggior comportamento se non protetto da scelte pivot robuste.}
+\caption*{\textbf{Confronto casi peggiori (log-log).} Prestazioni su input ordinato; regressioni log-log usate per stimare l'esponente empirico. QuickSort classico mostra il peggior comportamento se non protetto da scelte pivot robuste.}
 \label{fig:confront_loglog}
 \end{figure}
 
@@ -557,7 +573,7 @@ Questo grafico confronta le prestazioni degli algoritmi sul caso avverso (ad ese
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.9\textwidth]{./Immagini/impatto_m_counting_radix_improved.png}
-\caption{\textbf{Impatto di \(m\) su CountingSort e RadixSort (asse \(m\) logaritmico).} Confronto diretto che mostra il passaggio di regime: Counting Sort è competitivo per \(m\) piccoli, ma diventa inefficiente per \(m\) grandi per motivi di memoria e overhead di inizializzazione. Radix mostra migliore scalabilità nel caso di chiavi con numero di cifre limitato.}
+\caption*{\textbf{Impatto di \(m\) su CountingSort e RadixSort (asse \(m\) logaritmico).} Confronto diretto che mostra il passaggio di regime: Counting Sort è competitivo per \(m\) piccoli, ma diventa inefficiente per \(m\) grandi per motivi di memoria e overhead di inizializzazione. Radix mostra migliore scalabilità nel caso di chiavi con numero di cifre limitato.}
 \label{fig:impatto_m_count_radix}
 \end{figure}
 

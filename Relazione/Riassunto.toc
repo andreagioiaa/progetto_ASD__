@@ -8,18 +8,18 @@
 \contentsline {subsubsection}{\numberline {2.1.2}Codice}{5}{subsubsection.2.1.2}%
 \contentsline {subsection}{\numberline {2.2}QuickSort3Way}{6}{subsection.2.2}%
 \contentsline {subsubsection}{\numberline {2.2.1}Analisi delle complessità}{7}{subsubsection.2.2.1}%
-\contentsline {subsubsection}{\numberline {2.2.2}Codice}{7}{subsubsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.2}Codice}{8}{subsubsection.2.2.2}%
 \contentsline {subsection}{\numberline {2.3}CountingSort}{8}{subsection.2.3}%
-\contentsline {subsubsection}{\numberline {2.3.1}Analisi delle complessità}{8}{subsubsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.4}RadixSort}{10}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.3.1}Analisi delle complessità}{9}{subsubsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.4}RadixSort}{11}{subsection.2.4}%
 \contentsline {subsubsection}{\numberline {2.4.1}Analisi delle complessità}{11}{subsubsection.2.4.1}%
 \contentsline {subsubsection}{\numberline {2.4.2}Motivazioni della scelta}{12}{subsubsection.2.4.2}%
 \contentsline {subsubsection}{\numberline {2.4.3}Codice}{12}{subsubsection.2.4.3}%
-\contentsline {section}{\numberline {3}Misurazioni}{13}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Analisi delle Prestazioni al Variare della Dimensione dell'Array (Scala Lineare)}{13}{subsection.3.1}%
+\contentsline {section}{\numberline {3}Misurazioni}{14}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Analisi delle Prestazioni al Variare della Dimensione dell'Array (Scala Lineare)}{14}{subsection.3.1}%
 \contentsline {paragraph}{\numberline {3.1.0.1}Descrizione e obiettivo}{14}{paragraph.3.1.0.1}%
 \contentsline {paragraph}{\numberline {3.1.0.2}Osservazioni chiave}{14}{paragraph.3.1.0.2}%
-\contentsline {paragraph}{\numberline {3.1.0.3}Caveat interpretativi}{14}{paragraph.3.1.0.3}%
+\contentsline {paragraph}{\numberline {3.1.0.3}Caveat interpretativi}{15}{paragraph.3.1.0.3}%
 \contentsline {subsection}{\numberline {3.2}Analisi delle Prestazioni al Variare della Dimensione dell'Array (Scala Log-Log)}{15}{subsection.3.2}%
 \contentsline {paragraph}{\numberline {3.2.0.1}Descrizione e obiettivo}{15}{paragraph.3.2.0.1}%
 \contentsline {paragraph}{\numberline {3.2.0.2}Interpretazione della pendenza}{15}{paragraph.3.2.0.2}%
