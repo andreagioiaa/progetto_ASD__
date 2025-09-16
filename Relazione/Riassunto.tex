@@ -22,7 +22,7 @@
 \usepackage{fancyhdr} % <-- aggiunto
 \pagestyle{fancy}     % <-- imposto lo stile fancy
 \fancyhf{}
-\rhead{\includegraphics[width=1cm]{Immagini/Logo_Università_di_Udine.png}} % <-- logo in alto a destra
+\rhead{\includegraphics[width=1cm]{Immagini_EX/Logo_Università_di_Udine.png}} % <-- logo in alto a destra
 \hypersetup{
     colorlinks,
     citecolor=black,
@@ -90,7 +90,7 @@
 
 % Dati frontespizio
 \Universita{Udine}
-\Logo[3.5cm]{./Immagini/Logo_Università_di_Udine.png}
+\Logo[3.5cm]{./Immagini_EX/Logo_Università_di_Udine.png}
 \Dipartimento{Scienze Matematiche, Informatiche e Fisiche}  % Aggiunto in sostituzione di Facoltà
 \Corso[Laurea]{Internet Of Things, Big Data, Machine Learning}
 \Annoaccademico{2024--2025}
@@ -410,7 +410,7 @@ Questo processo viene svolto ricorsivamente per ciascuna colonna di cifre, parte
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.5]{./Immagini/RadixSort.png}
+    \includegraphics[scale=0.5]{./Immagini_EX/RadixSort.png}
     \caption*{Esempio di ordinamento}
 \end{figure}
 
@@ -478,162 +478,33 @@ def RadixSort(arr):
 
 \section{Misurazioni}
 
-\subsection{Analisi delle Prestazioni al Variare della Dimensione dell'Array (Scala Lineare)}
+\subsection{Analisi delle Prestazioni al Variare della Dimensione dell'Array (Scala Lineare e Logaritmica)}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{./Immagini/tempo_vs_n_lineare_improved.png}
-    \caption*{\textbf{Tempo vs \(n\) (scala lineare).} Tempo medio di esecuzione al variare di \(n\) (con \(m=100\,000\)). Punti: medie su \(k\) run; barre: deviazione standard. Linee tratteggiate: curve teoriche di riferimento normalizzate su \(n_0\) per confronto pratico.}
+    \includegraphics[width=\textwidth]{Immagini/confronto_DEFINITIVO.png}
+    \caption*{\textbf{Tempo vs \(n\) (scala lineare).} Tempo medio di esecuzione al variare di \(n\) (con \(m=100\,000\) costante).}
     \label{fig:grafico}
 \end{figure}
 
 \paragraph{Descrizione e obiettivo}
 Questo grafico mostra il tempo medio di esecuzione in funzione della dimensione dell'input \(n\) con \(m\) fissato a 100\,000. Lo scopo è confrontare i tempi assoluti rilevati e visualizzare l'overhead pratico degli algoritmi.
 
-\paragraph{Osservazioni chiave}
+\paragraph{Osservazioni sul grafico lineare}
 \begin{itemize}
-  \item I valori assoluti del tempo evidenziano chiaramente le differenze pratiche: algoritmi con complessità asintotica più favorevole (es. \(O(n\log n)\)) si collocano su tempi nettamente inferiori rispetto ad algoritmi quadratici per \(n\) sufficientemente grandi.
-  \item Le curve teoriche di riferimento (linee tratteggiate) per \(c\cdot n\) e \(c\cdot n\log n\) sono state normalizzate su un punto di riferimento \(n_0\) ed evidenziano che, sebbene due algoritmi possano avere lo stesso ordine asintotico, le costanti fanno la differenza nelle dimensioni realistiche dell'esperimento.
-  \item Le barre di deviazione standard, se contenute, confermano la ripetibilità sperimentale; eventuali picchi o rumore debbono essere commentati (carico di sistema, garbage collection, variazioni nella generazione degli input).
+  \item In ordine dal meno efficiente al più efficiente: QuickSort, QuickSort3Way, RadixSort, CountingSort.
+  \item Si nota che per input piccoli (array con $n$ piccolo) hanno efficienza simile. 
+  \item Con input grandi notiamo che tutti e 4 gli algoritmi crescono quasi linearmente senza pendenze altalenanti.
+  \item Al tempo $t = 100$ (input circa $38.000$), QuickSort e QuickSort3Way si sovrappongono con stesso tempo di esecuzione. In generale hanno andamento simile.
+  \item CountingSort invece presenta una crescita molto lenta, mantenendo un'ottima efficienza anche per input molto grandi.
 \end{itemize}
 
-\paragraph{Caveat interpretativi}
-Non trarre conclusioni sull'ordine di crescita esclusivamente osservando la curvatura in scala lineare: curve asintoticamente diverse possono essere vicine nei range sperimentali limitati. Per questo motivo è utile affiancare il grafico con la versione log-log (Grafico~2).
-
-\subsection{Analisi delle Prestazioni al Variare della Dimensione dell'Array (Scala Log-Log)}
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.9\textwidth]{./Immagini/tempo_vs_n_loglog_improved.png}
-\caption*{\textbf{Tempo vs \(n\) (scala log-log).} Regressione lineare su \(\log\)-\(\log\) per stimare la pendenza empirica \(a\) tale che \(\text{time}\approx C n^{a}\). Valori di pendenza stimati riportati in legenda. Nota: per complessità \(O(n\log n)\) la pendenza reale tende a 1.}
-\label{fig:variazione_n}
-\end{figure}
-
-\paragraph{Descrizione e obiettivo}
-La scala log-log è utilizzata per stimare la relazione di tipo potenza tra tempo e dimensione dell'input: una regressione lineare tra \(\log(\text{time})\) e \(\log(n)\) fornisce una stima empirica dell'esponente effettivo.
-
-\paragraph{Interpretazione della pendenza}
+\paragraph{Osservazioni sul grafico logaritmico}
 \begin{itemize}
-  \item Se la regressione restituisce una pendenza \(a\) tale che \(\log(\text{time}) \approx a\log n + b\), allora \(\text{time} \approx C\cdot n^{a}\).
-  \item Per complessità \(O(n\log n)\) la pendenza \(a\) tende a 1 per \(n\) grandi (poiché \(\log n\) cresce lentamente rispetto a potenze), dunque una pendenza empirica leggermente maggiore di 1 è coerente con \(n\log n\) su intervalli finiti; non implica automaticamente un ordine polinomiale effettivo con esponente \(>1\).
-  \item Una pendenza prossima a 2 corrisponderebbe a comportamento quadratico \(O(n^2)\).
+  \item Per QuickSort e QuickSort3Way abbiamo costo medio $O(n \log n)$ (pendenze 1.14 e 1.15, rispettivamente)
+  \item Per RadixSort costo medio $O(d \cdot n)$ (pendenza 0.99)
+  \item Per CountingSort costo medio $O(n + k)$ (pendenza 0.26, apparentemente costante)
+  \item Le distribuzioni di QuickSort e QuickSort3Way sono quasi sovrapposte, mentre RadixSort è molto vicina alle due
+  \item CountingSort mostra un andamento quasi costante fino a $n \approx 10^3$-$10^4$, per poi aumentare moderatamente restando comunque inferiore agli altri
 \end{itemize}
-
-\subsection{Impatto del Range dei Valori sulle Prestazioni (Scala Lineare)}
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.9\textwidth]{./Immagini/tempo_vs_m_lineare_improved.png}
-\caption*{\textbf{Tempo vs \(m\) (scala lineare).} Effetto del range dei valori \(m\) su algoritmi comparativi e non comparativi (con \(n\) fissato). Barre: deviazione standard. Nota: Counting Sort richiede memoria proporzionale a \(m\).}
-\label{fig:variazione_m_lin}
-\end{figure}
-
-\paragraph{Descrizione e obiettivo}
-Questo grafico valuta l'impatto del range dei valori \(m\) (es. dominio dei numeri generati) sul tempo degli algoritmi, con \(n\) fissato. È particolarmente rilevante per algoritmi non comparativi come Counting Sort.
-
-\paragraph{Osservazioni chiave}
-\begin{itemize}
-  \item \textbf{Counting Sort:} il tempo cresce sensibilmente con \(m\) a causa dell'allocazione e inizializzazione dell'array dei contatori di dimensione \(m\). Anche se il numero di elementi \(n\) è piccolo, un \(m\) grande comporta costi non trascurabili.
-  \item \textbf{Radix Sort:} dipende invece dal numero di cifre \(d\) e dalla base \(b\): per chiavi con rappresentazione a lunghezza fissa e \(d\) costante, Radix può rimanere efficace anche per \(m\) grandi.
-  \item Altri algoritmi comparativi (QuickSort, QuickSort 3-way) risultano relativamente insensibili al valore di \(m\) perché la loro complessità dipende principalmente da \(n\).
-\end{itemize}
-
-\subsection{Analisi dell'Impatto del Range dei Valori (Scala Log-Log)}
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.9\textwidth]{./Immagini/tempo_vs_m_loglog_improved.png}
-\caption*{\textbf{Tempo vs \(m\) (scala log-log).} Regressione log-log per stimare la dipendenza dal range \(m\). Pendenze stimate riportate nella legenda. Counting Sort mostra tipicamente pendenza circa 1 dovuta all'azzeramento dell'array dei contatori.}
-\label{fig:variazione_m_log}
-\end{figure}
-
-\paragraph{Descrizione e obiettivo}
-Versione log-log del Grafico~3: utile a stimare il comportamento asintotico rispetto a \(m\) (quando ha senso interpretare come potenza).
-
-\paragraph{Interpretazione}
-\begin{itemize}
-  \item Una pendenza \(a\approx 1\) per Counting Sort indica comportamento lineare rispetto a \(m\) (atteso per certe fasi dell'algoritmo come azzeramento dell'array dei contatori).
-  \item Se Radix presenta pendenza molto più bassa o platea, ciò indica che il costo non cresce direttamente con \(m\) ma è legato a parametri diversi (numero di cifre \(d\), base \(b\)).
-\end{itemize}
-
-\subsection{Analisi dei Casi Peggiori per gli Algoritmi QuickSort}
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.9\textwidth]{./Immagini/confronto_casi_peggiori_loglog.png}
-\caption*{\textbf{Confronto casi peggiori (log-log).} Prestazioni su input ordinato; regressioni log-log usate per stimare l'esponente empirico. QuickSort classico mostra il peggior comportamento se non protetto da scelte pivot robuste.}
-\label{fig:confront_loglog}
-\end{figure}
-
-\paragraph{Descrizione e obiettivo}
-Questo grafico confronta le prestazioni degli algoritmi sul caso avverso (ad esempio array già ordinato), con l'obiettivo di evidenziare degradazioni asintotiche, in particolare del QuickSort classico.
-
-\paragraph{Osservazioni e interpretazioni}
-\begin{itemize}
-  \item \textbf{QuickSort classico:} il pivot mal scelto può causare la ricorrenza degenerata \(T(n)=T(n-1)+\Theta(n)\) e quindi \(T(n)=\Theta(n^2)\); su log-log ciò si riflette con una pendenza vicino a 2.
-  \item \textbf{QuickSort 3-way o pivot randomizzato:} mostrano pendenze più vicine a 1 (o lievemente sopra) anche sullo stesso set di input, a dimostrazione della robustezza della scelta pivot o della tecnica 3-way in presenza di molteplici valori uguali.
-\end{itemize}
-
-\subsection{Analisi Comparativa dell'Impatto del Range su Algoritmi Non Comparativi}
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.9\textwidth]{./Immagini/impatto_m_counting_radix_improved.png}
-\caption*{\textbf{Impatto di \(m\) su CountingSort e RadixSort (asse \(m\) logaritmico).} Confronto diretto che mostra il passaggio di regime: Counting Sort è competitivo per \(m\) piccoli, ma diventa inefficiente per \(m\) grandi per motivi di memoria e overhead di inizializzazione. Radix mostra migliore scalabilità nel caso di chiavi con numero di cifre limitato.}
-\label{fig:impatto_m_count_radix}
-\end{figure}
-
-\paragraph{Descrizione e obiettivo}
-Grafico comparativo per mettere a confronto direttamente Counting Sort e Radix Sort su un ampio intervallo di \(m\), con asse \(m\) in scala logaritmica per coprire molti ordini di grandezza.
-
-\paragraph{Regimi osservati}
-\begin{itemize}
-  \item \textbf{Regime a piccoli \(m\):} Counting Sort è spesso più veloce (costanti favorevoli e semplicità). Radix può avere overhead maggiore a causa delle iterazioni per cifra.
-  \item \textbf{Regime a grandi \(m\):} Counting Sort penalizza fortemente per la memoria e i costi di inizializzazione; Radix tende a scalare meglio quando \(d\) (numero di cifre) rimane moderato.
-  \item \textbf{Soglia pratica:} nel grafico è visibile (ad es. attorno a \(m\approx 10^5\)) il punto in cui Counting Sort diventa meno pratico; questo valore dipende dall'implementazione e dalla memoria disponibile.
-\end{itemize}
-
-\begin{figure} [H]
-    \centering
-    \includegraphics[width=1\textwidth]{./Immagini/Grafico.png}
-    \caption*{\textbf{Complessità temporale degli algoritmi.} Tempi di esecuzione osservati in funzione della dimensione dell’input \(n\) per QuickSort, QuickSort 3-way, CountingSort e RadixSort. I punti rappresentano misurazioni sperimentali, mentre le linee mostrano le regressioni empiriche con bande di confidenza.
-    }
-\end{figure}
-
-\section{Conclusioni}
-
-\paragraph{Sintesi dei risultati.}
-Gli esperimenti condotti confermano le attese teoriche sulle famiglie di algoritmi considerate. 
-Tra gli algoritmi \emph{comparativi}, \texttt{QuickSort} e \texttt{QuickSort 3-way} presentano tempi che, al crescere della dimensione dell'input \(n\), sono compatibili con una complessità \(O(n\log n)\), mentre un algoritmo quadratico di riferimento (se considerato) degrada rapidamente. 
-Tra gli algoritmi \emph{non comparativi}, \texttt{Counting Sort} e \texttt{Radix Sort} evidenziano i loro punti di forza: il primo è lineare in \(n\) quando il range dei valori \(m\) è moderato (complessità \(O(n+m)\) e spazio \(O(m)\)), il secondo è efficace quando le chiavi hanno lunghezza fissa (complessità \(\Theta(d(n+k))\) con \(d\) numero di cifre e \(k\) la base/bucket), risultando poco sensibile a \(m\) se \(d\) rimane contenuto.
-
-\paragraph{Validazione empirica.}
-I grafici in scala log--log (tempo vs \(n\) e tempo vs \(m\)) hanno fornito una verifica quantitativa: 
-le pendenze stimate per \texttt{QuickSort}/\texttt{QuickSort 3-way} sono prossime a \(1\) (coerenti con \(n\log n\) su intervalli finiti), 
-quelle di \texttt{Counting Sort} rispetto a \(m\) sono vicine a \(1\) (costo di inizializzazione dell'array dei contatori), 
-e il \emph{caso peggiore} di \texttt{QuickSort} su input ordinato mostra un comportamento compatibile con \(O(n^2)\) (pendenza prossima a \(2\)). 
-Le barre d'errore ridotte indicano stabilità delle misure; eventuali variazioni localizzate sono attribuibili al rumore di sistema e alla generazione degli input.
-
-\paragraph{Trade-off pratici.}
-Oltre all'ordine asintotico, emergono differenze concrete dovute a costanti e gestione della memoria. 
-\texttt{QuickSort} è tipicamente il più rapido in media e in-place (stack atteso \(O(\log n)\)), ma non è stabile e può degradare se la scelta del pivot è sfavorevole; tecniche come pivot randomizzato, median-of-three e partizionamento 3-way riducono drasticamente tale rischio. 
-\texttt{QuickSort 3-way} funziona su qualsiasi tipo di dati ordinabili però meno efficiente su dati interi limitati. 
-\texttt{Counting Sort} è stabilmente lineare quando \(m=O(n)\), ma lo spazio \(O(m)\) ne limita l'uso per range molto ampi. 
-\texttt{Radix Sort}, usando una routine stabile (ad es. \texttt{Counting Sort}) come subprocedura, scala bene su chiavi a lunghezza fissa, con costi che dipendono da \(d\) più che da \(m\).
-
-\paragraph{Linee guida operative.}
-\begin{itemize}
-  \item \textbf{Uso generale su chiavi generiche:} preferire \texttt{QuickSort} con pivot robusto (random/median-of-three) o \texttt{MergeSort} quando serve stabilità.
-  \item \textbf{Molte duplicazioni:} \texttt{QuickSort 3-way} riduce il lavoro sui segmenti di uguali.
-  \item \textbf{Chiavi intere in range moderato:} \texttt{Counting Sort} è ideale (tempo \(O(n+m)\), stabile), purché la memoria \(O(m)\) sia sostenibile.
-  \item \textbf{Chiavi a lunghezza fissa/byte-string:} \texttt{Radix Sort} è competitivo e poco sensibile a \(m\), specialmente con base e \(d\) scelti con cura.
-\end{itemize}
-
-\paragraph{Limiti e minacce alla validità.}
-Le misure dipendono dall'hardware, dal sistema operativo, dalla gestione del \emph{runtime} e dalla distribuzione degli input. 
-Sebbene si siano effettuate più ripetizioni e si siano usate scale logaritmiche per mitigare l'effetto del rumore e stimare gli esponenti, restano possibili bias dovuti a cache, branch prediction, allocazioni di memoria e dettagli implementativi. 
-I risultati vanno letti come conferme sperimentali \emph{coerenti} con la teoria, non come stime assolute universalmente trasferibili.
-
-\paragraph{Conclusione finale.}
-In sintesi, l'analisi congiunta teorico--sperimentale mostra che:
-(i) gli algoritmi comparativi ben progettati (\texttt{QuickSort} con scelte di pivot robuste e \texttt{MergeSort}) sono la scelta predefinita su input generici grazie a prestazioni \(O(n\log n)\) affidabili; 
-(ii) in scenari strutturati, gli algoritmi non comparativi (\texttt{Counting}/\texttt{Radix}) offrono vantaggi decisivi, purché le ipotesi (\(m\) moderato, chiavi a lunghezza fissa, stabilità della subroutine) siano soddisfatte; 
-(iii) la selezione dell'algoritmo deve considerare non solo l'asintotica, ma anche stabilità, consumo di memoria e caratteristiche del dominio dei dati. 
-Questi risultati forniscono un criterio pratico per scegliere consapevolmente l'algoritmo più adatto al contesto applicativo.
-
 
 \end{document}
