@@ -21,6 +21,8 @@
 
 \usepackage{fancyhdr} % <-- aggiunto
 \pagestyle{fancy}     % <-- imposto lo stile fancy
+\setlength{\headheight}{32.5316pt}
+\addtolength{\topmargin}{-20.5316pt}
 \fancyhf{}
 \rhead{\includegraphics[width=1cm]{Immagini_EX/Logo_Università_di_Udine.png}} % <-- logo in alto a destra
 \hypersetup{
@@ -136,15 +138,19 @@ Le misurazioni dei tempi sono state acquisite tramite la funzione \href{https://
 Gli algoritmi di ordinamento presi in esame presentano caratteristiche differenti e risultano più o meno efficienti in base alle carattestiche dell'array di elementi da ordinare.
 
 \subsection{QuickSort}
-Algoritmo di ordinamento ricorsivo del tipo divide-et-impera, quindi basato sulla suddivisione in \textit{n} sottoproblemi, risolti ricorsivamente, fino al raggiungimento del caso base.\\
-Non presenta la necessità di utilizzo di strutture dati aggiuntive, di conseguenza lo scambio di elementi avviene in-place.\bigbreak
-\noindent  \underline{Idea} \\ \textit{Divide}: partizionando l'array A[p:r] in due sottoarray A[p:q-1] (parte inferiore) e A[q+1:r] (parte superiore) in modo che ciascun elemento della parte 
-inferiore sia minore o uguale al pivot A[q], il quale è a sua volta minore o uguale a ciascun elemento della parte superiore. Calcolare l'indice q del pivot fa parte della procedura 
-di partition.\bigbreak
-\noindent \textit{Impera}: richiamando ricorsivamente quicksort su ciascun sottoarray A[p:q-1] e A[q+1:r]. Infine per combinare non serve far 
-nulla dato che i due sottoarray sono già ordinati, per cui avrò che l'intero sottoarray A[p:r] è ordinato. 
-La procedura Partition invece mi permette di stabilire un perno, a quel punto avrò che gli elementi precedenti sono minori del perno mentre quelli a destra saranno maggiori,
-considerando però che successivamente vanno ordinati.\bigskip
+Algoritmo di ordinamento ricorsivo del tipo divide-et-impera, basato sulla suddivisione in \textit{n} sottoproblemi risolti ricorsivamente fino al raggiungimento del caso base.
+
+Non presenta la necessità di utilizzo di strutture dati aggiuntive, di conseguenza lo scambio di elementi avviene in-place.
+
+\noindent\textbf{Idea}
+
+\begin{itemize}
+  \item[\textit{Divide}:] Partizionamento dell'array $A[p:r]$ in due sottoarray $A[p:q-1]$ (parte inferiore) e $A[q+1:r]$ (parte superiore) in modo che ciascun elemento della parte inferiore sia minore o uguale al pivot $A[q]$, il quale è a sua volta minore o uguale a ciascun elemento della parte superiore. Calcolare l'indice $q$ del pivot fa parte della procedura di partition.
+  
+  \item[\textit{Impera}:] Richiamo ricorsivo di quicksort su ciascun sottoarray $A[p:q-1]$ e $A[q+1:r]$. Infine, per combinare, non serve fare nulla dato che i due sottoarray sono già ordinati, per cui l'intero sottoarray $A[p:r]$ risulta ordinato.
+  
+  \item La procedura Partition permette di stabilire un perno; a quel punto gli elementi precedenti sono minori del perno mentre quelli a destra sono maggiori, considerando però che successivamente vanno ordinati.
+\end{itemize}
 
 \noindent Le complessità asintotiche temporali di QuickSort sono: 
 \begin{itemize}
@@ -284,7 +290,7 @@ Le complessità asintotiche temporali di QuickSort3Way sono:
 \end{itemize}
 
 \subsubsection{Analisi delle complessità}
-Come nel caso di QuickSort, anche il QuickSort3Way lavora in-place, senza bisogno di stutture dati aggiuntive, quindi la complessità in spazio è $\Theta(n)$.\\\\
+Come nel caso di QuickSort, anche il QuickSort3Way lavora in-place, senza bisogno di stutture dati aggiuntive, quindi la complessità in spazio è $\Theta(n)$.\\
 Considerando che l'algoritmo itera gli elementi dell'array e siccome il ciclo for viene eseguito al massimo $n$ volte.\\
 L'algoritmo partiziona l'array in tre sezioni (elementi $<$ pivot, $=$ pivot e $>$ pivot) attraverso un singolo passaggio che opera in tempo lineare $\Theta(n)$. La complessità temporale dipende dall'equilibrio delle partizioni:
 \begin{itemize}
@@ -337,7 +343,7 @@ L'algoritmo partiziona l'array in tre sezioni (elementi $<$ pivot, $=$ pivot e $
 \subsection{CountingSort}
 
 \subsubsection*{Introduzione algoritmo}
-Il \emph{Counting Sort} è un algoritmo di ordinamento non basato su confronti, adatto quando i valori da ordinare sono interi non negativi con intervallo di valori relativamente contenuto rispetto al numero di elementi. \\
+Il \emph{Counting Sort} è un algoritmo di ordinamento non basato su confronti, adatto quando i valori da ordinare sono interi non negativi con intervallo di valori relativamente contenuto rispetto al numero di elementi.
 
 \noindent  \underline{Idea} \\ Contare le occorrenze di ciascun valore in un array ausiliario, calcolare una somma cumulativa (prefix sum) e quindi posizionare ogni elemento in output nel posto corretto per ottenere un ordinamento stabile.
 
@@ -486,8 +492,9 @@ def RadixSort(arr):
     \label{fig:grafico}
 \end{figure}
 
-\paragraph{Descrizione e obiettivo}
-Questo grafico mostra il tempo medio di esecuzione in funzione della dimensione dell'input \(n\) con \(m\) fissato a 100\,000. Lo scopo è confrontare i tempi assoluti rilevati e visualizzare l'overhead pratico degli algoritmi.
+\subsubsection{Descrizione e obiettivo}
+\label{descrizione-obiettivo}
+Questo grafico mostra il tempo medio di esecuzione in funzione della dimensione dell'input \(n\) con \(m\) fissato a 100000. Lo scopo è confrontare i tempi assoluti rilevati e visualizzare l'overhead pratico degli algoritmi.
 
 \paragraph{Osservazioni sul grafico lineare}
 \begin{itemize}
