@@ -514,4 +514,35 @@ Questo grafico mostra il tempo medio di esecuzione in funzione della dimensione 
   \item CountingSort mostra un andamento quasi costante fino a $n \approx 10^3$-$10^4$, per poi aumentare moderatamente restando comunque inferiore agli altri
 \end{itemize}
 
+\subsection{Analisi delle Prestazioni al Variare del Range di Valori presenti nell'array (Scala Lineare e Logaritmica)}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Immagini/confronto_algoritmi_m_variabile_DEF.png}
+    \caption*{\textbf{Tempo vs \(n\) (scala lineare).} Tempo medio di esecuzione al variare di \(m\) (con \(n=10\,000\) costante).}
+    \label{fig:grafico}
+\end{figure}
+
+\subsubsection{Descrizione e obiettivo}
+\label{descrizione-obiettivo}
+Questo grafico mostra il tempo medio di esecuzione in funzione della dimensione del range di valori \(m\) con \(n\) fissato a 10000. Lo scopo è confrontare i tempi assoluti rilevati e visualizzare l'overhead pratico degli algoritmi.
+
+\paragraph{Osservazioni sul grafico lineare}
+\begin{itemize}
+  \item Notiamo come l'andamento per CountingSort sia lineare, all'aumentare del range di valori il suo tempo di esecuzione aumenta rispetto a quello degli altri due algoritmi;
+  \item Per RadixSort e QuickSort3Way abbiamo un andamento simile e appiattito, per il primo algoritmo l'osservazione rispecchia la sua complessità lineare;
+  \item Importante è notare anche come viene QuickSort, per cui abbiamo una retta praticamente verticale, questo può essere dovuto al fatto che il tempo medio di esecuzione dell'algoritmo non dipenda dal range di valori.
+\end{itemize}
+
+\paragraph{Osservazioni sul grafico logaritmico}
+\begin{itemize}
+  \item Possiamo notare che il tempo medio di esecuzione di QuickSort migliora man mano che il range m di valori viene incrementato;
+  \item Gli andamenti degli altri tre algoritmi è molto simile con l'unica differenza per CountingSort il cui tempo medio di esecuzione aumenta per valori di un range molto elevato $(10^6)$, gli andamenti di RadixSort e QuickSort3Way sono quasi uguali sennonchè RadixSort, in termini
+  di tempo medio di esecuzione, è leggermente più efficiente.
+  \item QuickSort: $m=-0.28$, all'aumentare del range di valori il tempo diminuisce, il che è un comportamento particolare. 
+  (può essere normale se consideriamo che costo medio $O(n \log n)$, e il fatto che magari la scelta del pivot è ottima con l'aumentare della varietà del range di valori)
+  \item RadixSort: $m=0.11$, crescita lenta, coerente con la complessità $d \cdot O(n)$;
+  \item CountingSort: $m=0.19$, crescita lenta, non molto coerente dato che ci aspetteremmo una complessità lineare $O(n + k) = O(n) \quad \text{se} \quad k = O(n)$;
+  \item QuickSort3Way: $m=0.13$, crescita lenta, coerente con la complessità $O(n \log n)$.
+\end{itemize}
+
 \end{document}
