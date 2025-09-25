@@ -1,7 +1,6 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.4.3)  20 SEP 2025 18:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.4.3)  25 SEP 2025 09:48
 entering extended mode
- restricted \write18 enabled.
- file:line:error style messages enabled.
+ \write18 enabled.
  %&-line parsing enabled.
 **"c:/Users/Luca/Documents/UNI/ASD/Progetto Puppis/progetto_ASD__/progetto_ASD__/Relazione/Relazione.tex"
 (c:/Users/Luca/Documents/UNI/ASD/Progetto Puppis/progetto_ASD__/progetto_ASD__/Relazione/Relazione.tex
@@ -709,7 +708,7 @@ Package pdftex.def Info: Immagini_EX/Logo_Università_di_Udine.png  used on inpu
  [14 <./Immagini/confronto_algoritmi_m_variabile_DEF.png>]
 File: Immagini_EX/Logo_Università_di_Udine.png Graphic file (type png)
 <use Immagini_EX/Logo_Università_di_Udine.png>
-Package pdftex.def Info: Immagini_EX/Logo_Università_di_Udine.png  used on input line 548.
+Package pdftex.def Info: Immagini_EX/Logo_Università_di_Udine.png  used on input line 549.
 (pdftex.def)             Requested size: 28.45274pt x 28.45157pt.
  [15] (Relazione.aux)
  ***********
@@ -720,21 +719,27 @@ L3 programming layer <2024-03-14>
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package rerunfilecheck Info: File `Relazione.out' has not changed.
-(rerunfilecheck)             Checksum: 303B04815995789996711307D0EADF10;4763.
+
+Package rerunfilecheck Warning: File `Relazione.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `Relazione.out':
+(rerunfilecheck)             Before: 303B04815995789996711307D0EADF10;4763
+(rerunfilecheck)             After:  7F361608AD07F501C62934B9EF806F8F;4862.
  ) 
 Here is how much of TeX's memory you used:
- 17205 strings out of 474424
- 273863 string characters out of 5742212
+ 17206 strings out of 474424
+ 273872 string characters out of 5742212
  2093496 words of memory out of 5000000
  39162 multiletter control sequences out of 15000+600000
  567484 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,16n,117p,829b,2148s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Luca\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmitt10.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Relazione.pdf (16 pages, 1252341 bytes).
+Output written on Relazione.pdf (16 pages, 1252492 bytes).
 PDF statistics:
- 431 PDF objects out of 1000 (max. 8388607)
- 151 named destinations out of 1000 (max. 500000)
+ 432 PDF objects out of 1000 (max. 8388607)
+ 152 named destinations out of 1000 (max. 500000)
  218 words of extra memory for PDF output out of 10000 (max. 10000000)
 
