@@ -498,7 +498,7 @@ Questo grafico mostra il tempo medio di esecuzione in funzione della dimensione 
 
 \paragraph{Osservazioni sul grafico lineare}
 \begin{itemize}
-  \item In ordine dal meno efficiente al più efficiente: QuickSort, QuickSort3Way, RadixSort, CountingSort.
+  \item In ordine dal meno efficiente al più efficiente: QuickSort3Way, QuickSort, RadixSort, CountingSort.
   \item Si nota che per input piccoli (array con $n$ piccolo) hanno efficienza simile. 
   \item Con input grandi notiamo che tutti e 4 gli algoritmi crescono quasi linearmente senza pendenze altalenanti.
   \item Al tempo $t = 100$ (input circa $38.000$), QuickSort e QuickSort3Way si sovrappongono con stesso tempo di esecuzione. In generale hanno andamento simile.
@@ -546,5 +546,13 @@ Questo grafico mostra il tempo medio di esecuzione in funzione della dimensione 
 \end{itemize}
 
 \section{Conclusioni}
+A seguito delle osservazioni effettuate sulle misurazioni, siamo giunti alla conclusione che:
+\begin{itemize}
+	\item \textbf{QuickSort}: Nell'ipotesi di $n$ costante, abbiamo un range di valori ampio e, di conseguenza, più valori distinti, per cui l'algoritmo performa meglio;
+	\item \textbf{QuickSort3Way}: Nel caso di $m$ costante ha un comportamento simile al QuickSort. Per $n$ costante, con valori piccoli di $m$, è meno efficiente di QuickSort; mentre per valori elevati di $m$ presentano un comportamento simile;
+	\item \textbf{CountingSort}: Nell'ipotesi di $m$ costante, è il più efficiente tra i 4 algoritmi, mentre invece, per $n$ costante e $m$ elevati, rileviamo un comportamento anomalo per cui l'algoritmo diventa meno efficiente;
+	\item \textbf{RadixSort}: É l'algoritmo più bilanciato tra quelli utilizzati, sia per $m$ costante che per $n$ costante.
+\end{itemize}
+Mantenendo $n$ costante, per ciascuno degli algoritmi, rileviamo che i coefficienti angolari assumono valori piuttosto bassi nel grafico in scala logaritmica. Tale comportamento potrebbe essere legato a fattori esterni, quali l'architettura del calcolatore utilizzato, oppure eventuali errori di misurazione.
 
 \end{document}

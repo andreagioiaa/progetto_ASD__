@@ -1,6 +1,7 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.4.3)  25 SEP 2025 09:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.4.3)  25 SEP 2025 10:57
 entering extended mode
- \write18 enabled.
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
 **"c:/Users/Luca/Documents/UNI/ASD/Progetto Puppis/progetto_ASD__/progetto_ASD__/Relazione/Relazione.tex"
 (c:/Users/Luca/Documents/UNI/ASD/Progetto Puppis/progetto_ASD__/progetto_ASD__/Relazione/Relazione.tex
@@ -597,7 +598,7 @@ Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 ))
 \c@lstlisting=\count334
-<./Immagini_EX/Logo_Università_di_Udine.png, id=99, 250.68657pt x 250.68657pt>
+<./Immagini_EX/Logo_Università_di_Udine.png, id=103, 250.68657pt x 250.68657pt>
 File: ./Immagini_EX/Logo_Università_di_Udine.png Graphic file (type png)
 <use ./Immagini_EX/Logo_Università_di_Udine.png>
 Package pdftex.def Info: ./Immagini_EX/Logo_Università_di_Udine.png  used on input line 110.
@@ -621,7 +622,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has b
                    \relax 
 l.118 \newpage
                [1]
-<Immagini_EX/Logo_Università_di_Udine.png, id=142, 250.68657pt x 250.68657pt>
+<Immagini_EX/Logo_Università_di_Udine.png, id=147, 250.68657pt x 250.68657pt>
 File: Immagini_EX/Logo_Università_di_Udine.png Graphic file (type png)
 <use Immagini_EX/Logo_Università_di_Udine.png>
 Package pdftex.def Info: Immagini_EX/Logo_Università_di_Udine.png  used on input line 153.
@@ -666,7 +667,7 @@ File: Immagini_EX/Logo_Università_di_Udine.png Graphic file (type png)
 Package pdftex.def Info: Immagini_EX/Logo_Università_di_Udine.png  used on input line 416.
 (pdftex.def)             Requested size: 28.45274pt x 28.45157pt.
  [9]
-<./Immagini_EX/RadixSort.png, id=274, 430.60875pt x 197.538pt>
+<./Immagini_EX/RadixSort.png, id=279, 430.60875pt x 197.538pt>
 File: ./Immagini_EX/RadixSort.png Graphic file (type png)
 <use ./Immagini_EX/RadixSort.png>
 Package pdftex.def Info: ./Immagini_EX/RadixSort.png  used on input line 419.
@@ -681,7 +682,7 @@ File: Immagini_EX/Logo_Università_di_Udine.png Graphic file (type png)
 Package pdftex.def Info: Immagini_EX/Logo_Università_di_Udine.png  used on input line 477.
 (pdftex.def)             Requested size: 28.45274pt x 28.45157pt.
  [11]
-<Immagini/confronto_DEFINITIVO.png, id=303, 1141.3842pt x 420.1296pt>
+<Immagini/confronto_DEFINITIVO.png, id=308, 1141.3842pt x 420.1296pt>
 File: Immagini/confronto_DEFINITIVO.png Graphic file (type png)
 <use Immagini/confronto_DEFINITIVO.png>
 Package pdftex.def Info: Immagini/confronto_DEFINITIVO.png  used on input line 490.
@@ -691,7 +692,7 @@ File: Immagini_EX/Logo_Università_di_Udine.png Graphic file (type png)
 Package pdftex.def Info: Immagini_EX/Logo_Università_di_Udine.png  used on input line 499.
 (pdftex.def)             Requested size: 28.45274pt x 28.45157pt.
  [12 <./Immagini/confronto_DEFINITIVO.png>]
-<Immagini/confronto_algoritmi_m_variabile_DEF.png, id=315, 1141.3842pt x 420.6114pt>
+<Immagini/confronto_algoritmi_m_variabile_DEF.png, id=320, 1141.3842pt x 420.6114pt>
 File: Immagini/confronto_algoritmi_m_variabile_DEF.png Graphic file (type png)
 <use Immagini/confronto_algoritmi_m_variabile_DEF.png>
 Package pdftex.def Info: Immagini/confronto_algoritmi_m_variabile_DEF.png  used on input line 520.
@@ -708,7 +709,7 @@ Package pdftex.def Info: Immagini_EX/Logo_Università_di_Udine.png  used on inpu
  [14 <./Immagini/confronto_algoritmi_m_variabile_DEF.png>]
 File: Immagini_EX/Logo_Università_di_Udine.png Graphic file (type png)
 <use Immagini_EX/Logo_Università_di_Udine.png>
-Package pdftex.def Info: Immagini_EX/Logo_Università_di_Udine.png  used on input line 549.
+Package pdftex.def Info: Immagini_EX/Logo_Università_di_Udine.png  used on input line 558.
 (pdftex.def)             Requested size: 28.45274pt x 28.45157pt.
  [15] (Relazione.aux)
  ***********
@@ -719,27 +720,21 @@ L3 programming layer <2024-03-14>
 
 LaTeX Warning: There were multiply-defined labels.
 
-
-Package rerunfilecheck Warning: File `Relazione.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `Relazione.out':
-(rerunfilecheck)             Before: 303B04815995789996711307D0EADF10;4763
-(rerunfilecheck)             After:  7F361608AD07F501C62934B9EF806F8F;4862.
+Package rerunfilecheck Info: File `Relazione.out' has not changed.
+(rerunfilecheck)             Checksum: 7F361608AD07F501C62934B9EF806F8F;4862.
  ) 
 Here is how much of TeX's memory you used:
- 17206 strings out of 474424
- 273872 string characters out of 5742212
- 2093496 words of memory out of 5000000
- 39162 multiletter control sequences out of 15000+600000
+ 17207 strings out of 474424
+ 273883 string characters out of 5742212
+ 2092496 words of memory out of 5000000
+ 39163 multiletter control sequences out of 15000+600000
  567484 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,16n,117p,829b,2148s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Luca\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmitt10.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/Luca/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Relazione.pdf (16 pages, 1252492 bytes).
+Output written on Relazione.pdf (16 pages, 1254634 bytes).
 PDF statistics:
- 432 PDF objects out of 1000 (max. 8388607)
+ 436 PDF objects out of 1000 (max. 8388607)
  152 named destinations out of 1000 (max. 500000)
- 218 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 226 words of extra memory for PDF output out of 10000 (max. 10000000)
 
